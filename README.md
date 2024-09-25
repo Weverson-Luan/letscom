@@ -4,12 +4,12 @@
 
 <!--- Add the project title --->
 <h1 align="center">
-    <a href="#">Innovally</a>
+    <a href="#">LetScom</a>
 </h1>
 
 <!--- Describe the project purpose --->
 <h3 align="center">
-    Let’scom é uma empresa especializada na fabricação de diversos materiais em PVC, tais como: cartões, crachás, carteirinhas, vale-presente, cartão fidelidade, Credenciais, brindes, displays e muito mais..
+    Let’scom é uma empresa especializada na fabricação de diversos materiais em PVC, tais como: cartões, crachás, carteirinhas, vale-presente, cartão fidelidade, Credenciais, brindes, displays e muito mais...
 </h3>
 
 <!--- Define the current statuss --->
@@ -19,12 +19,12 @@
 
 <!--- Table of contents --->
 <p align="center">
- <a href="#-about">About</a> •
- <a href="#%EF%B8%8F-features">Features</a> •
- <a href="#-layout">Layout</a> •
- <a href="#-how-it-works">How it works</a> •
- <a href="#%EF%B8%8F-tech-stack">Tech Stack</a> •
- <a href="#%EF%B8%8F-license">License</a>
+ <a href="#sobre">Sobre</a> •
+ <a href="#funcionalidades">Funcionalidades</a> •
+ <a href="#-design">Disign</a> •
+ <a href="### 🚀 Como-funciona">Como funciona</a> •
+ <a href="#️ferramentas">Pilha de tecnologia</a> •
+ <a href="#aplicação">Licença</a>
 </p>
 </div>
 
@@ -32,75 +32,75 @@
 
 <!--- Add a project description --->
 
-## 📝 About
+### **Sobre**
 
-**Innovally** is description.
+**LetScom**  Let’scom é uma empresa especializada na fabricação de diversos materiais em PVC, tais como: cartões, crachás, carteirinhas, vale-presente, cartão fidelidade, Credenciais, brindes, displays e muito mais...
 
 &nbsp;
 
 <!--- Describe the main features --->
 
-## ⚙️ Features
+### **Funcionalidades**
 
 Admin podem:
 
-- [ ] gerenciar seu perfil
-
-Lojistas e Gerente de loja podem:
-
 - [ ] cadastrar um novo usuário
--
+
+Clientes podem:
+
+- [ ] gernciar seu perfil
 
 &nbsp;
 
 <!--- Add the project layouts --->
 
-## 🎨 Layout
+## 🎨 **Design**
 
-The application layout is available on <https://www.wltech.com.br/letScom>
+O layout da aplicação está disponível em <https://www.figma.com/design/5h9rdYznE2YdKo4kBKfpo2/LetScom?node-id=36-13&node-type=canvas&t=689keSaFtGLuCCrS-0>
 
 &nbsp;
 
 <!--- Describe requirements, environments and steps to run it--->
 
-## 🚀 How it works
+## 🚀 Como-funciona
 
-This project is the client-side application and need the following applications running to work:
+Este projeto é uma aplicação do lado do cliente e precisa dos seguintes aplicativos em execução para funcionar:
 
 1. [Backend]()
 2. [Database]()
 
-### Environments
+### Ambientes
 
 | Environments | URL                            |
 | ------------ | ------------------------------ |
-| Local        | <http://localhost:3000>          |
-| Homologation | <https://www.hml.letScom.com/> |
-| Production   | <https://www.letScom.com/>     |
+| Local        | <http://localhost:5173/>       |
+| Homologação  | <https://www.hml.letscom.com/> |
+| Produção     | <https://www.letscom.com/>     |
 
-### Pre-requisites
+### Pré-requisitos
 
-Before you begin, you will need to have the following tools installed on your machine:
+Antes de começar, você precisará ter as seguintes ferramentas instaladas em sua máquina:
 
 - [Git](https://git-scm.com)
 - [Node.js 14+](https://nodejs.org/en/)
+- [Npm](<https://www.npmjs.com/>)
 
-### Running the application
+### Executando o aplicativo
 
 ```bash
-# Clone this repository
-$ git clone https://github.com/letScom.git
+# Clonar este repositório
+$ git clone https://github.com/Weverson-Luan/letScom/tree/develop
 
-# Access the project folder cmd/terminal
-$ cd innovally
+# Acesse a pasta do projeto cmd/terminal
+$ cd letScom
 
-# Install the dependencies
-$ yarn install
+# Instalar as dependências
+$ yarn install or npm install
 
-# Run the application in development mode
-$ yarn dev
+# Execute o aplicativo no modo de desenvolvimento
+$ yarn dev or npm run dev
 
-# The server will start at port: 3000 - go to http://localhost:3000
+# O servidor iniciará na porta: 5173 - vá para http://localhost:5173/
 ```
 
 ### Tests
@@ -115,23 +115,28 @@ $ yarn dev
 
 <!--- Describe the tech stack used to develop it --->
 
-## ⚒️ Tech Stack
+#### **Ferramentas**
 
-The following tools were used in the construction of the project:
+As seguintes ferramentas foram utilizadas na construção do projeto:
 
-#### **Application** ([React](https://reactjs.org/) + [Redux](https://redux.js.org/) + [Next.js](https://nextjs.org/))
+#### **Aplicação**
 
-- **[React Icons](https://react-icons.github.io/react-icons/)**
-- **[React Redux](https://react-redux.js.org/)**
-- **[Styled Components](https://styled-components.com/)**
+- **[Vite](https://vitejs.dev/)**
+
+- **[React](https://reactjs.org/)**
+
+- **[Tailwindcss](https://tailwindcss.com/)**
+
+- **[React Router Dom](https://reactrouter.com/en/main)**
+
+- **[Lucide React](https://lucide.dev/icons/)**
 
 > See all dependencies in [package.json](/package.json)
 
-#### [](https://github.com/tgmarinho/Ecoleta#utilit%C3%A1rios)**Development Tools**
+#### [](https://github.com/tgmarinho/Ecoleta#utilit%C3%A1rios)**Ferramentas de desenvolvimento**
 
 - **[ESLint](https://eslint.org/)**
 - **[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)**
-- **[Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=pt-BR)**
 - **[TypeScript](https://www.typescriptlang.org/)**
 
 #### [](https://github.com/tgmarinho/Ecoleta#utilit%C3%A1rios)**Utils**
@@ -144,8 +149,8 @@ The following tools were used in the construction of the project:
 
 <!--- Describe the project license --->
 
-## ©️ License
+## ©️ Licença
 
-This project is under the license [MIT](./LICENSE).
+Este projeto está sob a licença [MIT](./LICENSE).
 
-Made by [Wltech](http://wltech.com.br/)
+Feito por [Wltech](http://wltech.com.br/)
