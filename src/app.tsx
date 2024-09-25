@@ -2,8 +2,8 @@
  * IMPORTS
  */
 
-import { Sidbar } from "./core/components/sidbar/sidbar";
-import { AppRoutes } from "./core/routes/routes-index";
+import { Sidbar } from "./app/components/sidbar/sidbar";
+import { AppRoutes } from "./app/routes/routes-index";
 
 function App() {
   return (
