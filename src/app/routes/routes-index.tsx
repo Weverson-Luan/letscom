@@ -13,8 +13,10 @@ import { ManageCredits } from "../pages/manage-credits";
 
 import { OrdersCompleted } from "../pages/orders-completed";
 import { SearchShipment } from "../pages/search-shipment";
+import { SignIn } from "../pages/signin";
+import { Sidbar } from "../components/sidbar/sidbar";
 
-const router = createBrowserRouter([
+const routerAuth = createBrowserRouter([
   {
     path: "/",
     element: <DowloadLoad />,
@@ -43,8 +45,32 @@ const router = createBrowserRouter([
   },
 ]);
 
+const routerOpen = createBrowserRouter([
+  {
+    path: "/",
+    element: <SignIn />,
+  },
+]);
+
 function AppRoutes() {
-  return <RouterProvider router={router} />;
+  const token = false;
+  return (
+    <>
+      {token ? (
+        <div className="flex min-h-screen">
+          {/* Sidebar */}
+          <Sidbar />
+
+          {/* Conteúdo à direita */}
+          <div className="flex-1 bg-neutral-custom500 p-10">
+            <RouterProvider router={routerAuth} />
+          </div>
+        </div>
+      ) : (
+        <RouterProvider router={routerOpen} />
+      )}
+    </>
+  );
 }
 
 /**
