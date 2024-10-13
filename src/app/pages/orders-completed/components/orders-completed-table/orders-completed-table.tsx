@@ -37,7 +37,7 @@ export function OrdersCompletedTable({
       <CardHeader>
         <CardTitle>Pedidos Finalizados</CardTitle>
         <CardDescription>
-          Gerencie seus pedidos e visualize quando quiser!
+          Gerencie seus pedidos e visualize quando quiser.
         </CardDescription>
       </CardHeader>
       <CardContent>

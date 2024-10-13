@@ -1,5 +1,3 @@
-"use client";
-
 import {
   TableHead,
   TableRow,
@@ -37,7 +35,7 @@ export function ExpeditionTable({
       <CardHeader>
         <CardTitle>Expedições</CardTitle>
         <CardDescription>
-          Gerencie suas expedições e visualize quando quiser!
+          Gerencie suas expedições e visualize quando quiser.
         </CardDescription>
       </CardHeader>
       <CardContent>

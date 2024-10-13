@@ -39,7 +39,7 @@ export function DowloadLoadTable({
       <CardHeader>
         <CardTitle>Baixar Carga</CardTitle>
         <CardDescription>
-          Gerencie suas cargas e visualize quando quiser!
+          Gerencie suas cargas e visualize quando quiser.
         </CardDescription>
       </CardHeader>
       <CardContent>
