@@ -2,19 +2,31 @@
  * IMPORTS
  */
 
-import { useNavigate } from "react-router-dom";
-import Logo from "../../common/assets/png/logo-let-scom.png";
+import axios from "axios";
+import Logo from "../../../common/assets/png/logo-let-scom.png";
+import { useStoreZustandUserAuth } from "../../../store-zustand/user-auth";
 
 const SignIn = () => {
-  const navigation = useNavigate();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const { setIsAuthenticated, isLoading, setIsLoading } =
+    useStoreZustandUserAuth();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get("email");
     const password = data.get("password");
+    setIsLoading(true);
 
-    if (email && password) {
-      navigation(`/dashboard`);
+    const res = await axios.post("https://fakestoreapi.com/auth/login", {
+      username: "mor_2314",
+      password: "83r5^_",
+    });
+
+    localStorage.setItem("@token", res.data.token);
+
+    if (res.data?.token) {
+      setIsAuthenticated(true);
+      setIsLoading(false);
       return;
     }
 
@@ -65,7 +77,7 @@ const SignIn = () => {
               className="w-full bg-neutral900  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-2"
               type="submit"
             >
-              Login
+              {isLoading ? "Carregando..." : "Login"}
             </button>
 
             <a
