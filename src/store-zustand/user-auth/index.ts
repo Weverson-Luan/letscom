@@ -10,7 +10,7 @@ interface IUserAuthState {
 
 // Criação da store com Zustand
 export const useStoreZustandUserAuth = create<IUserAuthState>((set) => ({
-  isAuthenticated: true,
+  isAuthenticated: false,
   isLoading: false,
 
   setIsAuthenticated: (isAuthenticated) => set({ isAuthenticated }),

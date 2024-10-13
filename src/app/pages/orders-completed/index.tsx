@@ -12,7 +12,7 @@ import {
 } from "../../../presentation/components/tabs";
 
 import { OrdersCompletedTable } from "./components/orders-completed-table/orders-completed-table";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { handleGetOrdersCompleted } from "../../../domain/use-cases/orders-completed";
 import { Spinner } from "../../../presentation/components/spinner/spinner";
 import { sleep } from "../../../utils/sleep/sleep";
@@ -32,9 +32,9 @@ const OrdersCompleted = () => {
   const [ordersCompleted, setOrdersCompleted] = useState<ITesteProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [currentPage, setCurrentPage] = useState(1); // Página atual
+  const [currentPage, _setCurrentPage] = useState(1); // Página atual
   const [itemsPerPage] = useState(5); // Itens por página
-  const [totalItems, setTotalItems] = useState(0); // Total de itens
+  const [_totalItems, setTotalItems] = useState(0); // Total de itens
 
   const handleGetAllOrdersCompleted = async () => {
     setIsLoading(true);
@@ -51,10 +51,10 @@ const OrdersCompleted = () => {
     setIsLoading(false);
   };
 
-  const nextPaginate = useCallback(
-    () => setCurrentPage((old) => old + 1),
-    [currentPage]
-  );
+  // const nextPaginate = useCallback(
+  //   () => setCurrentPage((old) => old + 1),
+  //   [currentPage]
+  // );
 
   useEffect(() => {
     handleGetAllOrdersCompleted();

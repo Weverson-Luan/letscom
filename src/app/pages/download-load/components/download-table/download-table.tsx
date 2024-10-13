@@ -32,10 +32,7 @@ export function DowloadLoadTable({
   totalProducts: number;
   nextPaginate(): void;
 }) {
-  let router = {};
   let productsPerPage = 5;
-
-  function prevPage() {}
 
   return (
     <Card>

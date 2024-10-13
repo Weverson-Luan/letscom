@@ -11,7 +11,7 @@ import {
   TabsTrigger,
 } from "../../../presentation/components/tabs";
 import { ExpeditionTable } from "./components/expedition-table/expedition-table";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { sleep } from "../../../utils/sleep/sleep";
 import { handleGetExpedition } from "../../../domain/use-cases/expedition";
 import { Spinner } from "../../../presentation/components/spinner/spinner";
@@ -30,9 +30,9 @@ const Expedition = () => {
   const [expedition, setExpedition] = useState<ITesteProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [currentPage, setCurrentPage] = useState(1); // Página atual
+  const [currentPage, _setCurrentPage] = useState(1); // Página atual
   const [itemsPerPage] = useState(5); // Itens por página
-  const [totalItems, setTotalItems] = useState(0); // Total de itens
+  const [_totalItems, setTotalItems] = useState(0); // Total de itens
 
   const handleGetAllOrdersCompleted = async () => {
     setIsLoading(true);
@@ -45,10 +45,10 @@ const Expedition = () => {
     setIsLoading(false);
   };
 
-  const nextPaginate = useCallback(
-    () => setCurrentPage((old) => old + 1),
-    [currentPage]
-  );
+  // const nextPaginate = useCallback(
+  //   () => setCurrentPage((old) => old + 1),
+  //   [currentPage]
+  // );
 
   useEffect(() => {
     handleGetAllOrdersCompleted();

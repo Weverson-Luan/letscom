@@ -94,7 +94,7 @@ const DowloadLoad = () => {
 
   const [currentPage, setCurrentPage] = useState(1); // Página atual
   const [itemsPerPage] = useState(5); // Itens por página
-  const [totalItems, setTotalItems] = useState(0); // Total de itens
+  const [_totalItems, setTotalItems] = useState(0); // Total de itens
 
   const handleGetAllDowloadLoad = async () => {
     setIsLoading(true);

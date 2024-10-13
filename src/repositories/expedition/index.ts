@@ -2,15 +2,15 @@
  * IMPORTS
  */
 import AxiosService from "../../infra/http/axios";
-import { OrdersCompletedRepository } from "../../interface/orders-completed/orders-completed";
+import { IExpeditionRepository } from "../../interface/expedition";
 
-const expeditionRepository: OrdersCompletedRepository = {
+const expeditionRepository: IExpeditionRepository = {
   /**
    * Função para buscar expedições
    * @param accessToken
    * @returns Promise<any | null>
    */
-  async getExpedition<T>(
+  async getAllExpedition<T>(
     accessToken: string,
     currentPage: number = 1,
     itemsPerPage: number = 5

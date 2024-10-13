@@ -3,7 +3,7 @@
  */
 
 type OrdersCompletedRepository = {
-  getExpedition<T>(
+  getOrdersCompleted<T>(
     accessToken: string,
     currentPage: number,
     itemsPerPage: number

@@ -13,7 +13,7 @@ const handleGetExpedition = async (
   itemsPerPage: number
 ) => {
   try {
-    const data = await expeditionRepository.getExpedition(
+    const data = await expeditionRepository.getAllExpedition(
       accessToken,
       currentPage,
       itemsPerPage

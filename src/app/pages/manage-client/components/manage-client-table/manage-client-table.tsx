@@ -30,14 +30,7 @@ export function ManageClientTable({
   offset: number;
   totalProducts: number;
 }) {
-  let router = {};
   let productsPerPage = 5;
-
-  function prevPage() {}
-
-  function nextPage() {
-    // router.push(`/?offset=${offset}`, { scroll: false });
-  }
 
   return (
     <Card>
