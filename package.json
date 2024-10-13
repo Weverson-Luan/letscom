@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Weverson-Luan.github.io/letscom",
+  "homepage": "https://github.com/Weverson-Luan/letscom",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
