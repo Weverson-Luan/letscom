@@ -18,6 +18,7 @@ import {
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../../../../../presentation/components/button/button";
 import { Expedition } from "../../expedition";
+import { SearchInput } from "../../../../../presentation/components/search/search";
 
 export function ExpeditionTable({
   products,
@@ -32,11 +33,17 @@ export function ExpeditionTable({
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Expedições</CardTitle>
-        <CardDescription>
-          Gerencie suas expedições e visualize quando quiser.
-        </CardDescription>
+      <CardHeader className="items-center justify-between">
+        <div>
+          <CardTitle>Expedições</CardTitle>
+          <CardDescription>
+            Gerencie suas expedições e visualize quando quiser.
+          </CardDescription>
+        </div>
+
+        <div>
+          <SearchInput />
+        </div>
       </CardHeader>
       <CardContent>
         <Table>

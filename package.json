@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "dev-server": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",

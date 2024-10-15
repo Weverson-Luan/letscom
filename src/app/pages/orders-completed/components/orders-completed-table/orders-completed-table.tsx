@@ -1,5 +1,3 @@
-"use client";
-
 import {
   TableHead,
   TableRow,
@@ -20,6 +18,7 @@ import {
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../../../../../presentation/components/button/button";
 import { OrdersCompleted } from "../orders-completed";
+import { SearchInput } from "../../../../../presentation/components/search/search";
 
 export function OrdersCompletedTable({
   products,
@@ -34,11 +33,17 @@ export function OrdersCompletedTable({
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Pedidos Finalizados</CardTitle>
-        <CardDescription>
-          Gerencie seus pedidos e visualize quando quiser.
-        </CardDescription>
+      <CardHeader className="items-center justify-between">
+        <div>
+          <CardTitle>Pedidos Finalizados</CardTitle>
+          <CardDescription>
+            Gerencie seus pedidos e visualize quando quiser.
+          </CardDescription>
+        </div>
+
+        <div>
+          <SearchInput />
+        </div>
       </CardHeader>
       <CardContent>
         <Table>

@@ -18,6 +18,7 @@ import {
 
 import { Button } from "../../../../../presentation/components/button/button";
 import { SearchShipment } from "../../search-shipment";
+import { SearchInput } from "../../../../../presentation/components/search/search";
 
 export function SearchShipmentTable({
   products,
@@ -32,11 +33,17 @@ export function SearchShipmentTable({
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Pesquisar remessas</CardTitle>
-        <CardDescription>
-          Gerencie suas remessas e visualize quando quiser.
-        </CardDescription>
+      <CardHeader className="items-center justify-between">
+        <div>
+          <CardTitle>Pesquisar remessas</CardTitle>
+          <CardDescription>
+            Gerencie suas remessas e visualize quando quiser.
+          </CardDescription>
+        </div>
+
+        <div>
+          <SearchInput />
+        </div>
       </CardHeader>
       <CardContent>
         <Table>

@@ -16,6 +16,7 @@ import { Spinner } from "../../../presentation/components/spinner/spinner";
 import { useCallback, useEffect, useState } from "react";
 import { handleSigninWhithUserAndPassword } from "../../../domain/use-cases/dowload-load";
 import { sleep } from "../../../utils/sleep/sleep";
+import { CreateLoadModal } from "./components/create-load-modal/create-load-modal";
 
 type ITesteProps = {
   id: string;
@@ -29,65 +30,6 @@ type ITesteProps = {
   availableAt: Date;
 };
 
-export const dataMokcDownLoad = [
-  {
-    id: "1",
-    name: "OASIS CLUBE",
-    numero_remessa: "31542",
-    situacao: "Laminado",
-    solicitante: "Jessica Arantes",
-    status: "Em andamento",
-    tecnologia: "STYW",
-    numberSolicitation: 10,
-    availableAt: new Date(),
-  },
-  ,
-  {
-    id: "2",
-    name: "REFUD",
-    numero_remessa: "31543",
-    situacao: "Salvo",
-    solicitante: "Gustavo Miranda",
-    tecnologia: "STYW",
-    status: "Imprimir",
-    numberSolicitation: 6,
-    availableAt: new Date(),
-  },
-  {
-    id: "3",
-    name: "TRANSPORTES URGENTES",
-    numero_remessa: "31544",
-    situacao: "Impresso",
-    solicitante: "Pedro José",
-    tecnologia: "STYW",
-    status: "Processando",
-    numberSolicitation: 2,
-    availableAt: new Date(),
-  },
-  {
-    id: "4",
-    name: "INCOPRE - MG",
-    numero_remessa: "31545",
-    situacao: "Pronto",
-    solicitante: "Fabio Morais Sousa",
-    tecnologia: "STYW",
-    status: "Concluido",
-    numberSolicitation: 22,
-    availableAt: new Date(),
-  },
-  {
-    id: "5",
-    name: "PROTECAO VEICULAR",
-    numero_remessa: "31545",
-    situacao: "Laminado",
-    solicitante: "Luan Sousa",
-    tecnologia: "STYW",
-    status: "Imprimir",
-    numberSolicitation: 15,
-    availableAt: new Date(),
-  },
-] as ITesteProps[];
-
 const DowloadLoad = () => {
   const [dowloadLoad, setDowloadLoad] = useState<ITesteProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -95,6 +37,8 @@ const DowloadLoad = () => {
   const [currentPage, setCurrentPage] = useState(1); // Página atual
   const [itemsPerPage] = useState(5); // Itens por página
   const [_totalItems, setTotalItems] = useState(0); // Total de itens
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleGetAllDowloadLoad = async () => {
     setIsLoading(true);
@@ -126,38 +70,52 @@ const DowloadLoad = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <Tabs defaultValue="all">
-          <div className="flex items-center">
-            <TabsList className="">
-              <TabsTrigger value="all" className="">
-                Remessas
-              </TabsTrigger>
-              <TabsTrigger value="active">Minhas Tarefas</TabsTrigger>
-            </TabsList>
-            <div className="ml-auto flex items-center gap-2">
-              <Button size="sm" variant="outline" className="h-8 gap-1">
-                <File className="h-3.5 w-3.5 text-zinc-800" />
-                <span className="sr-only sm:not-sr-only sm:whitespace-nowra text-zinc-800">
-                  Exportar
-                </span>
-              </Button>
-              <Button size="sm" className="h-8 gap-1">
-                <PlusCircle className="h-3.5 w-3.5" />
-                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                  Adiconar Carga
-                </span>
-              </Button>
+        <>
+          <Tabs defaultValue="all">
+            <div className="flex items-center">
+              <TabsList className="">
+                <TabsTrigger value="all" className="">
+                  Remessas
+                </TabsTrigger>
+                <TabsTrigger value="active">Minhas Tarefas</TabsTrigger>
+              </TabsList>
+              <div className="ml-auto flex items-center gap-2">
+                <Button size="sm" variant="outline" className="h-8 gap-1">
+                  <File className="h-3.5 w-3.5 text-zinc-800" />
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowra text-zinc-800">
+                    Exportar
+                  </span>
+                </Button>
+                <Button
+                  size="sm"
+                  className="h-8 gap-1"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <PlusCircle className="h-3.5 w-3.5" />
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                    Adiconar Carga
+                  </span>
+                </Button>
+              </div>
             </div>
-          </div>
-          <TabsContent value="all">
-            <DowloadLoadTable
-              nextPaginate={nextPaginate}
-              products={dowloadLoad}
-              offset={itemsPerPage}
-              totalProducts={10}
+            <TabsContent value="all">
+              <DowloadLoadTable
+                nextPaginate={nextPaginate}
+                products={dowloadLoad}
+                offset={itemsPerPage}
+                totalProducts={10}
+              />
+            </TabsContent>
+          </Tabs>
+
+          {isModalOpen && (
+            <CreateLoadModal
+              handleToggleCreateActvityModal={() => {
+                setIsModalOpen(!isModalOpen);
+              }}
             />
-          </TabsContent>
-        </Tabs>
+          )}
+        </>
       )}
     </>
   );

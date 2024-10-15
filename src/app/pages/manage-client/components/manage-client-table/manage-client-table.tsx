@@ -18,6 +18,7 @@ import {
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../../../../../presentation/components/button/button";
 import { ManegeClient } from "../manege-client";
+import { SearchInput } from "../../../../../presentation/components/search/search";
 
 export function ManageClientTable({
   products,
@@ -32,11 +33,17 @@ export function ManageClientTable({
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Gerenciar Clientes</CardTitle>
-        <CardDescription>
-          Gerencie seus clientes e visualize quando quiser!
-        </CardDescription>
+      <CardHeader className="items-center justify-between">
+        <div>
+          <CardTitle>Gerenciar Clientes</CardTitle>
+          <CardDescription>
+            Gerencie seus clientes e visualize quando quiser.
+          </CardDescription>
+        </div>
+
+        <div>
+          <SearchInput />
+        </div>
       </CardHeader>
       <CardContent>
         <Table>

@@ -1,5 +1,3 @@
-"use client";
-
 import {
   TableHead,
   TableRow,
@@ -20,6 +18,7 @@ import {
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../../../../../presentation/components/button/button";
 import { DowloadLoad } from "../../download";
+import { SearchInput } from "../../../../../presentation/components/search/search";
 
 export function DowloadLoadTable({
   products,
@@ -36,11 +35,17 @@ export function DowloadLoadTable({
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Baixar Carga</CardTitle>
-        <CardDescription>
-          Gerencie suas cargas e visualize quando quiser.
-        </CardDescription>
+      <CardHeader className="items-center justify-between">
+        <div>
+          <CardTitle>Baixar Carga</CardTitle>
+          <CardDescription>
+            Gerencie suas cargas e visualize quando quiser.
+          </CardDescription>
+        </div>
+
+        <div>
+          <SearchInput />
+        </div>
       </CardHeader>
       <CardContent>
         <Table>
