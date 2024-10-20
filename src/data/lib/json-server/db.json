@@ -364,5 +364,114 @@
       "dataSolicitacao": "01/10/2024 16:37",
       "dataFinalizacao": "01/10/2024 17:37"
     }
+  ],
+
+  "shipments-in-progress": [
+    {
+      "id": "1",
+      "codigo": "32371",
+      "quantidadeSolicitacao": 5,
+      "status": "Disponível para entrega",
+      "modelo": "TESTE-1",
+      "data": "01/10/2024 16:37"
+    },
+    {
+      "id": "2",
+      "codigo": "32372",
+      "quantidadeSolicitacao": 3,
+      "status": "Disponível para entrega",
+      "modelo": "TESTE-1",
+      "data": "02/10/2024 16:37"
+    },
+    {
+      "id": "3",
+      "codigo": "32373",
+      "quantidadeSolicitacao": 10,
+      "status": "Disponível para entrega",
+      "modelo": "TESTE-1",
+      "data": "07/10/2024 16:37"
+    },
+    {
+      "id": "4",
+      "codigo": "32374",
+      "quantidadeSolicitacao": 4,
+      "status": "Disponível para entrega",
+      "modelo": "TESTE-1",
+      "data": "10/10/2024 16:37"
+    }
+  ],
+  "search-requests": [
+    {
+      "id": "1",
+      "modelo": "TESTE-1",
+      "imagem": "https://via.placeholder.com/150",
+      "quantidadeSolicitacao": 5
+    },
+    {
+      "id": "2",
+      "modelo": "TESTE-2",
+      "imagem": "https://via.placeholder.com/150",
+      "quantidadeSolicitacao": 1
+    },
+    {
+      "id": "3",
+      "modelo": "TESTE-3",
+      "imagem": "https://via.placeholder.com/150",
+      "quantidadeSolicitacao": 4
+    },
+    {
+      "id": "4",
+      "modelo": "TESTE-4",
+      "imagem": "https://via.placeholder.com/150",
+      "quantidadeSolicitacao": 6
+    },
+    {
+      "id": "5",
+      "modelo": "TESTE-5",
+      "imagem": "https://via.placeholder.com/150",
+      "quantidadeSolicitacao": 3
+    }
+  ],
+  "shipments-history": [
+    {
+      "id": "1",
+      "remessa": "32371",
+      "modelo": "TESTE-1",
+      "quantidadeSolicitacao": 5,
+      "responsavel": "Júnia",
+      "dataSolicitacao": "01/10/2024 16:37"
+    },
+    {
+      "id": "2",
+      "remessa": "32372",
+      "modelo": "TESTE-2",
+      "quantidadeSolicitacao": 1,
+      "responsavel": "Júnia",
+      "dataSolicitacao": "01/10/2024 16:37"
+    },
+    {
+      "id": "3",
+      "remessa": "32373",
+      "modelo": "TESTE-1",
+      "quantidadeSolicitacao": 4,
+      "responsavel": "Júnia",
+      "dataSolicitacao": "01/10/2024 16:37"
+    },
+    {
+      "id": "4",
+      "remessa": "32374",
+      "modelo": "TESTE-4",
+      "quantidadeSolicitacao": 7,
+      "responsavel": "Júnia",
+      "dataSolicitacao": "01/10/2024 16:37"
+    },
+    {
+      "id": "5",
+      "remessa": "32375",
+      "modelo": "TESTE-5",
+      "quantidadeSolicitacao": 9,
+      "responsavel": "Júnia",
+      "dataSolicitacao": "01/10/2024 16:37"
+    }
   ]
 }

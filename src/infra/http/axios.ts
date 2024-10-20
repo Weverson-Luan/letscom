@@ -1,6 +1,6 @@
 import axios from "axios";
 import { configAxios } from "../../config/axios-config";
-
+// import { } from "@"
 // função para criar instância do Axios
 const createAxiosInstance = async (accessToken?: string) => {
   // criando a instância com configuração base

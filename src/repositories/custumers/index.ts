@@ -29,6 +29,19 @@ const customersRepository: ICustumersRepository = {
 
     return customers?.data;
   },
+
+  async createNewCustom(accessToken, data) {
+    const Instance = await AxiosService.createAxiosInstance(accessToken);
+
+    const customers = await Instance.post(`customers`, data, {
+      headers: {
+        "content-type": "application/json; charset=UTF-8",
+        accept: "*/*",
+      },
+    });
+
+    return customers?.data;
+  },
 };
 
 /**

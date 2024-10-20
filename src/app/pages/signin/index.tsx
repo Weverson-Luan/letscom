@@ -7,7 +7,7 @@ import Logo from "../../../common/assets/png/logo-let-scom.png";
 import { useStoreZustandUserAuth } from "../../../store-zustand/user-auth";
 
 const SignIn = () => {
-  const { setIsAuthenticated, isLoading, setIsLoading } =
+  const { setIsAuthenticated, isLoading, setIsLoading, setUser, user } =
     useStoreZustandUserAuth();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -25,6 +25,11 @@ const SignIn = () => {
     localStorage.setItem("@token", res.data.token);
 
     if (res.data?.token) {
+      const novo = {
+        ...user,
+        role: "cliente",
+      };
+      setUser(novo as any);
       setIsAuthenticated(true);
       setIsLoading(false);
       return;

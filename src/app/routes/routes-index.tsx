@@ -1,19 +1,29 @@
 /**
  * IMPORTS
  */
+import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 // pages
-import { DowloadLoad } from "../pages/download-load";
-import { Expedition } from "../pages/expedition";
-import { ManageClient } from "../pages/manage-client";
-import { ManageCredits } from "../pages/manage-credits";
-import { OrdersCompleted } from "../pages/orders-completed";
-import { SearchShipment } from "../pages/search-shipment";
 import { SignIn } from "../pages/signin";
+
+import { DowloadLoad } from "../pages/admin/download-load";
+import { Expedition } from "../pages/admin/expedition";
+import { ManageClient } from "../pages/admin/manage-client";
+import { ManageCredits } from "../pages/admin/manage-credits";
+import { OrdersCompleted } from "../pages/admin/orders-completed";
+import { SearchShipment } from "../pages/admin/search-shipment";
+
+// components-main
 import { Sidbar } from "../../presentation/components/sidbar/sidbar";
 
+// clients
+import { ListPvcCardPage } from "../pages/client/list-pvc-card";
+import { ShippingHistoryPages } from "../pages/client/shipping-history";
+
 import { useStoreZustandUserAuth } from "../../store-zustand/user-auth";
+import { ShippingInProgressPages } from "../pages/client/shipment-in-progress";
+import { ShippingSearchRequestPages } from "../pages/client/search-requests";
 
 // Layout para as rotas autenticadas
 function AuthenticatedLayout() {
@@ -27,8 +37,8 @@ function AuthenticatedLayout() {
   );
 }
 
-// Rotas autenticadas
-const routerAuth = createBrowserRouter([
+// Rotas autenticadas (Admin)
+const adminRouterAuth = createBrowserRouter([
   {
     path: "/",
     element: <AuthenticatedLayout />,
@@ -61,6 +71,32 @@ const routerAuth = createBrowserRouter([
   },
 ]);
 
+// Rotas autenticadas (Clientes)
+const clientRouterAuth = createBrowserRouter([
+  {
+    path: "/",
+    element: <AuthenticatedLayout />,
+    children: [
+      {
+        path: "/",
+        element: <ListPvcCardPage />,
+      },
+      {
+        path: "/shipments-history",
+        element: <ShippingHistoryPages />,
+      },
+      {
+        path: "/shipments-in-progress",
+        element: <ShippingInProgressPages />,
+      },
+      {
+        path: "/search-requests",
+        element: <ShippingSearchRequestPages />,
+      },
+    ],
+  },
+]);
+
 // Rotas não autenticadas
 const routerOpen = createBrowserRouter([
   {
@@ -70,9 +106,26 @@ const routerOpen = createBrowserRouter([
 ]);
 
 function AppRoutes() {
-  const { isAuthenticated } = useStoreZustandUserAuth();
+  const { isAuthenticated, getUserIsAuthenticated, user } =
+    useStoreZustandUserAuth();
 
-  return <RouterProvider router={isAuthenticated ? routerAuth : routerOpen} />;
+  const role = user?.role as string;
+
+  const appRoutes = role === "admin" ? adminRouterAuth : clientRouterAuth;
+
+  useEffect(() => {
+    getUserIsAuthenticated();
+  }, []);
+
+  return (
+    <>
+      {isAuthenticated ? (
+        <RouterProvider router={isAuthenticated ? appRoutes : routerOpen} />
+      ) : (
+        <SignIn />
+      )}
+    </>
+  );
 }
 
 /**
