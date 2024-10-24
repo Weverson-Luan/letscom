@@ -27,7 +27,7 @@ const SignIn = () => {
     if (res.data?.token) {
       const novo = {
         ...user,
-        role: "cliente",
+        role: "admin",
       };
       setUser(novo as any);
       setIsAuthenticated(true);

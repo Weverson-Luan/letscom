@@ -1,23 +1,25 @@
-import { useTransition } from "react";
-// import { useRouter } from "next/navigation";
-// import { Input } from "@/presentation/components/input/input";
-
 import { Search } from "lucide-react";
 import { Spinner } from "../../../common/icons/spinner";
 import { Input } from "../input/input";
+import { useStoreZustandDownloadLoad } from "../../../store-zustand/download-load";
+import { useCallback } from "react";
+import { sleep } from "../../../utils/sleep/sleep";
 
 export function SearchInput() {
-  // const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const { setSearchItem, searchItem } = useStoreZustandDownloadLoad();
 
-  function searchAction(formData: FormData) {
-    let value = formData.get("q") as string;
-    // let params = new URLSearchParams({ q: value });
+  // Função para atualizar o estado local enquanto o usuário digita
+  const handleSearchChange = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event.target.value.length >= 3 || event.target.value.length === 0) {
+        await sleep(3000);
+        setSearchItem(event.target.value);
 
-    startTransition(() => {
-      // router.replace(`/?${params.toString()}`);
-    });
-  }
+        return;
+      }
+    },
+    [searchItem]
+  );
 
   return (
     <form className="relative ml-auto flex-1 md:grow-0">
@@ -27,8 +29,9 @@ export function SearchInput() {
         type="search"
         placeholder="Pesquisar..."
         className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px] focus:outline-none"
+        onChange={handleSearchChange}
       />
-      {isPending && <Spinner />}
+      {false && <Spinner />}
     </form>
   );
 }

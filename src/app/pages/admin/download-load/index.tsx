@@ -2,8 +2,13 @@
  * IMPORTS
  */
 
-import { File, PlusCircle } from "lucide-react";
+import { useCallback, useState } from "react";
+
+import { File } from "lucide-react";
+
 import { Button } from "../../../../presentation/components/button/button";
+import { DowloadLoadTable } from "./components/download-table/download-table";
+import { Spinner } from "../../../../presentation/components/spinner/spinner";
 import {
   Tabs,
   TabsContent,
@@ -11,59 +16,35 @@ import {
   TabsTrigger,
 } from "../../../../presentation/components/tabs";
 
-import { DowloadLoadTable } from "./components/download-table/download-table";
-import { Spinner } from "../../../../presentation/components/spinner/spinner";
-import { useCallback, useEffect, useState } from "react";
-import { handleSigninWhithUserAndPassword } from "../../../../domain/use-cases/dowload-load";
-import { sleep } from "../../../../utils/sleep/sleep";
 import { CreateLoadModal } from "./components/create-load-modal/create-load-modal";
 
-type ITesteProps = {
-  id: string;
-  numero_remessa: string;
-  name: string;
-  situacao: string;
-  solicitante: string;
-  tecnologia: string;
-  status: string;
-  numberSolicitation: number;
-  availableAt: Date;
-};
+import { useDownloadLoad } from "../../../../hooks/download-load/use-download-load";
+import { useStoreZustandDownloadLoad } from "../../../../store-zustand/download-load";
 
 const DowloadLoad = () => {
-  const [dowloadLoad, setDowloadLoad] = useState<ITesteProps[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [currentPage, setCurrentPage] = useState(1); // Página atual
-  const [itemsPerPage] = useState(5); // Itens por página
-  const [_totalItems, setTotalItems] = useState(0); // Total de itens
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleGetAllDowloadLoad = async () => {
-    setIsLoading(true);
-    console.log(currentPage);
+  const { downloads } = useDownloadLoad();
+  const {
+    currentPage,
+    setCurrentPage,
+    totalItemsPage,
+    isLoading,
+    itemsPerPage,
+    setItemsPerPage,
+  } = useStoreZustandDownloadLoad();
 
-    await sleep(500);
-    const data = await handleSigninWhithUserAndPassword(
-      "Token",
-      currentPage,
-      itemsPerPage
-    );
-
-    setDowloadLoad(data);
-    setTotalItems(data?.length ?? 0);
-    setIsLoading(false);
-  };
-
-  const nextPaginate = useCallback(
-    () => setCurrentPage((old) => old + 1),
-    [currentPage]
-  );
-
-  useEffect(() => {
-    handleGetAllDowloadLoad();
+  const nextPaginate = useCallback(() => {
+    setCurrentPage(currentPage + 1);
   }, [currentPage]);
+
+  // Função para lidar com a alteração do seletor de itens por página
+  const handleItemsPerPageChange = useCallback(
+    async (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setItemsPerPage(Number(event.target.value));
+    },
+    [itemsPerPage]
+  );
 
   return (
     <>
@@ -79,7 +60,26 @@ const DowloadLoad = () => {
                 </TabsTrigger>
                 <TabsTrigger value="active">Minhas Tarefas</TabsTrigger>
               </TabsList>
+
               <div className="ml-auto flex items-center gap-2">
+                {/* Adicionando o seletor de itens por página */}
+                <div className="mr-4">
+                  <label htmlFor="itemsPerPage" className="mr-2 text-gray-700">
+                    Itens por página:
+                  </label>
+                  <select
+                    id="itemsPerPage"
+                    value={itemsPerPage}
+                    onChange={handleItemsPerPageChange}
+                    className="border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 text-sm text-gray-700 bg-white"
+                  >
+                    <option value={2}>2</option>
+                    <option value={4}>4</option>
+                    <option value={6}>6</option>
+                    <option value={8}>8</option>
+                  </select>
+                </div>
+
                 <Button
                   size="sm"
                   variant="default"
@@ -95,9 +95,9 @@ const DowloadLoad = () => {
             <TabsContent value="all">
               <DowloadLoadTable
                 nextPaginate={nextPaginate}
-                products={dowloadLoad}
+                downloadLoad={downloads}
                 offset={itemsPerPage}
-                totalProducts={10}
+                totalProducts={totalItemsPage}
               />
             </TabsContent>
           </Tabs>

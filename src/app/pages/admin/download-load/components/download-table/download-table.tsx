@@ -19,14 +19,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../../../../../../presentation/components/button/button";
 import { DowloadLoad } from "../../download";
 import { SearchInput } from "../../../../../../presentation/components/search/search";
+import { IDownloadLoadResponse } from "../../../../../../hooks/download-load/use-download-load";
 
 export function DowloadLoadTable({
-  products,
+  downloadLoad,
   offset,
   totalProducts,
   nextPaginate,
 }: {
-  products: any[];
+  downloadLoad: IDownloadLoadResponse[];
   offset: number;
   totalProducts: number;
   nextPaginate(): void;
@@ -77,8 +78,8 @@ export function DowloadLoadTable({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products.map((product) => (
-              <DowloadLoad key={product.id} product={product} />
+            {downloadLoad.map((download) => (
+              <DowloadLoad key={download.id} product={download} />
             ))}
           </TableBody>
         </Table>
