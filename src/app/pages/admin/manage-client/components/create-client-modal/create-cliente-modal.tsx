@@ -13,7 +13,7 @@ const CreateClientModal = ({
   handleToggleCreateActvityModal,
 }: ICreateActvityModalProps) => {
   async function handleCreateActvity(event: React.FormEvent<HTMLFormElement>) {
-    return "";
+    return event;
   }
 
   return (

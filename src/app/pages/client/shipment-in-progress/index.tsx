@@ -2,7 +2,7 @@
  * IMPORTS
  */
 
-import { File, PlusCircle } from "lucide-react";
+import { File } from "lucide-react";
 import { Button } from "../../../../presentation/components/button/button";
 import {
   Tabs,
@@ -36,8 +36,6 @@ const ShippingInProgressPages = () => {
   const [currentPage, setCurrentPage] = useState(1); // Página atual
   const [itemsPerPage] = useState(5); // Itens por página
   const [_totalItems, setTotalItems] = useState(0); // Total de itens
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleGetAllDowloadLoad = async () => {
     setIsLoading(true);

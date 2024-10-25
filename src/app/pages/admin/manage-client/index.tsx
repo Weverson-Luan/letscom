@@ -48,11 +48,7 @@ const ManageClient = () => {
 
   const [isModalCreateClient, setIsModalCreateClient] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SchemaManagerClientType>({
+  const {} = useForm<SchemaManagerClientType>({
     resolver: zodResolver(SchemaManagerClient),
   });
 
@@ -63,10 +59,10 @@ const ManageClient = () => {
     },
 
     onError(error, variables, context) {
-      console.log(error);
+      console.log(error, variables, context);
     },
     onSuccess(data, variables, context) {
-      console.log(data);
+      console.log(data, variables, context);
     },
   });
 
@@ -109,7 +105,14 @@ const ManageClient = () => {
                 <TabsTrigger value="active">Inativos</TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-2">
-                <Button size="sm" variant="outline" className="h-8 gap-1">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="h-8 gap-1"
+                  onClick={() => {
+                    onSubmit([] as any);
+                  }}
+                >
                   <File className="h-3.5 w-3.5 text-zinc-800" />
                   <span className="sr-only sm:not-sr-only sm:whitespace-nowra text-zinc-800">
                     Exportar

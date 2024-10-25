@@ -25,7 +25,7 @@ export const useStoreZustandUserAuth = create<IUserAuthState>((set) => ({
           avatar: "https://i.pravatar.cc/300",
           name: "Nome do usuário",
           email: "Email do usuário",
-          role: "cliente",
+          role: "admin",
         },
       });
       return true;

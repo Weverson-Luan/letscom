@@ -19,7 +19,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useStoreZustandUserAuth } from "../../../store-zustand/user-auth";
 
 function Sidbar() {
-  const { user, setUser } = useStoreZustandUserAuth();
+  const { user, setUser, setIsAuthenticated } = useStoreZustandUserAuth();
   const router = useNavigate();
   const location = useLocation();
 
@@ -126,12 +126,14 @@ function Sidbar() {
     router(`${route}`);
   };
 
-  const handleLogout = (route: string) => {
+  const handleLogout = () => {
     localStorage.removeItem("@token");
     setUser(null);
+    setIsAuthenticated(false);
     window.location.reload();
   };
 
+  console.log("up", user?.role);
   return (
     <div
       className={`bg-gray-custom900 p-5 pt-8 ${
@@ -257,18 +259,22 @@ function Sidbar() {
         )}
       </ul>
 
-      <div className="absolute bottom-10 cursor-pointer">
+      <div
+        className={`absolute bottom-10 cursor-pointer flex items-center justify-center ${
+          openSidbar && " w-24 p-2 duration-500"
+        } rounded-md`}
+      >
         <li
-          onClick={() => handleLogout("/signin")}
-          className={`text-gray-300 text-sm flex items-centcursor-pointer p-2 hover:bg-light-white rounded-md ${
+          onClick={() => handleLogout()}
+          className={`flex items-center justify-center text-gray-300 text-sm p-2 rounded-md cursor-pointer hover:bg-light-white ${
             openSidbar ? "w-full" : "w-8"
           }`}
         >
-          <span className="text-2xl block float-left">
-            <LogOut className="size-4 text-white duration-500" />
+          <span className="text-2xl flex items-center justify-center">
+            <LogOut className="size-6 text-white duration-500" />
           </span>
           <span
-            className={`text-base font-semibold flex-1 ${
+            className={`ml-2 text-base font-semibold ${
               !openSidbar && "hidden"
             }`}
           >

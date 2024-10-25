@@ -37,8 +37,6 @@ const ListPvcCardPage = () => {
   const [itemsPerPage] = useState(5); // Itens por página
   const [_totalItems, setTotalItems] = useState(0); // Total de itens
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleGetAllDowloadLoad = async () => {
     setIsLoading(true);
     console.log(currentPage);
