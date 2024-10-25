@@ -20,16 +20,20 @@ import { Button } from "../../../../../../presentation/components/button/button"
 import { DowloadLoad } from "../../download";
 import { SearchInput } from "../../../../../../presentation/components/search/search";
 import { IDownloadLoadResponse } from "../../../../../../hooks/download-load/use-download-load";
+import { Spinner } from "../../../../../../presentation/components/spinner/spinner";
+import { SpinnerTable } from "../../../../../../presentation/components/spinner-table/spinner-table";
 
 export function DowloadLoadTable({
   downloadLoad,
   offset,
   totalProducts,
   nextPaginate,
+  isLoadingPage,
 }: {
   downloadLoad: IDownloadLoadResponse[];
   offset: number;
   totalProducts: number;
+  isLoadingPage: boolean;
   nextPaginate(): void;
 }) {
   let productsPerPage = 5;
@@ -49,40 +53,44 @@ export function DowloadLoadTable({
         </div>
       </CardHeader>
       <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Remessa</TableHead>
+        {isLoadingPage ? (
+          <SpinnerTable />
+        ) : (
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Remessa</TableHead>
 
-              <TableHead>Cliente</TableHead>
+                <TableHead>Cliente</TableHead>
 
-              <TableHead className="hidden md:table-cell">Situação</TableHead>
+                <TableHead className="hidden md:table-cell">Situação</TableHead>
 
-              <TableHead>Solicitante</TableHead>
+                <TableHead>Solicitante</TableHead>
 
-              <TableHead>Status</TableHead>
+                <TableHead>Status</TableHead>
 
-              <TableHead>Nº Solicitações</TableHead>
+                <TableHead>Nº Solicitações</TableHead>
 
-              <TableHead>Tecnologia</TableHead>
+                <TableHead>Tecnologia</TableHead>
 
-              <TableHead>Posição</TableHead>
+                <TableHead>Posição</TableHead>
 
-              <TableHead className="hidden md:table-cell">
-                Data solicitação
-              </TableHead>
-              <TableHead className="hidden md:table-cell">Ações</TableHead>
-              <TableHead>
-                <span className="sr-only">Ações</span>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {downloadLoad.map((download) => (
-              <DowloadLoad key={download.id} product={download} />
-            ))}
-          </TableBody>
-        </Table>
+                <TableHead className="hidden md:table-cell">
+                  Data solicitação
+                </TableHead>
+                <TableHead className="hidden md:table-cell">Ações</TableHead>
+                <TableHead>
+                  <span className="sr-only">Ações</span>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {downloadLoad.map((download) => (
+                <DowloadLoad key={download.id} downloadLoad={download} />
+              ))}
+            </TableBody>
+          </Table>
+        )}
       </CardContent>
       <CardFooter>
         <div className="flex items-center w-full justify-between">

@@ -1,8 +1,17 @@
-import { Search } from "lucide-react";
-import { Spinner } from "../../../common/icons/spinner";
-import { Input } from "../input/input";
-import { useStoreZustandDownloadLoad } from "../../../store-zustand/download-load";
+/**
+ * IMPORTS
+ */
+
 import { useCallback } from "react";
+import { Search } from "lucide-react";
+
+// components
+import { Input } from "../input/input";
+
+// store-zustand
+import { useStoreZustandDownloadLoad } from "../../../store-zustand/download-load";
+
+import { Spinner } from "../../../common/icons/spinner";
 import { sleep } from "../../../utils/sleep/sleep";
 
 export function SearchInput() {

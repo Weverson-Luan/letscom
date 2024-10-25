@@ -11,6 +11,7 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
   (set) => ({
     // estados
     isLoading: false,
+    isLoadingPage: false,
     downloadLoad: [],
     itemsPerPage: 5,
     currentPage: 1,
@@ -24,9 +25,10 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
     setTotalItemsPage: (totalItemsPage) => set({ totalItemsPage }),
     setDownloadLoad: (downloadLoad) => set({ downloadLoad }),
     setSearchItem: (searchItem) => set({ searchItem }),
+    setIsLoadingPage: (isLoadingPage) => set({ isLoadingPage }),
 
     handleGetAllDowloadLoad: async ({ currentPage, itemsPerPage }) => {
-      set({ isLoading: true });
+      set({ isLoadingPage: true });
 
       await sleep(500);
 
@@ -39,7 +41,7 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
       set({ downloadLoad: data });
 
       set({ totalItemsPage: data?.length ?? 0 });
-      set({ isLoading: false });
+      set({ isLoadingPage: false });
 
       return data;
     },
@@ -50,6 +52,7 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
       itemsPerPage,
     }) => {
       console.log(search, currentPage, itemsPerPage);
+
       return;
     },
   })

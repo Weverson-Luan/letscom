@@ -5,7 +5,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "../../../../presentation/components/dropdown-menu/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
+import { Eye, SquarePen, Trash } from "lucide-react";
 import {
   TableCell,
   TableRow,
@@ -14,53 +14,89 @@ import {
 import { Button } from "../../../../presentation/components/button/button";
 import { Badge } from "../../../../presentation/components/badge/badge";
 
-export function DowloadLoad({ product }: { product: any }) {
+export function DowloadLoad({ downloadLoad }: { downloadLoad: any }) {
   return (
     <TableRow>
-      <TableCell className="hidden md:table-cell">{product.remessa}</TableCell>
+      <TableCell className="hidden md:table-cell">
+        {downloadLoad.remessa}
+      </TableCell>
 
-      <TableCell className="font-medium">{product.cliente}</TableCell>
-      <TableCell>{product.situacao}</TableCell>
+      <TableCell className="font-medium">{downloadLoad.cliente}</TableCell>
+      <TableCell>{downloadLoad.situacao}</TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {product.solicitante}
+        {downloadLoad.solicitante}
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        <Badge className="bg-green-500 text-center">{product.status}</Badge>
+        <Badge className="bg-green-500 text-center">
+          {downloadLoad.status}
+        </Badge>
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {product.quantidadeSolicitacao}
+        {downloadLoad.quantidadeSolicitacao}
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {product.tecnologia}
+        {downloadLoad.tecnologia}
       </TableCell>
-      <TableCell className="hidden md:table-cell">{product.posicao}</TableCell>
+      <TableCell className="hidden md:table-cell">
+        {downloadLoad.posicao}
+      </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {product.dataSolicitacao}
+        {downloadLoad.dataSolicitacao}
       </TableCell>
 
       <TableCell>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button aria-haspopup="true" size="icon" variant="ghost">
-              <MoreHorizontal className="h-4 w-4" />
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Ações</DropdownMenuLabel>
-            <DropdownMenuItem>Pegar tarefa</DropdownMenuItem>
-            <DropdownMenuItem>
-              <form>
-                <button type="submit">Excluir</button>
-              </form>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="w-full flex">
+          {/* Botão de Visualizar */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button aria-haspopup="true" size="icon" variant="ghost">
+                <Eye className="h-4 w-4 text-blue-600" />
+                <span className="sr-only">Visualizar</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Ações</DropdownMenuLabel>
+              <DropdownMenuItem>Ver Detalhes</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Botão de Editar */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button aria-haspopup="true" size="icon" variant="ghost">
+                <SquarePen className="h-4 w-4 text-blue-600" />
+                <span className="sr-only">Editar</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Ações</DropdownMenuLabel>
+              <DropdownMenuItem>Editar Tarefa</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Botão de Excluir */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button aria-haspopup="true" size="icon" variant="ghost">
+                <Trash className="h-4 w-4 text-red-600" />
+                <span className="sr-only">Excluir</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Ações</DropdownMenuLabel>
+              <DropdownMenuItem>
+                <form>
+                  <button type="submit">Excluir</button>
+                </form>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </TableCell>
     </TableRow>
   );

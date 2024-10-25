@@ -12,6 +12,7 @@ export type IDownloadLoadPage = {
 type IDownloadLoadState = {
   // estados
   isLoading: boolean;
+  isLoadingPage: boolean;
   downloadLoad: IDownloadLoadResponse[];
   itemsPerPage: number;
   currentPage: number;
@@ -20,6 +21,7 @@ type IDownloadLoadState = {
 
   // ações
   setIsLoading: (isLoading: boolean) => void;
+  setIsLoadingPage: (isLoadingPage: boolean) => void;
   setDownloadLoad: (downloadLoad: IDownloadLoadResponse[]) => void;
   setItemsPerPage: (itemsPerPage: number) => void;
   setCurrentPage: (currentPage: number) => void;

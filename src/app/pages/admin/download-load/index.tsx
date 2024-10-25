@@ -20,11 +20,13 @@ import { CreateLoadModal } from "./components/create-load-modal/create-load-moda
 
 import { useDownloadLoad } from "../../../../hooks/download-load/use-download-load";
 import { useStoreZustandDownloadLoad } from "../../../../store-zustand/download-load";
+import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
 
 const DowloadLoad = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { downloads } = useDownloadLoad();
+
   const {
     currentPage,
     setCurrentPage,
@@ -32,6 +34,7 @@ const DowloadLoad = () => {
     isLoading,
     itemsPerPage,
     setItemsPerPage,
+    isLoadingPage,
   } = useStoreZustandDownloadLoad();
 
   const nextPaginate = useCallback(() => {
@@ -63,22 +66,10 @@ const DowloadLoad = () => {
 
               <div className="ml-auto flex items-center gap-2">
                 {/* Adicionando o seletor de itens por página */}
-                <div className="mr-4">
-                  <label htmlFor="itemsPerPage" className="mr-2 text-gray-700">
-                    Itens por página:
-                  </label>
-                  <select
-                    id="itemsPerPage"
-                    value={itemsPerPage}
-                    onChange={handleItemsPerPageChange}
-                    className="border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 text-sm text-gray-700 bg-white"
-                  >
-                    <option value={2}>2</option>
-                    <option value={4}>4</option>
-                    <option value={6}>6</option>
-                    <option value={8}>8</option>
-                  </select>
-                </div>
+                <SelectPagination
+                  itemsPerPage={itemsPerPage}
+                  handleItemsPerPageChange={handleItemsPerPageChange}
+                />
 
                 <Button
                   size="sm"
@@ -98,6 +89,7 @@ const DowloadLoad = () => {
                 downloadLoad={downloads}
                 offset={itemsPerPage}
                 totalProducts={totalItemsPage}
+                isLoadingPage={isLoadingPage}
               />
             </TabsContent>
           </Tabs>
