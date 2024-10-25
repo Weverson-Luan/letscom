@@ -11,12 +11,16 @@ import {
   Clock1,
   ChartColumn,
   LogOut,
+  ShoppingCart,
 } from "lucide-react";
 import { useState } from "react";
 
 import Image from "../../../common/assets/png/logo-let-scom.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useStoreZustandUserAuth } from "../../../store-zustand/user-auth";
+import { NavItem } from "../nav-item/nav-item";
+import { TooltipProvider } from "../tool-tip/tool-tip";
+import ProvidersTooltip from "../../../context/tooltip/tooltip";
 
 function Sidbar() {
   const { user, setUser, setIsAuthenticated } = useStoreZustandUserAuth();
@@ -210,6 +214,12 @@ function Sidbar() {
         ) : (
           <>
             {menus.map((menu) => (
+              // <ProvidersTooltip>
+              //   <NavItem href={menu.link} label="Orders">
+              //     <ShoppingCart className="h-5 w-5" />
+              //     kk
+              //   </NavItem>
+              // </ProvidersTooltip>
               <div key={menu.id}>
                 <li
                   onClick={() => handleNavigation(menu.link)}
