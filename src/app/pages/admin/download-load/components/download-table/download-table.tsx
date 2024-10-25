@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   TableHead,
   TableRow,
@@ -14,13 +15,10 @@ import {
   CardTitle,
 } from "../../../../../../presentation/components/card/card";
 
-// import { useRouter } from "next/navigation";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../../../../../../presentation/components/button/button";
 import { DowloadLoad } from "../../download";
 import { SearchInput } from "../../../../../../presentation/components/search/search";
 import { IDownloadLoadResponse } from "../../../../../../hooks/download-load/use-download-load";
-import { Spinner } from "../../../../../../presentation/components/spinner/spinner";
 import { SpinnerTable } from "../../../../../../presentation/components/spinner-table/spinner-table";
 
 export function DowloadLoadTable({
