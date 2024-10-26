@@ -5,38 +5,55 @@
 import axios from "axios";
 import Logo from "../../../common/assets/png/logo-let-scom.png";
 import { useStoreZustandUserAuth } from "../../../store-zustand/user-auth";
+import { SchemaSignInOfUser } from "./schema/signin";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+export type SchemaSigninType = z.infer<typeof SchemaSignInOfUser>;
 
 const SignIn = () => {
   const { setIsAuthenticated, isLoading, setIsLoading, setUser, user } =
     useStoreZustandUserAuth();
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const email = data.get("email");
-    const password = data.get("password");
+  // Configuração do React Hook Form com Zod
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SchemaSigninType>({
+    resolver: zodResolver(SchemaSignInOfUser),
+  });
+
+  const onSubmit = async (data: SchemaSigninType) => {
+    const { email, password } = data;
     setIsLoading(true);
 
-    const res = await axios.post("https://fakestoreapi.com/auth/login", {
-      username: "mor_2314",
-      password: "83r5^_",
-    });
+    try {
+      const res = await axios.post("https://fakestoreapi.com/auth/login", {
+        username: "mor_2314",
+        password: "83r5^_",
+      });
 
-    localStorage.setItem("@token", res.data.token);
+      localStorage.setItem("@token", res.data.token);
 
-    if (res.data?.token) {
-      const novo = {
-        ...user,
-        role: "admin",
-      };
-      setUser(novo as any);
-      setIsAuthenticated(true);
+      if (res.data?.token) {
+        const novo = {
+          ...user,
+          role: "admin",
+        };
+        setUser(novo as any);
+        setIsAuthenticated(true);
+        setIsLoading(false);
+        return;
+      }
+    } catch (error) {
+      console.error("Erro ao fazer login", email, password, error);
+    } finally {
       setIsLoading(false);
-      return;
     }
-
-    console.log({ email, password });
   };
+
   return (
     <div className="flex h-screen">
       <div className="w-1/2 bg-gray-100 flex flex-col justify-center items-center p-8">
@@ -50,18 +67,25 @@ const SignIn = () => {
           </p>
         </div>
 
-        <form className="w-1/2" onSubmit={handleSubmit}>
+        <form className="w-1/2" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label className="block text-neutral900 text-lg font-normal mb-2">
               E-mail:
             </label>
             <input
+              {...register("email")}
               id="email"
               type="email"
               name="email"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Informe seu e-mail"
             />
+
+            {errors.email && (
+              <p className="text-red-500 text-xs italic">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div>
@@ -69,15 +93,21 @@ const SignIn = () => {
               Senha:
             </label>
             <input
+              {...register("password")}
               type="password"
               id="password"
               name="password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Informe sua senha"
             />
+            {errors.password && (
+              <p className="text-red-500 text-xs italic">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
-          <div className="w-full flex flex-col items-center justify-center">
+          <div className="w-full flex flex-col items-center justify-center mt-4">
             <button
               className="w-full bg-neutral900  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-2"
               type="submit"
