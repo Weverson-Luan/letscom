@@ -11,48 +11,36 @@ import {
   TabsTrigger,
 } from "../../../../presentation/components/tabs";
 import { ExpeditionTable } from "./components/expedition-table/expedition-table";
-import { useEffect, useState } from "react";
-import { sleep } from "../../../../utils/sleep/sleep";
-import { handleGetExpedition } from "../../../../domain/use-cases/expedition";
+import { useCallback } from "react";
 import { Spinner } from "../../../../presentation/components/spinner/spinner";
-
-type ITesteProps = {
-  id: string;
-  numero_remessa: string;
-  name: string;
-  situacao: string;
-  solicitante: string;
-  tecnologia: string;
-  availableAt: Date;
-};
+import { useStoreZustandExpedition } from "../../../../store-zustand/expedition/expedition";
+import { useExpedition } from "../../../../hooks/expedition/use-expedition";
+import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
 
 const Expedition = () => {
-  const [expedition, setExpedition] = useState<ITesteProps[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    currentPage,
+    setCurrentPage,
+    totalItemsPage,
+    isLoading,
+    itemsPerPage,
+    isLoadingPage,
+    setItemsPerPage,
+  } = useStoreZustandExpedition();
+  const { expeditions } = useExpedition();
 
-  const [currentPage, _setCurrentPage] = useState(1); // Página atual
-  const [itemsPerPage] = useState(5); // Itens por página
-  const [_totalItems, setTotalItems] = useState(0); // Total de itens
-
-  const handleGetAllOrdersCompleted = async () => {
-    setIsLoading(true);
-    console.log(currentPage);
-
-    await sleep(500);
-    const data = await handleGetExpedition("Token", currentPage, itemsPerPage);
-    setExpedition(data);
-    setTotalItems(data?.length ?? 0);
-    setIsLoading(false);
-  };
-
-  // const nextPaginate = useCallback(
-  //   () => setCurrentPage((old) => old + 1),
-  //   [currentPage]
-  // );
-
-  useEffect(() => {
-    handleGetAllOrdersCompleted();
+  const nextPaginate = useCallback(() => {
+    setCurrentPage(currentPage + 1);
   }, [currentPage]);
+
+  // Função para lidar com a alteração do seletor de itens por página
+  const handleItemsPerPageChange = useCallback(
+    async (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setItemsPerPage(Number(event.target.value));
+    },
+    [itemsPerPage]
+  );
+
   return (
     <>
       {isLoading ? (
@@ -65,6 +53,12 @@ const Expedition = () => {
               <TabsTrigger value="active">Minhas Tarefas</TabsTrigger>
             </TabsList>
             <div className="ml-auto flex items-center gap-2">
+              {/* Adicionando o seletor de itens por página */}
+              <SelectPagination
+                itemsPerPage={itemsPerPage}
+                handleItemsPerPageChange={handleItemsPerPageChange}
+              />
+
               <Button
                 size="sm"
                 variant="default"
@@ -79,9 +73,11 @@ const Expedition = () => {
           </div>
           <TabsContent value="all">
             <ExpeditionTable
-              products={expedition}
-              offset={0}
-              totalProducts={1}
+              nextPaginate={nextPaginate}
+              expedition={expeditions}
+              offset={itemsPerPage}
+              totalProducts={totalItemsPage}
+              isLoadingPage={isLoadingPage}
             />
           </TabsContent>
         </Tabs>

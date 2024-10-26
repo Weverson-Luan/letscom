@@ -19,15 +19,20 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../../../../../../presentation/components/button/button";
 import { Expedition } from "../../expedition";
 import { SearchInput } from "../../../../../../presentation/components/search/search";
+import { IExpeditionResponse } from "../../../../../../hooks/expedition/use-expedition";
+import { SpinnerTable } from "../../../../../../presentation/components/spinner-table/spinner-table";
 
 export function ExpeditionTable({
-  products,
+  expedition,
   offset,
   totalProducts,
+  isLoadingPage,
 }: {
-  products: any[];
+  expedition: IExpeditionResponse[];
   offset: number;
   totalProducts: number;
+  isLoadingPage: boolean;
+  nextPaginate(): void;
 }) {
   let productsPerPage = 5;
 
@@ -45,35 +50,40 @@ export function ExpeditionTable({
           <SearchInput />
         </div>
       </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Remessa</TableHead>
 
-              <TableHead>Cliente</TableHead>
+      {isLoadingPage ? (
+        <SpinnerTable />
+      ) : (
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Remessa</TableHead>
 
-              <TableHead className="hidden md:table-cell">Situação</TableHead>
+                <TableHead>Cliente</TableHead>
 
-              <TableHead>Solicitante</TableHead>
-              <TableHead className="hidden md:table-cell">
-                Data de criação
-              </TableHead>
-              <TableHead className="hidden md:table-cell">
-                Mais informações
-              </TableHead>
-              <TableHead>
-                <span className="sr-only">Mais informações </span>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {products.map((product) => (
-              <Expedition key={product.id} product={product} />
-            ))}
-          </TableBody>
-        </Table>
-      </CardContent>
+                <TableHead className="hidden md:table-cell">Situação</TableHead>
+
+                <TableHead>Solicitante</TableHead>
+                <TableHead className="hidden md:table-cell">
+                  Data de criação
+                </TableHead>
+                <TableHead className="hidden md:table-cell">
+                  Mais informações
+                </TableHead>
+                <TableHead>
+                  <span className="sr-only">Mais informações </span>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {expedition.map((expeditions) => (
+                <Expedition key={expeditions.id} expeditions={expeditions} />
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      )}
       <CardFooter>
         <form className="flex items-center w-full justify-between">
           <div className="text-xs text-muted-foreground">
