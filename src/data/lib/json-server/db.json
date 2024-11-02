@@ -351,10 +351,9 @@
       "creditos": 10,
       "availableAt": "01/10/2024 às 09:10:45"
     },
-
     {
       "id": "2",
-      "name": "TECHNOLOGIES S.A",
+      "name": "INNOVALLY FUN",
       "cnpj": "11.111.111/1111-11",
       "telefone": "(31) 9 8213-2421",
       "contato": "Luara Santos",
@@ -364,7 +363,7 @@
     },
     {
       "id": "3",
-      "name": "TECHNOLOGIES S.A. -THINGABLE",
+      "name": "THINGABLE LTDA",
       "cnpj": "11.111.111/1111-11",
       "telefone": "(31) 9 8213-2421",
       "contato": "Luara Santos",
@@ -374,7 +373,7 @@
     },
     {
       "id": "4",
-      "name": "TECHNOLOGIES S.A",
+      "name": "COSPESCLTS S.A",
       "cnpj": "11.111.111/1111-11",
       "telefone": "(31) 9 8213-2421",
       "contato": "Luara Santos",
@@ -391,6 +390,206 @@
       "email": "ismael.carlos.stos@gmail.com",
       "creditos": 10,
       "availableAt": "01/10/2024 às 13:41:11"
+    },
+    {
+      "id": "6",
+      "name": "TECHNOLOGY INNOVATIONS INC.",
+      "cnpj": "22.222.222/2222-22",
+      "telefone": "(31) 9 8324-1456",
+      "contato": "Marcelo Silva",
+      "email": "marcelo.silva@tech.com",
+      "creditos": 15,
+      "availableAt": "02/10/2024 às 10:30:20"
+    },
+    {
+      "id": "7",
+      "name": "SMART SOLUTIONS LTD",
+      "cnpj": "33.333.333/3333-33",
+      "telefone": "(31) 9 8435-2768",
+      "contato": "Fernanda Oliveira",
+      "email": "fernanda@smartsolutions.com",
+      "creditos": 8,
+      "availableAt": "02/10/2024 às 14:22:58"
+    },
+    {
+      "id": "8",
+      "name": "GLOBAL TECH CORP",
+      "cnpj": "44.444.444/4444-44",
+      "telefone": "(31) 9 8546-3789",
+      "contato": "Lucas Martins",
+      "email": "lucas.martins@globaltech.com",
+      "creditos": 20,
+      "availableAt": "03/10/2024 às 08:15:30"
+    },
+    {
+      "id": "9",
+      "name": "INOVAÇÃO BRASIL",
+      "cnpj": "55.555.555/5555-55",
+      "telefone": "(31) 9 8657-4890",
+      "contato": "Aline Souza",
+      "email": "aline.souza@inovacao.com",
+      "creditos": 12,
+      "availableAt": "03/10/2024 às 11:45:00"
+    },
+    {
+      "id": "10",
+      "name": "NEXT TECH LTD",
+      "cnpj": "66.666.666/6666-66",
+      "telefone": "(31) 9 8768-5901",
+      "contato": "Pedro Lima",
+      "email": "pedro.lima@nexttech.com",
+      "creditos": 18,
+      "availableAt": "03/10/2024 às 13:50:20"
+    },
+    {
+      "id": "11",
+      "name": "TECH SOLUTIONS INC",
+      "cnpj": "77.777.777/7777-77",
+      "telefone": "(31) 9 8879-6012",
+      "contato": "Beatriz Ramos",
+      "email": "beatriz@techsolutions.com",
+      "creditos": 5,
+      "availableAt": "04/10/2024 às 09:10:15"
+    },
+    {
+      "id": "12",
+      "name": "ALPHA TECH CO",
+      "cnpj": "88.888.888/8888-88",
+      "telefone": "(31) 9 8980-7123",
+      "contato": "Renato Pereira",
+      "email": "renato.pereira@alphatech.com",
+      "creditos": 22,
+      "availableAt": "04/10/2024 às 15:20:30"
+    },
+    {
+      "id": "13",
+      "name": "INTEGRATED SYSTEMS",
+      "cnpj": "99.999.999/9999-99",
+      "telefone": "(31) 9 8091-8234",
+      "contato": "Sandra Santos",
+      "email": "sandra@integratedsystems.com",
+      "creditos": 7,
+      "availableAt": "05/10/2024 às 08:30:45"
+    },
+    {
+      "id": "14",
+      "name": "DIGITAL INNOVATION HUB",
+      "cnpj": "11.123.456/0001-00",
+      "telefone": "(31) 9 8123-4567",
+      "contato": "Ana Paula Costa",
+      "email": "ana.costa@digitalhub.com",
+      "creditos": 16,
+      "availableAt": "05/10/2024 às 10:45:15"
+    },
+    {
+      "id": "15",
+      "name": "TECH WORLD SOLUTIONS",
+      "cnpj": "12.123.456/0001-01",
+      "telefone": "(31) 9 8345-6789",
+      "contato": "Carlos Menezes",
+      "email": "carlos.menezes@techworld.com",
+      "creditos": 30,
+      "availableAt": "06/10/2024 às 12:00:00"
+    },
+    {
+      "id": "16",
+      "name": "FUTURE TECH INC",
+      "cnpj": "13.123.456/0001-02",
+      "telefone": "(31) 9 8456-7890",
+      "contato": "Luciana Rodrigues",
+      "email": "luciana@futuretech.com",
+      "creditos": 14,
+      "availableAt": "06/10/2024 às 14:15:45"
+    },
+    {
+      "id": "17",
+      "name": "SOLID TECHNOLOGIES",
+      "cnpj": "14.123.456/0001-03",
+      "telefone": "(31) 9 8567-8901",
+      "contato": "Julio César",
+      "email": "julio.cesar@solidtech.com",
+      "creditos": 25,
+      "availableAt": "07/10/2024 às 09:50:30"
+    },
+    {
+      "id": "18",
+      "name": "BRIGHT TECH SOLUTIONS",
+      "cnpj": "15.123.456/0001-04",
+      "telefone": "(31) 9 8678-9012",
+      "contato": "Marta Neves",
+      "email": "marta.neves@brighttech.com",
+      "creditos": 18,
+      "availableAt": "07/10/2024 às 13:00:00"
+    },
+    {
+      "id": "19",
+      "name": "INNOVATECH CORP",
+      "cnpj": "16.123.456/0001-05",
+      "telefone": "(31) 9 8789-0123",
+      "contato": "Victor Almeida",
+      "email": "victor.almeida@innovatech.com",
+      "creditos": 13,
+      "availableAt": "08/10/2024 às 15:10:45"
+    },
+    {
+      "id": "20",
+      "name": "TECH CONNECTION LTD",
+      "cnpj": "17.123.456/0001-06",
+      "telefone": "(31) 9 8890-1234",
+      "contato": "Paula Souza",
+      "email": "paula.souza@techconnection.com",
+      "creditos": 9,
+      "availableAt": "09/10/2024 às 09:30:20"
+    },
+    {
+      "id": "21",
+      "name": "TECH VISION",
+      "cnpj": "18.123.456/0001-07",
+      "telefone": "(31) 9 8901-2345",
+      "contato": "Alex Ribeiro",
+      "email": "alex.ribeiro@techvision.com",
+      "creditos": 11,
+      "availableAt": "09/10/2024 às 13:45:30"
+    },
+    {
+      "id": "22",
+      "name": "DIGITAL ERA SOLUTIONS",
+      "cnpj": "19.123.456/0001-08",
+      "telefone": "(31) 9 8012-3456",
+      "contato": "Patrícia Lima",
+      "email": "patricia.lima@digitalera.com",
+      "creditos": 10,
+      "availableAt": "10/10/2024 às 10:25:45"
+    },
+    {
+      "id": "23",
+      "name": "TECHNOPARK GROUP",
+      "cnpj": "20.123.456/0001-09",
+      "telefone": "(31) 9 8123-4567",
+      "contato": "Bruno Fernandes",
+      "email": "bruno@technopark.com",
+      "creditos": 6,
+      "availableAt": "10/10/2024 às 14:00:00"
+    },
+    {
+      "id": "24",
+      "name": "TECHLAB INNOVATIONS",
+      "cnpj": "21.123.456/0001-10",
+      "telefone": "(31) 9 8234-5678",
+      "contato": "Camila Rocha",
+      "email": "camila.rocha@techlab.com",
+      "creditos": 8,
+      "availableAt": "11/10/2024 às 08:45:30"
+    },
+    {
+      "id": "25",
+      "name": "GLOBAL TECH SOLUTIONS",
+      "cnpj": "22.123.456/0001-11",
+      "telefone": "(31) 9 8345-6789",
+      "contato": "Thiago Gomes",
+      "email": "thiago.gomes@globaltech.com",
+      "creditos": 20,
+      "availableAt": "11/10/2024 às 11:30:15"
     }
   ],
   "serach-spnment": [
@@ -455,7 +654,6 @@
       "dataFinalizacao": "01/10/2024 17:37"
     }
   ],
-
   "shipments-in-progress": [
     {
       "id": "1",

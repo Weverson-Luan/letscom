@@ -19,15 +19,20 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "../../../../../../presentation/components/button/button";
 import { ManegeClient } from "../manege-client";
 import { SearchInput } from "../../../../../../presentation/components/search/search";
+import { SpinnerTable } from "../../../../../../presentation/components/spinner-table/spinner-table";
 
 export function ManageClientTable({
-  products,
+  clients,
   offset,
-  totalProducts,
+  totalClients,
+  isLoadingPage,
+  nextPaginate,
 }: {
-  products: any[];
+  isLoadingPage: boolean;
+  clients: any[];
   offset: number;
-  totalProducts: number;
+  totalClients: number;
+  nextPaginate(): void;
 }) {
   let productsPerPage = 5;
 
@@ -45,44 +50,50 @@ export function ManageClientTable({
           <SearchInput />
         </div>
       </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Cliente</TableHead>
 
-              <TableHead className="hidden md:table-cell">CPNJ</TableHead>
+      {isLoadingPage ? (
+        <SpinnerTable />
+      ) : (
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Cliente</TableHead>
 
-              <TableHead>Telefone</TableHead>
+                <TableHead className="hidden md:table-cell">CPNJ</TableHead>
 
-              <TableHead>Contato</TableHead>
+                <TableHead>Telefone</TableHead>
 
-              <TableHead>E-mail</TableHead>
+                <TableHead>Contato</TableHead>
 
-              <TableHead>Créditos</TableHead>
+                <TableHead>E-mail</TableHead>
 
-              <TableHead className="hidden md:table-cell">Data</TableHead>
-              <TableHead className="hidden md:table-cell">Ações</TableHead>
-              <TableHead>
-                <span className="sr-only">Ações</span>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {products.map((product) => (
-              <ManegeClient key={product.id} customers={product} />
-            ))}
-          </TableBody>
-        </Table>
-      </CardContent>
+                <TableHead>Créditos</TableHead>
+
+                <TableHead className="hidden md:table-cell">Data</TableHead>
+                <TableHead className="hidden md:table-cell">Ações</TableHead>
+                <TableHead>
+                  <span className="sr-only">Ações</span>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {clients.map((client) => (
+                <ManegeClient key={client.id} customers={client} />
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      )}
+
       <CardFooter>
         <form className="flex items-center w-full justify-between">
           <div className="text-xs text-muted-foreground">
             Mostrando{" "}
             <strong>
-              {Math.min(offset - productsPerPage, totalProducts) + 1}-{offset}
+              {Math.min(offset - productsPerPage, totalClients) + 1}-{offset}
             </strong>{" "}
-            de <strong>{totalProducts}</strong> baixa de cargas
+            total de <strong>{totalClients}</strong> clientes
           </div>
           <div className="flex">
             <Button
@@ -100,7 +111,7 @@ export function ManageClientTable({
               variant="ghost"
               size="sm"
               type="submit"
-              disabled={offset + productsPerPage > totalProducts}
+              disabled={offset + productsPerPage > totalClients}
             >
               Proxímo
               <ChevronRight className="ml-2 h-4 w-4" />
