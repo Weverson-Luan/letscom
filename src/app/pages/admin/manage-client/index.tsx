@@ -102,7 +102,9 @@ const ManageClient = () => {
                 <TabsTrigger value="all" className="">
                   Ativos
                 </TabsTrigger>
-                <TabsTrigger value="active">Inativos</TabsTrigger>
+
+                <TabsTrigger value="false-1">Inativos</TabsTrigger>
+                <TabsTrigger value="false-2">Inadimplentes</TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-2">
                 <Button

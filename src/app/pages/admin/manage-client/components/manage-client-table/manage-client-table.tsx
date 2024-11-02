@@ -61,9 +61,7 @@ export function ManageClientTable({
 
               <TableHead>Créditos</TableHead>
 
-              <TableHead className="hidden md:table-cell">
-                Data de criação
-              </TableHead>
+              <TableHead className="hidden md:table-cell">Data</TableHead>
               <TableHead className="hidden md:table-cell">Ações</TableHead>
               <TableHead>
                 <span className="sr-only">Ações</span>
@@ -72,7 +70,7 @@ export function ManageClientTable({
           </TableHeader>
           <TableBody>
             {products.map((product) => (
-              <ManegeClient key={product.id} product={product} />
+              <ManegeClient key={product.id} customers={product} />
             ))}
           </TableBody>
         </Table>
