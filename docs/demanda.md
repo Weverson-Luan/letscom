@@ -46,14 +46,14 @@ TROCAR O NOME:  BAIXAR CARGAS por PEDIDOS:
 PEDIDOS:
 Remessas:
 
-- Remessa
-- Cliente
-- Situação (Remover)
-- Data de Solicitação por Data
-- Solicitante.
-- Número de Solicitações por Qtd
-- Iniciou a produção (Remover).
-- Tecnologia por Tec.
+- Remessa (ok)
+- Cliente (ok)
+- Situação (Remover) (ok)
+- Data de Solicitação por Data (ok)
+- Solicitante. (ok)
+- Número de Solicitações por Qtd (ok)
+- Iniciou a produção (Remover). (ok)
+- Tecnologia por Tec. (ok)
 - Posição.
 - Modelo
 - Baixar por Pegar Tarefas

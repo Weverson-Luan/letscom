@@ -5,7 +5,7 @@ import {
   TableHeader,
   TableBody,
   Table,
-} from "../../../../../../presentation/components/table/table";
+} from "../../../../../../../../../presentation/components/table/table";
 import {
   Card,
   CardContent,
@@ -13,13 +13,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../../../../presentation/components/card/card";
+} from "../../../../../../../../../presentation/components/card/card";
 
-import { Button } from "../../../../../../presentation/components/button/button";
-import { DowloadLoad } from "../../download";
-import { SearchInput } from "../../../../../../presentation/components/search/search";
-import { IDownloadLoadResponse } from "../../../../../../hooks/download-load/use-download-load";
-import { SpinnerTable } from "../../../../../../presentation/components/spinner-table/spinner-table";
+import { Button } from "../../../../../../../../../presentation/components/button/button";
+import { DowloadLoad } from "../../../../../download";
+import { SearchInput } from "../../../../../../../../../presentation/components/search/search";
+import { IDownloadLoadResponse } from "../../../../../../../../../hooks/download-load/use-download-load";
+import { SpinnerTable } from "../../../../../../../../../presentation/components/spinner-table/spinner-table";
 
 export function DowloadLoadTable({
   downloadLoad,
@@ -40,7 +40,7 @@ export function DowloadLoadTable({
     <Card>
       <CardHeader className="items-center justify-between">
         <div>
-          <CardTitle>Baixar Carga</CardTitle>
+          <CardTitle>Pegar Tarefas</CardTitle>
           <CardDescription>
             Gerencie suas cargas e visualize quando quiser.
           </CardDescription>
@@ -61,21 +61,17 @@ export function DowloadLoadTable({
 
                 <TableHead>Cliente</TableHead>
 
-                <TableHead className="hidden md:table-cell">Situação</TableHead>
-
                 <TableHead>Solicitante</TableHead>
 
                 <TableHead>Status</TableHead>
 
-                <TableHead>Nº Solicitações</TableHead>
+                <TableHead>Qtd</TableHead>
 
                 <TableHead>Tecnologia</TableHead>
 
                 <TableHead>Posição</TableHead>
 
-                <TableHead className="hidden md:table-cell">
-                  Data solicitação
-                </TableHead>
+                <TableHead className="hidden md:table-cell">Data</TableHead>
                 <TableHead className="hidden md:table-cell">Ações</TableHead>
                 <TableHead>
                   <span className="sr-only">Ações</span>

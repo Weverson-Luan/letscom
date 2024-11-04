@@ -11,16 +11,12 @@ import {
   Clock1,
   ChartColumn,
   LogOut,
-  ShoppingCart,
 } from "lucide-react";
 import { useState } from "react";
 
 import Image from "../../../common/assets/png/logo-let-scom.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useStoreZustandUserAuth } from "../../../store-zustand/user-auth";
-import { NavItem } from "../nav-item/nav-item";
-import { TooltipProvider } from "../tool-tip/tool-tip";
-import ProvidersTooltip from "../../../context/tooltip/tooltip";
 
 function Sidbar() {
   const { user, setUser, setIsAuthenticated } = useStoreZustandUserAuth();
@@ -55,18 +51,14 @@ function Sidbar() {
       link: "/manage-client",
       icon: <Users className="size-4 text-white duration-500" />,
     },
-    {
-      id: 4,
-      title: "Pedido finalizados",
-      subMenu: false,
-      link: "/orders-completed",
-      icon: <CheckCircle className="size-4 text-white duration-500" />,
-      subMenuItems: [
-        { id: 1, title: "Projeto 1", link: "test" },
-        { id: 2, title: "Projeto 2", link: "test" },
-        { id: 3, title: "Projeto 3", link: "test" },
-      ],
-    },
+    // {
+    //   id: 4,
+    //   title: "Pedido finalizados",
+    //   subMenu: false,
+    //   link: "/orders-completed",
+    //   icon: <CheckCircle className="size-4 text-white duration-500" />,
+
+    // },
     {
       id: 5,
       title: "Pesquisar remessa",
@@ -77,7 +69,13 @@ function Sidbar() {
       id: 6,
       title: "Gerenciar créditos",
       link: "/manage-credits",
+      subMenu: false,
       icon: <DollarSign className="size-4 text-white duration-500" />,
+      subMenuItems: [
+        { id: 1, title: "Projeto 1", link: "test" },
+        { id: 2, title: "Projeto 2", link: "test" },
+        { id: 3, title: "Projeto 3", link: "test" },
+      ],
     },
     // { id: 9, title: "Sair app", spacing: false, icon: <LogOut className="size-4 text-white duration-500" /> },
   ];
