@@ -12,7 +12,7 @@ import {
 } from "../../../../presentation/components/tabs";
 
 import { ManageClientTable } from "./components/manage-client-table/manage-client-table";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Spinner } from "../../../../presentation/components/spinner/spinner";
 
 import { SchemaManagerClient } from "./schema/manager-client-schema";
@@ -20,6 +20,8 @@ import { CreateClientModal } from "./components/create-client-modal/create-clien
 import { useStoreZustandManageClient } from "../../../../store-zustand/manage-client/manege-client";
 import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
 import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
+import { supabase } from "../../../../data/lib/supa-base";
+import test from "node:test";
 
 export type SchemaManagerClientType = z.infer<typeof SchemaManagerClient>;
 
@@ -39,6 +41,8 @@ const ManageClient = () => {
   } = useStoreZustandManageClient();
   const { clients } = useManageClient();
 
+  const [teste, setTeste] = useState<any[]>([]);
+
   const nextPaginate = useCallback(() => {
     setCurrentPage(currentPage + 1);
   }, [currentPage]);
@@ -51,6 +55,50 @@ const ManageClient = () => {
     [itemsPerPage]
   );
 
+  // async function getRemessasComUsuario(userId: number) {
+  //   const { data: remessas, error } = await supabase
+  //     .from("Remessas")
+  //     .select(
+  //       `
+  //       *,
+  //       Usuarios (
+  //         id,
+  //         nome_identificacao,
+  //         email
+  //       )
+  //     `
+  //     )
+  //     .eq("user_id", userId)
+  //     .order("id", { ascending: true });
+
+  //   if (error) {
+  //     console.error(
+  //       "Erro ao buscar remessas com dados do usuário:",
+  //       error.message
+  //     );
+  //   } else {
+  //     setTeste(remessas);
+  //   }
+  // }
+
+  async function getUsuarios() {
+    const { data: remessas, error } = await supabase
+      .from("Usuarios")
+      .select("*")
+      .order("id", { ascending: true });
+
+    if (error) {
+      console.error("Erro ao buscar  dados do usuário:", error.message);
+    } else {
+      setTeste(remessas);
+    }
+  }
+
+  useEffect(() => {
+    getUsuarios();
+  }, []);
+
+  console.log("*", teste);
   return (
     <>
       {isLoading ? (
@@ -95,7 +143,7 @@ const ManageClient = () => {
             </div>
             <TabsContent value="all">
               <ManageClientTable
-                clients={clients}
+                clients={teste}
                 totalClients={totalItemsPage}
                 offset={itemsPerPage}
                 nextPaginate={nextPaginate}

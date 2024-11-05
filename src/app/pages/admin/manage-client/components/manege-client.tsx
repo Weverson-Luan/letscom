@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "../../../../../presentation/components/dropdown-menu/dropdown-menu";
 import { SquarePen, Trash } from "lucide-react";
+import { format, parseISO } from "date-fns";
 import {
   TableCell,
   TableRow,
@@ -18,14 +19,17 @@ export function ManegeClient({ customers }: { customers: any }) {
   return (
     <TableRow>
       <TableCell className="hidden md:table-cell">
-        {handleLimitTextdisplayByAmount({ text: customers.name, limit: 12 })}
+        {handleLimitTextdisplayByAmount({
+          text: customers.nome_identificacao,
+          limit: 12,
+        })}
       </TableCell>
 
-      <TableCell className="font-medium">{customers.cnpj}</TableCell>
-      <TableCell>{customers.telefone}</TableCell>
+      <TableCell className="font-medium">{customers.documento}</TableCell>
+      <TableCell>{customers.telefone_contato}</TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {customers.contato}
+        {customers.contato ?? "Contato"}
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
@@ -37,7 +41,7 @@ export function ManegeClient({ customers }: { customers: any }) {
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {customers.availableAt}
+        {format(parseISO(customers.data), "dd/MM/yyyy HH:mm")}
       </TableCell>
 
       <TableCell>

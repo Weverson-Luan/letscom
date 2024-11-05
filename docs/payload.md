@@ -38,7 +38,7 @@
   cliente: "Cliente-01",
   data: "04/11/2024",
   solicitante: "Solicitante",
-  quantidade: "01",
+  solicitante: "01",
   tecnologia: "MAFIRE",
   possicao: "H",
   modelo: "Modelo",
