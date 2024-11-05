@@ -7,11 +7,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "start": "concurrently \"react-scripts start\" \"json-server --watch src/data/lib/json-server/db.json --port 5000\"",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "dev-server": "json-server --watch db.json --port 5000"
+    "dev-server": "json-server --watch src/data/lib/json-server/db.json --port 5000"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -25,6 +26,7 @@
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "concurrently": "^9.1.0",
     "json-server": "^1.0.0-beta.3",
     "localforage": "^1.10.0",
     "lodash.debounce": "^4.0.8",
