@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "../../../../../presentation/components/dropdown-menu/dropdown-menu";
 import { SquarePen, Trash } from "lucide-react";
-import { format, parseISO } from "date-fns";
+// import { format, parseISO } from "date-fns";
 import {
   TableCell,
   TableRow,
@@ -41,7 +41,8 @@ export function ManegeClient({ customers }: { customers: any }) {
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {format(parseISO(customers.data), "dd/MM/yyyy HH:mm")}
+        {/* {format(parseISO(customers.data), "dd/MM/yyyy HH:mm")} */}
+        {customers.data}
       </TableCell>
 
       <TableCell>

@@ -21,6 +21,7 @@ import { useStoreZustandManageClient } from "../../../../store-zustand/manage-cl
 // import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
 import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
 import { supabase } from "../../../../data/lib/supa-base";
+import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
 
 export type SchemaManagerClientType = z.infer<typeof SchemaManagerClient>;
 
@@ -38,9 +39,7 @@ const ManageClient = () => {
     setIsModalCreateClient,
     isModalCreateClient,
   } = useStoreZustandManageClient();
-  // const { clients } = useManageClient();
-
-  const [teste, setTeste] = useState<any[]>([]);
+  const { clients } = useManageClient();
 
   const nextPaginate = useCallback(() => {
     setCurrentPage(currentPage + 1);
@@ -80,24 +79,23 @@ const ManageClient = () => {
   //   }
   // }
 
-  async function getUsuarios() {
-    const { data: remessas, error } = await supabase
-      .from("Usuarios")
-      .select("*")
-      .order("id", { ascending: true });
+  // async function getUsuarios() {
+  //   const { data: remessas, error } = await supabase
+  //     .from("Usuarios")
+  //     .select("*")
+  //     .order("id", { ascending: true });
 
-    if (error) {
-      console.error("Erro ao buscar  dados do usuário:", error.message);
-    } else {
-      setTeste(remessas);
-    }
-  }
+  //   if (error) {
+  //     console.error("Erro ao buscar  dados do usuário:", error.message);
+  //   } else {
+  //     setTeste(remessas);
+  //   }
+  // }
 
-  useEffect(() => {
-    getUsuarios();
-  }, []);
+  // useEffect(() => {
+  //   getUsuarios();
+  // }, []);
 
-  console.log("*", teste);
   return (
     <>
       {isLoading ? (
@@ -142,7 +140,7 @@ const ManageClient = () => {
             </div>
             <TabsContent value="all">
               <ManageClientTable
-                clients={teste}
+                clients={clients}
                 totalClients={totalItemsPage}
                 offset={itemsPerPage}
                 nextPaginate={nextPaginate}
