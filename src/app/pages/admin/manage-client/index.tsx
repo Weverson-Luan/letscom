@@ -18,10 +18,9 @@ import { Spinner } from "../../../../presentation/components/spinner/spinner";
 import { SchemaManagerClient } from "./schema/manager-client-schema";
 import { CreateClientModal } from "./components/create-client-modal/create-cliente-modal";
 import { useStoreZustandManageClient } from "../../../../store-zustand/manage-client/manege-client";
-import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
+// import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
 import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
 import { supabase } from "../../../../data/lib/supa-base";
-import test from "node:test";
 
 export type SchemaManagerClientType = z.infer<typeof SchemaManagerClient>;
 
@@ -39,7 +38,7 @@ const ManageClient = () => {
     setIsModalCreateClient,
     isModalCreateClient,
   } = useStoreZustandManageClient();
-  const { clients } = useManageClient();
+  // const { clients } = useManageClient();
 
   const [teste, setTeste] = useState<any[]>([]);
 
