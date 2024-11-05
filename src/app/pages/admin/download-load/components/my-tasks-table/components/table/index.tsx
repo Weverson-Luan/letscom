@@ -90,7 +90,7 @@ export function TasksTable({
               </TableRow>
             </TableHeader>
             <TableBody>
-              {downloadLoad.map((download) => (
+              {downloadLoad.map((_download) => (
                 <p>ola mundo</p>
               ))}
             </TableBody>

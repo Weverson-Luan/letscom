@@ -26,7 +26,6 @@ export function ManageClientTable({
   offset,
   totalClients,
   isLoadingPage,
-  nextPaginate,
 }: {
   isLoadingPage: boolean;
   clients: any[];

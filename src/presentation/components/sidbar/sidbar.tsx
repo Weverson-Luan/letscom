@@ -1,7 +1,6 @@
 import {
   CircleArrowRight,
   ChevronDown,
-  Download,
   Truck,
   Users,
   CheckCircle,
@@ -32,10 +31,10 @@ function Sidbar() {
   const menus = [
     {
       id: 1,
-      title: "Baixar Carga",
+      title: "Pedidos",
       activity: true,
       link: "/",
-      icon: <Download className="size-4 text-white duration-500" />,
+      icon: <CheckCircle className="size-4 text-white duration-500" />,
     },
     {
       id: 2,
