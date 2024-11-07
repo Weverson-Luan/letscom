@@ -2,8 +2,14 @@
  * IMPORTS SearchShipment
  */
 
+import { useCallback } from "react";
 import { File } from "lucide-react";
+
 import { Button } from "../../../../presentation/components/button/button";
+import { Spinner } from "../../../../presentation/components/spinner/spinner";
+import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
+import { SearchShipmentTable } from "./components/search-shipment-table/search-shipment-table";
+
 import {
   Tabs,
   TabsContent,
@@ -11,53 +17,33 @@ import {
   TabsTrigger,
 } from "../../../../presentation/components/tabs";
 
-import { useEffect, useState } from "react";
-import { sleep } from "../../../../utils/sleep/sleep";
-import { Spinner } from "../../../../presentation/components/spinner/spinner";
-import { SearchShipmentTable } from "./components/search-shipment-table/search-shipment-table";
-import { handleGetSearchSpnment } from "../../../../domain/use-cases/search-spnment";
-
-type ITesteProps = {
-  id: string;
-  numero_remessa: string;
-  name: string;
-  situacao: string;
-  solicitante: string;
-  tecnologia: string;
-  availableAt: Date;
-};
+import { useStoreZustandSearchShipment } from "../../../../store-zustand/search-shipment/search-shipment";
+import { useManageSearchShipment } from "../../../../hooks/search-shipment/use-search-shipment";
 
 const SearchShipment = () => {
-  const [expedition, setExpedition] = useState<ITesteProps[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    currentPage,
+    setCurrentPage,
+    totalItemsPage,
+    isLoading,
+    itemsPerPage,
+    isLoadingPage,
+    setItemsPerPage,
+  } = useStoreZustandSearchShipment();
+  const { searchShipments } = useManageSearchShipment();
 
-  const [currentPage, _setCurrentPage] = useState(1); // Página atual
-  const [itemsPerPage] = useState(5); // Itens por página
-  const [_totalItems, setTotalItems] = useState(0); // Total de itens
-
-  const handleGetAllOrdersCompleted = async () => {
-    setIsLoading(true);
-    console.log(currentPage);
-
-    await sleep(500);
-    const data = await handleGetSearchSpnment(
-      "Token",
-      currentPage,
-      itemsPerPage
-    );
-    setExpedition(data);
-    setTotalItems(data?.length ?? 0);
-    setIsLoading(false);
-  };
-
-  // const nextPaginate = useCallback(
-  //   () => setCurrentPage((old) => old + 1),
-  //   [currentPage]
-  // );
-
-  useEffect(() => {
-    handleGetAllOrdersCompleted();
+  const nextPaginate = useCallback(() => {
+    setCurrentPage(currentPage + 1);
   }, [currentPage]);
+
+  // Função para lidar com a alteração do seletor de itens por página
+  const handleItemsPerPageChange = useCallback(
+    async (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setItemsPerPage(Number(event.target.value));
+    },
+    [itemsPerPage]
+  );
+
   return (
     <>
       {isLoading ? (
@@ -70,6 +56,12 @@ const SearchShipment = () => {
               <TabsTrigger value="active">Minhas Tarefas</TabsTrigger>
             </TabsList>
             <div className="ml-auto flex items-center gap-2">
+              {/* Adicionando o seletor de itens por página */}
+              <SelectPagination
+                itemsPerPage={itemsPerPage}
+                handleItemsPerPageChange={handleItemsPerPageChange}
+              />
+              {/* Adicionando o botão de exportar */}
               <Button
                 size="sm"
                 variant="default"
@@ -84,9 +76,11 @@ const SearchShipment = () => {
           </div>
           <TabsContent value="all">
             <SearchShipmentTable
-              products={expedition}
-              offset={0}
-              totalProducts={1}
+              searchShipments={searchShipments}
+              offset={itemsPerPage}
+              totalsearchShipments={totalItemsPage}
+              isLoadingPage={isLoadingPage}
+              nextPaginate={nextPaginate}
             />
           </TabsContent>
         </Tabs>

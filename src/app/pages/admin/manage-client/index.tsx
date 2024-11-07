@@ -12,7 +12,7 @@ import {
 } from "../../../../presentation/components/tabs";
 
 import { ManageClientTable } from "./components/manage-client-table/manage-client-table";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { Spinner } from "../../../../presentation/components/spinner/spinner";
 
 import { SchemaManagerClient } from "./schema/manager-client-schema";
@@ -20,7 +20,7 @@ import { CreateClientModal } from "./components/create-client-modal/create-clien
 import { useStoreZustandManageClient } from "../../../../store-zustand/manage-client/manege-client";
 // import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
 import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
-import { supabase } from "../../../../data/lib/supa-base";
+// import { supabase } from "../../../../data/lib/supa-base";
 import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
 
 export type SchemaManagerClientType = z.infer<typeof SchemaManagerClient>;

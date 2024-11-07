@@ -1,43 +1,48 @@
+import { MoreHorizontal } from "lucide-react";
+
+import { Button } from "../../../../../../presentation/components/button/button";
+import { Badge } from "../../../../../../presentation/components/badge/badge";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "../../../../presentation/components/dropdown-menu/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
+} from "../../../../../../presentation/components/dropdown-menu/dropdown-menu";
 import {
   TableCell,
   TableRow,
-} from "../../../../presentation/components/table/table";
+} from "../../../../../../presentation/components/table/table";
 
-import { Button } from "../../../../presentation/components/button/button";
-import { Badge } from "../../../../presentation/components/badge/badge";
-
-export function SearchShipment({ product }: { product: any }) {
+export function SearchShipment({ searchShipments }: { searchShipments: any }) {
   return (
     <TableRow>
-      <TableCell className="hidden md:table-cell">{product.remessa}</TableCell>
+      <TableCell className="hidden md:table-cell">
+        {searchShipments.remessa}
+      </TableCell>
 
-      <TableCell className="font-medium">{product.cliente}</TableCell>
+      <TableCell className="font-medium">{searchShipments.cliente}</TableCell>
       <TableCell>
-        <Badge className="bg-green-500">{product.status}</Badge>
+        <Badge className="bg-green-500">{searchShipments.status}</Badge>
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {product.solicitante}
+        {searchShipments.solicitante}
       </TableCell>
       <TableCell className="hidden md:table-cell">
-        {product.quantidade}
-      </TableCell>
-
-      <TableCell className="hidden md:table-cell">{product.modelo}</TableCell>
-      <TableCell className="hidden md:table-cell">
-        {product.dataSolicitacao}
+        {searchShipments.quantidade}
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {product.dataSolicitacao}
+        {searchShipments.modelo}
+      </TableCell>
+      <TableCell className="hidden md:table-cell">
+        {searchShipments.dataSolicitacao}
+      </TableCell>
+
+      <TableCell className="hidden md:table-cell">
+        {searchShipments.dataSolicitacao}
       </TableCell>
 
       <TableCell>

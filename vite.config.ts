@@ -5,6 +5,7 @@ import * as path from "path"; // Importe o módulo path
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/",
   plugins: [react()],
   resolve: {
     alias: {

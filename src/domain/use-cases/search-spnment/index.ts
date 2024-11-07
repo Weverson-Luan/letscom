@@ -5,7 +5,7 @@
 import { searchSpnmentRepository } from "../../../repositories/search-shipment";
 
 /**
- * Função que busca dados dos pedidos finalizados 🛠️.
+ * Função que busca remessas 🛠️.
  */
 const handleGetSearchSpnment = async (
   accessToken: string,
@@ -21,7 +21,7 @@ const handleGetSearchSpnment = async (
 
     return data;
   } catch (error: any) {
-    console.log("ERROR: ", error);
+    console.log("ERROR EM REMESSAS: ", error);
 
     return error;
   }
