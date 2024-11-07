@@ -45,6 +45,7 @@ export function ManegeClient({ customers }: { customers: any }) {
         {customers.data}
       </TableCell>
 
+      {/* Ações */}
       <TableCell>
         <div className="w-full flex">
           {/* Botão de Editar */}

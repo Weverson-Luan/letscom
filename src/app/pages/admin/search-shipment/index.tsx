@@ -53,7 +53,6 @@ const SearchShipment = () => {
           <div className="flex items-center">
             <TabsList>
               <TabsTrigger value="all">Remessas</TabsTrigger>
-              <TabsTrigger value="active">Minhas Tarefas</TabsTrigger>
             </TabsList>
             <div className="ml-auto flex items-center gap-2">
               {/* Adicionando o seletor de itens por página */}
