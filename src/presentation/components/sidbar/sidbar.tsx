@@ -267,7 +267,7 @@ function Sidbar() {
       </ul>
 
       <div
-        className={`absolute bottom-10 cursor-pointer flex items-center justify-center ${
+        className={`fixed bottom-2 cursor-pointer flex items-center justify-center ${
           openSidbar && " w-24 p-2 duration-500"
         } rounded-md`}
       >
