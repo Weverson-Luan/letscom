@@ -1,159 +1,208 @@
-/**
- * IMPORTS
- */
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../card/card";
+import { SearchInput } from "../search/search";
+import { SpinnerTable } from "../spinner-table/spinner-table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../table/table";
+import { Badge } from "../badge/badge";
+import { handleLimitTextdisplayByAmount } from "../../../utils/text-limit";
+import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
+import { Button } from "../button/button";
+import {
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "../dropdown-menu/dropdown-menu";
 
-import { ChevronRight, ChevronUp, HardDriveDownload } from "lucide-react";
+export function DynamicTable({
+  title,
+  description,
+  isLoadingPage,
+  data,
+  offset,
+  totalItems,
+  itemsPerPage,
+  nextPaginate,
+  columns,
+  checkBox = false,
+  actions = [],
+  selectedItems = [], // Recebe os itens selecionados
+  onSelectAll, // Função para selecionar todos
+  onSelectItem, // Função para selecionar um item individual
+}: any) {
+  // Verifica se todos os itens estão selecionados
+  const isAllSelected = selectedItems.length === data.length;
 
-const Table = () => {
   return (
-    <div className="p-6 bg-white">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-xl font-semibold">Baixar Cargas</h1>
-        <a href="#" className="text-blue-500 ml-4">
-          Faça sua busca
-        </a>
-        <div className="flex flex-1 ml-4">
-          <input
-            type="text"
-            placeholder="Número de remessa, cliente ou tecnologia"
-            className="border rounded-full pl-4 h-12 w-1/2"
-          />
+    <Card>
+      <CardHeader className="items-center justify-between">
+        <div>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>{description}</CardDescription>
         </div>
-      </div>
-      <table className="min-w-full bg-white border rounded-lg border-gray-300">
-        <thead>
-          <tr className="w-full bg-gray-100 border-b">
-            <th className="p-4 text-left">
-              <input type="checkbox" />
-            </th>
-            <th className="p-4 text-left">Clientes</th>
-            <th className="p-4 text-left">Remessa</th>
-            <th className="p-4 text-left">Situação</th>
-            <th className="p-4 text-left">Solicitante</th>
-            <th className="p-4 text-left">Tecnologia</th>
-            <th className="p-4 text-left">Baixar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            {
-              cliente: "CONCERT TECHN...",
-              remessa: "31549",
-              situacao: "Pronto para imprimir",
-              solicitante: "Gustavo Miranda",
-              tecnologia: "400",
-            },
-            {
-              cliente: "WLTECH",
-              remessa: "31541",
-              situacao: "Laminado",
-              solicitante: "Lucas Silva",
-              tecnologia: "100",
-            },
-            {
-              cliente: "Refund",
-              remessa: "31542",
-              situacao: "Impresso",
-              solicitante: "Marcelo Lopes",
-              tecnologia: "55",
-            },
-            {
-              cliente: "EXPRESSO AGA",
-              remessa: "31544",
-              situacao: "Salvo",
-              solicitante: "Jessica Arantes",
-              tecnologia: "33",
-            },
-            {
-              cliente: "Terms reduction",
-              remessa: "31545",
-              situacao: "Pronto",
-              solicitante: "Fabio Morais Sousa",
-              tecnologia: "360",
-            },
-            {
-              cliente: "INCORPE - MG",
-              remessa: "31546",
-              situacao: "Salvo",
-              solicitante: "Jessica Arantes",
-              tecnologia: "1520",
-            },
-            {
-              cliente: "Invest reduction",
-              remessa: "31547",
-              situacao: "Pronto para imprimir",
-              solicitante: "Jessica Arantes",
-              tecnologia: "265",
-            },
-            {
-              cliente: "TRANSPORTES URGENTES",
-              remessa: "31548",
-              situacao: "Laminado",
-              solicitante: "Pedro José",
-              tecnologia: "320",
-            },
-            {
-              cliente: "Invest extension",
-              remessa: "31549",
-              situacao: "Impresso",
-              solicitante: "Gustavo Miranda",
-              tecnologia: "1241",
-            },
-            {
-              cliente: "PROTECAO VEICULAR",
-              remessa: "31543",
-              situacao: "Impresso",
-              solicitante: "Gustavo Miranda",
-              tecnologia: "01",
-            },
-          ].map((item, index) => (
-            <tr key={index} className="border-b">
-              <td className="p-4">
-                <input type="checkbox" />
-              </td>
-              <td className="p-4">{item.cliente}</td>
-              <td className="p-4">{item.remessa}</td>
-              <td className="p-4">{item.situacao}</td>
-              <td className="p-4">{item.solicitante}</td>
-              <td className="p-4">{item.tecnologia}</td>
-              <td className="p-4">
-                <HardDriveDownload className="size-4 text-blue-500" />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="flex justify-between items-center mt-4 w-full ">
-        <div className="text-gray-600 flex justify-between items-center w-56">
-          <span>Resultados por página</span>
 
-          <button
-            onClick={() => alert("paginação")}
-            className="flex items-center justify-between w-12 h-8 hover:text-blue-500 cursor-pointer"
-          >
-            <span>10</span>
-            <ChevronUp className="size-4" />
-          </button>
+        <div>
+          <SearchInput />
         </div>
-        <div className="flex items-center">
-          <button className="px-2 py-1 border rounded-lg mx-1">1</button>
-          <button className="px-2 py-1 border rounded-lg mx-1">2</button>
-          <button className="px-2 py-1 border rounded-lg mx-1">3</button>
-          <span className="px-2 py-1">...</span>
-          <button className="px-2 py-1 border rounded-lg mx-1">10</button>
-          <button className="px-2 py-1 border rounded-lg mx-1">11</button>
-          <button className="px-2 py-1 border rounded-lg mx-1">12</button>
+      </CardHeader>
+
+      {isLoadingPage ? (
+        <SpinnerTable />
+      ) : (
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                {/* Checkbox de Seleção Todos */}
+                {checkBox && (
+                  <TableHead>
+                    <input
+                      type="checkbox"
+                      checked={isAllSelected}
+                      onChange={onSelectAll} // Usa a função passada via props
+                      className="form-checkbox h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                    />
+                  </TableHead>
+                )}
+
+                {/* Dynamic column headers */}
+                {columns.map((column: any, index: number) => (
+                  <TableHead key={index} className={column.className || ""}>
+                    {column.label}
+                  </TableHead>
+                ))}
+
+                {actions.length > 0 && (
+                  <TableHead className="w-16 text-center text-zinc-600">
+                    Ações
+                  </TableHead>
+                )}
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {data.map((item: any, index: number) => (
+                <TableRow key={index} className="cursor-pointer">
+                  {/* Checkbox de Seleção Individual */}
+                  {checkBox && (
+                    <TableCell className="md:table-cell">
+                      <input
+                        type="checkbox"
+                        checked={selectedItems.includes(item.id)}
+                        onChange={() => onSelectItem(item.id)} // Usa a função passada via props
+                        className="form-checkbox h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                      />
+                    </TableCell>
+                  )}
+
+                  {/* Dynamic data cells */}
+                  {columns.map((column: any, colIndex: number) => (
+                    <TableCell
+                      key={colIndex}
+                      className={column.className || ""}
+                    >
+                      {column.isBadge ? (
+                        <Badge
+                          className={column.badgeClassName || "bg-green-500"}
+                        >
+                          {item[column.accessor]}
+                        </Badge>
+                      ) : (
+                        handleLimitTextdisplayByAmount({
+                          text: item[column.accessor],
+                          limit: column.limit || 12,
+                        })
+                      )}
+                    </TableCell>
+                  ))}
+
+                  {/* Actions */}
+                  {actions.length > 0 && (
+                    <TableCell>
+                      <div className="w-full flex justify-center space-x-2">
+                        {actions.map((action: any, actionIndex: number) => (
+                          <DropdownMenu key={actionIndex}>
+                            <DropdownMenuTrigger asChild>
+                              <Button
+                                aria-haspopup="true"
+                                size="icon"
+                                variant="ghost"
+                                onClick={() => action.onClick(item)}
+                              >
+                                <action.icon
+                                  className={`h-4 w-4 ${action.textColor}`}
+                                />
+                                <span className="sr-only">{action.label}</span>
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>
+                                {action.label}
+                              </DropdownMenuLabel>
+                              <DropdownMenuItem
+                                onClick={() => action.onClick(item)}
+                              >
+                                <button type="button">{action.label}</button>
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        ))}
+                      </div>
+                    </TableCell>
+                  )}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      )}
+
+      <CardFooter>
+        <div className="flex items-center w-full justify-between">
+          <div className="text-xs text-muted-foreground">
+            Mostrando{" "}
+            <strong>
+              {offset} - {Math.min(offset + itemsPerPage, totalItems)}
+            </strong>{" "}
+            de <strong>{totalItems}</strong> registros
+          </div>
+          <div className="flex">
+            <Button
+              variant="ghost"
+              size="sm"
+              type="button"
+              disabled={offset === 0}
+              onClick={() => nextPaginate(-1)}
+            >
+              <ChevronLeft className="mr-2 h-4 w-4" />
+              Voltar
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              type="button"
+              disabled={offset + itemsPerPage >= totalItems}
+              onClick={() => nextPaginate(1)}
+            >
+              Próximo
+              <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
-        <div className="text-gray-600 flex items-center justify-between w-36 h-8 hover:text-blue-500 cursor-pointer">
-          <span className="text-sm"> Próxima página</span>
-          <ChevronRight className="size-4" />
-        </div>
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   );
-};
-
-/**
- * EXPORTS
- */
-export { Table };
+}

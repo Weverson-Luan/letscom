@@ -57,23 +57,25 @@ export function SearchShipmentTable({
           <Table>
             <TableHeader>
               <TableRow>
+                {/* Adiciona uma coluna de cabeçalho para o checkbox */}
+                <TableHead>
+                  <input
+                    type="checkbox"
+                    className="form-checkbox h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                  />
+                </TableHead>
+
                 <TableHead>Remessa</TableHead>
-
                 <TableHead>Cliente</TableHead>
-
                 <TableHead className="hidden md:table-cell">Situação</TableHead>
-
                 <TableHead>Criado por</TableHead>
                 <TableHead className="hidden md:table-cell">Qtd</TableHead>
-
                 <TableHead>Modelo</TableHead>
-
                 <TableHead>Solicitado</TableHead>
                 <TableHead>Finalizado</TableHead>
-
                 <TableHead className="hidden md:table-cell">Ações</TableHead>
                 <TableHead>
-                  <span className="sr-only">Ações </span>
+                  <span className="sr-only">Ações</span>
                 </TableHead>
               </TableRow>
             </TableHeader>
@@ -101,7 +103,6 @@ export function SearchShipmentTable({
           </div>
           <div className="flex">
             <Button
-              // formAction={prevPage}
               variant="ghost"
               size="sm"
               type="submit"
@@ -111,13 +112,12 @@ export function SearchShipmentTable({
               Voltar
             </Button>
             <Button
-              // formAction={nextPage}
               variant="ghost"
               size="sm"
               type="submit"
               disabled={offset + productsPerPage > totalsearchShipments}
             >
-              Proxímo
+              Próximo
               <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

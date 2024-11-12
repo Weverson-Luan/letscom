@@ -1,24 +1,22 @@
-/**
- * IMPORTS SearchShipment
- */
+import { useCallback, useState } from "react";
+import { File, Trash } from "lucide-react";
 
-import { useCallback } from "react";
-import { File } from "lucide-react";
-
+// components
 import { Button } from "../../../../presentation/components/button/button";
-import { Spinner } from "../../../../presentation/components/spinner/spinner";
+import { DynamicTable } from "../../../../presentation/components/table-custom/table";
 import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
-import { SearchShipmentTable } from "./components/search-shipment-table/search-shipment-table";
+import { Spinner } from "../../../../presentation/components/spinner/spinner";
 
+// zustand
+import { useStoreZustandSearchShipment } from "../../../../store-zustand/search-shipment/search-shipment";
+
+// hooks
+import { useManageSearchShipment } from "../../../../hooks/search-shipment/use-search-shipment";
 import {
   Tabs,
-  TabsContent,
   TabsList,
   TabsTrigger,
 } from "../../../../presentation/components/tabs";
-
-import { useStoreZustandSearchShipment } from "../../../../store-zustand/search-shipment/search-shipment";
-import { useManageSearchShipment } from "../../../../hooks/search-shipment/use-search-shipment";
 
 const SearchShipment = () => {
   const {
@@ -32,11 +30,13 @@ const SearchShipment = () => {
   } = useStoreZustandSearchShipment();
   const { searchShipments } = useManageSearchShipment();
 
+  const [selectedItems, setSelectedItems] = useState<string[]>([]); // IDs dos itens selecionados
+
   const nextPaginate = useCallback(() => {
     setCurrentPage(currentPage + 1);
   }, [currentPage]);
 
-  // Função para lidar com a alteração do seletor de itens por página
+  // função para lidar com a alteração do seletor de itens por página
   const handleItemsPerPageChange = useCallback(
     async (event: React.ChangeEvent<HTMLSelectElement>) => {
       setItemsPerPage(Number(event.target.value));
@@ -44,16 +44,35 @@ const SearchShipment = () => {
     [itemsPerPage]
   );
 
+  // função para selecionar todos os itens
+  const handleSelectAll = () => {
+    if (selectedItems.length === searchShipments.length) {
+      setSelectedItems([]); // Desmarca todos os itens
+    } else {
+      setSelectedItems(searchShipments.map((item: any) => item.id)); // Marca todos os itens
+    }
+  };
+
+  // função para selecionar um único item
+  const handleSelectItem = (itemId: string) => {
+    if (selectedItems.includes(itemId)) {
+      setSelectedItems(selectedItems.filter((id) => id !== itemId)); // Desmarca o item
+    } else {
+      setSelectedItems([...selectedItems, itemId]); // Marca o item
+    }
+  };
+
   return (
     <>
       {isLoading ? (
         <Spinner />
       ) : (
         <Tabs defaultValue="all">
-          <div className="flex items-center">
+          <div className="flex items-center mb-4">
             <TabsList>
               <TabsTrigger value="all">Remessas</TabsTrigger>
             </TabsList>
+
             <div className="ml-auto flex items-center gap-2">
               {/* Adicionando o seletor de itens por página */}
               <SelectPagination
@@ -73,15 +92,47 @@ const SearchShipment = () => {
               </Button>
             </div>
           </div>
-          <TabsContent value="all">
-            <SearchShipmentTable
-              searchShipments={searchShipments}
-              offset={itemsPerPage}
-              totalsearchShipments={totalItemsPage}
-              isLoadingPage={isLoadingPage}
-              nextPaginate={nextPaginate}
-            />
-          </TabsContent>
+          <DynamicTable
+            title="Pesquisar remessas"
+            description="Gerencie suas remessas e visualize quando quiser."
+            isLoadingPage={isLoadingPage}
+            data={searchShipments}
+            offset={itemsPerPage}
+            totalItems={totalItemsPage}
+            checkBox
+            itemsPerPage={5}
+            nextPaginate={nextPaginate}
+            selectedItems={selectedItems} // Passa os itens selecionados
+            onSelectAll={handleSelectAll} // Passa a função de selecionar todos
+            onSelectItem={handleSelectItem} // Passa a função de selecionar um item
+            columns={[
+              { label: "Remessa", accessor: "remessa" },
+              { label: "Cliente", accessor: "cliente" },
+              {
+                label: "Situação",
+                accessor: "status",
+                isBadge: true,
+                badgeClassName: "bg-green-500",
+              },
+              { label: "Criado por", accessor: "solicitante" },
+              {
+                label: "Qtd",
+                accessor: "quantidade",
+                className: "hidden md:table-cell",
+              },
+              { label: "Modelo", accessor: "modelo" },
+              { label: "Solicitado", accessor: "dataSolicitacao" },
+              { label: "Finalizado", accessor: "dataFinalizacao" },
+            ]}
+            actions={[
+              {
+                icon: Trash,
+                label: "Excluir",
+                textColor: "text-red-600",
+                onClick: (item: any) => console.log("Excluir", item),
+              },
+            ]}
+          />
         </Tabs>
       )}
     </>

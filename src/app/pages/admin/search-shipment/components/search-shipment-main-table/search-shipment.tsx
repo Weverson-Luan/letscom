@@ -20,6 +20,14 @@ import { handleLimitTextdisplayByAmount } from "../../../../../../utils/text-lim
 export function SearchShipment({ searchShipments }: { searchShipments: any }) {
   return (
     <TableRow className="cursor-pointer">
+      {/* Checkbox */}
+      <TableCell className="md:table-cell">
+        <input
+          type="checkbox"
+          className="form-checkbox h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+        />
+      </TableCell>
+
       <TableCell className="hidden md:table-cell">
         {searchShipments.remessa}
       </TableCell>
