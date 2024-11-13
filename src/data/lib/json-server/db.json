@@ -16,138 +16,123 @@
   "expedition": [
     {
       "id": "1",
-      "name": "OASIS CLUBE",
+      "cliente": "OASIS CLUBE",
       "remessa": "31542",
-      "situacao": "Pronto para imprimir",
+      "status": "Pronto para imprimir",
       "solicitante": "Jessica Arantes",
-      "tecnologia": "STYW",
-      "availableAt": "01/10/2024 às 07:16:51"
+      "dataFinalizacao": "01/10/2024 às 07:16:51"
     },
     {
       "id": "2",
-      "name": "REFUD",
+      "cliente": "REFUD",
       "remessa": "31543",
-      "situacao": "Salvo",
+      "status": "Salvo",
       "solicitante": "Gustavo Miranda",
-      "tecnologia": "STYW",
-      "availableAt": "01/10/2024 às 10:30:45"
+      "dataFinalizacao": "01/10/2024 às 10:30:45"
     },
     {
       "id": "3",
-      "name": "TRANSPORTES URGENTES",
+      "cliente": "TRANSPORTES URGENTES",
       "remessa": "31544",
-      "situacao": "Impresso",
+      "status": "Impresso",
       "solicitante": "Pedro José",
-      "tecnologia": "STYW",
-      "availableAt": "01/10/2024 às 09:10:45"
+      "dataFinalizacao": "01/10/2024 às 09:10:45"
     },
     {
       "id": "4",
-      "name": "INCOPRE - MG",
+      "cliente": "INCOPRE - MG",
       "remessa": "31545",
-      "situacao": "Pronto",
+      "status": "Pronto",
       "solicitante": "Fabio Morais Sousa",
-      "tecnologia": "STYW",
-      "availableAt": "01/10/2024 às 09:10:45"
+      "dataFinalizacao": "01/10/2024 às 09:10:45"
     },
     {
       "id": "5",
-      "name": "PROTECAO VEICULAR",
+      "cliente": "PROTECAO VEICULAR",
       "remessa": "31545",
-      "situacao": "Laminado",
+      "status": "Laminado",
       "solicitante": "Luan Sousa",
-      "tecnologia": "STYW",
-      "availableAt": "01/10/2024 às 09:10:45"
+      "dataFinalizacao": "01/10/2024 às 09:10:45"
     },
     {
       "id": "6",
-      "name": "SECURE LOGISTICS",
+      "cliente": "SECURE LOGISTICS",
       "remessa": "31546",
-      "situacao": "Aguardando revisão",
+      "status": "Aguardando revisão",
       "solicitante": "Mariana Nunes",
-      "tecnologia": "STYW",
-      "availableAt": "02/10/2024 às 08:45:00"
+      "dataFinalizacao": "02/10/2024 às 08:45:00"
     },
     {
       "id": "7",
-      "name": "EXPRESSO RÁPIDO",
+      "cliente": "EXPRESSO RÁPIDO",
       "remessa": "31547",
-      "situacao": "Processando",
+      "status": "Processando",
       "solicitante": "Carlos Alberto",
-      "tecnologia": "STYW",
-      "availableAt": "02/10/2024 às 11:00:30"
+      "dataFinalizacao": "02/10/2024 às 11:00:30"
     },
     {
       "id": "8",
-      "name": "TRANSPORTES LIMA",
+      "cliente": "TRANSPORTES LIMA",
       "remessa": "31548",
-      "situacao": "Pronto para envio",
+      "status": "Pronto para envio",
       "solicitante": "Fernanda Duarte",
-      "tecnologia": "STYW",
-      "availableAt": "02/10/2024 às 13:25:15"
+      "dataFinalizacao": "02/10/2024 às 13:25:15"
     },
     {
       "id": "9",
-      "name": "CARGAS BRASIL",
+      "cliente": "CARGAS BRASIL",
       "remessa": "31549",
-      "situacao": "Salvo",
+      "status": "Salvo",
       "solicitante": "Ana Paula Souza",
-      "tecnologia": "STYW",
-      "availableAt": "02/10/2024 às 14:50:45"
+      "dataFinalizacao": "02/10/2024 às 14:50:45"
     },
     {
       "id": "10",
-      "name": "GLOBAL TRANSPORTES",
+      "cliente": "GLOBAL TRANSPORTES",
       "remessa": "31550",
-      "situacao": "Impresso",
+      "status": "Impresso",
       "solicitante": "Ricardo Martins",
-      "tecnologia": "STYW",
-      "availableAt": "03/10/2024 às 09:35:20"
+      "dataFinalizacao": "03/10/2024 às 09:35:20"
     },
     {
       "id": "11",
-      "name": "LOGÍSTICA SEGURA",
+      "cliente": "LOGÍSTICA SEGURA",
       "remessa": "31551",
-      "situacao": "Pronto",
+      "status": "Pronto",
       "solicitante": "João Carlos",
-      "tecnologia": "STYW",
-      "availableAt": "03/10/2024 às 10:45:30"
+      "dataFinalizacao": "03/10/2024 às 10:45:30"
     },
     {
       "id": "12",
-      "name": "TRANSPORTES NORDESTE",
+      "cliente": "TRANSPORTES NORDESTE",
       "remessa": "31552",
-      "situacao": "Aguardando conferência",
+      "status": "Aguardando conferência",
       "solicitante": "Gabriela Lima",
-      "tecnologia": "STYW",
-      "availableAt": "03/10/2024 às 11:10:05"
+      "dataFinalizacao": "03/10/2024 às 11:10:05"
     },
     {
       "id": "13",
-      "name": "ENTREGA EXPRESSA",
+      "cliente": "ENTREGA EXPRESSA",
       "remessa": "31553",
-      "situacao": "Laminado",
+      "status": "Laminado",
       "solicitante": "Luiz Fernando",
-      "tecnologia": "STYW",
-      "availableAt": "03/10/2024 às 12:20:45"
+      "dataFinalizacao": "03/10/2024 às 12:20:45"
     },
     {
       "id": "14",
-      "name": "FAST TRANSPORTE",
+      "cliente": "FAST TRANSPORTE",
       "remessa": "31554",
-      "situacao": "Processando",
+      "status": "Processando",
       "solicitante": "Renata Oliveira",
-      "tecnologia": "STYW",
-      "availableAt": "04/10/2024 às 08:30:00"
+      "dataFinalizacao": "04/10/2024 às 08:30:00"
     },
     {
       "id": "15",
-      "name": "REDE LOGÍSTICA",
+      "cliente": "REDE LOGÍSTICA",
       "remessa": "31555",
-      "situacao": "Salvo",
+      "status": "Salvo",
       "solicitante": "Sérgio Tavares",
-      "tecnologia": "STYW",
-      "availableAt": "04/10/2024 às 14:15:30"
+      "dataFinalizacao": "04/10/2024 às 14:15:30"
     }
   ],
   "download-load": [

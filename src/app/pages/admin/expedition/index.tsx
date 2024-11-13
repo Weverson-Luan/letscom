@@ -1,21 +1,26 @@
 /**
  * IMPORTS
  */
+import { useCallback } from "react";
 
-import { File } from "lucide-react";
+import { File, Trash } from "lucide-react";
+
+// components
 import { Button } from "../../../../presentation/components/button/button";
+import { DynamicTable } from "../../../../presentation/components/table-custom/table";
+import { Spinner } from "../../../../presentation/components/spinner/spinner";
+import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
 import {
   Tabs,
-  TabsContent,
   TabsList,
   TabsTrigger,
 } from "../../../../presentation/components/tabs";
-import { ExpeditionTable } from "./components/expedition-table/expedition-table";
-import { useCallback } from "react";
-import { Spinner } from "../../../../presentation/components/spinner/spinner";
-import { useStoreZustandExpedition } from "../../../../store-zustand/expedition/expedition";
+
+// hooks
 import { useExpedition } from "../../../../hooks/expedition/use-expedition";
-import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
+
+// zustand
+import { useStoreZustandExpedition } from "../../../../store-zustand/expedition/expedition";
 
 const Expedition = () => {
   const {
@@ -47,7 +52,7 @@ const Expedition = () => {
         <Spinner />
       ) : (
         <Tabs defaultValue="all">
-          <div className="flex items-center">
+          <div className="flex items-center mb-4">
             <TabsList>
               <TabsTrigger value="all">Remessas</TabsTrigger>
               <TabsTrigger value="active">Minhas Tarefas</TabsTrigger>
@@ -71,15 +76,38 @@ const Expedition = () => {
               </Button>
             </div>
           </div>
-          <TabsContent value="all">
-            <ExpeditionTable
-              nextPaginate={nextPaginate}
-              expedition={expeditions}
-              offset={itemsPerPage}
-              totalProducts={totalItemsPage}
-              isLoadingPage={isLoadingPage}
-            />
-          </TabsContent>
+
+          <DynamicTable
+            title="Expedições"
+            description="Gerencie suas expedições e visualize quando quiser."
+            isLoadingPage={isLoadingPage}
+            data={expeditions}
+            offset={itemsPerPage}
+            totalItems={totalItemsPage}
+            itemsPerPage={5}
+            nextPaginate={nextPaginate}
+            columns={[
+              { label: "Remessa", accessor: "remessa" },
+              { label: "Cliente", accessor: "cliente" },
+              {
+                label: "Situação",
+                accessor: "status",
+                isBadge: true,
+                badgeClassName: "bg-green-500",
+              },
+              { label: "Solicitante", accessor: "solicitante" },
+
+              { label: "Data", accessor: "dataFinalizacao" },
+            ]}
+            actions={[
+              {
+                icon: Trash,
+                label: "Excluir",
+                textColor: "text-red-600",
+                onClick: (item: any) => console.log("Excluir", item),
+              },
+            ]}
+          />
         </Tabs>
       )}
     </>

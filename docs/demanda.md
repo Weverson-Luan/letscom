@@ -78,8 +78,8 @@ Trocas os títulos da tabela por:
 Dentro tópico Opções terão 06 itens, sendo
 Download
 Imagem
-Uploud
- Iniciar Tarefa
+Uploud Tarefa
+Iniciar Tarefa
 Finalizar Tarefa
 Observação (Exclamação)
 
