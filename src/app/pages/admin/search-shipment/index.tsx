@@ -108,13 +108,13 @@ const SearchShipment = () => {
             columns={[
               { label: "Remessa", accessor: "remessa" },
               { label: "Cliente", accessor: "cliente" },
+              { label: "Criado por", accessor: "solicitante" },
               {
                 label: "Situação",
                 accessor: "status",
                 isBadge: true,
                 badgeClassName: "bg-green-500",
               },
-              { label: "Criado por", accessor: "solicitante" },
               {
                 label: "Qtd",
                 accessor: "quantidade",

@@ -3,7 +3,7 @@
  */
 import { useCallback } from "react";
 
-import { File, Trash } from "lucide-react";
+import { File } from "lucide-react";
 
 // components
 import { Button } from "../../../../presentation/components/button/button";
@@ -21,6 +21,7 @@ import { useExpedition } from "../../../../hooks/expedition/use-expedition";
 
 // zustand
 import { useStoreZustandExpedition } from "../../../../store-zustand/expedition/expedition";
+import { dataActionsExpedtition, dataTitleExpedtition } from "./helpers/data";
 
 const Expedition = () => {
   const {
@@ -32,28 +33,6 @@ const Expedition = () => {
     isLoadingPage,
     setItemsPerPage,
   } = useStoreZustandExpedition();
-
-  const dataTitle = [
-    { label: "Remessa", accessor: "remessa" },
-    { label: "Cliente", accessor: "cliente" },
-    {
-      label: "Situação",
-      accessor: "status",
-      isBadge: true,
-      badgeClassName: "bg-green-500",
-    },
-    { label: "Solicitante", accessor: "solicitante" },
-    { label: "Data", accessor: "dataFinalizacao" },
-  ];
-
-  const dataActions = [
-    {
-      icon: Trash,
-      label: "Excluir",
-      textColor: "text-red-600",
-      onClick: (item: any) => console.log("Excluir", item),
-    },
-  ];
 
   const { expeditions } = useExpedition();
 
@@ -109,8 +88,8 @@ const Expedition = () => {
             totalItems={totalItemsPage}
             itemsPerPage={itemsPerPage}
             nextPaginate={nextPaginate}
-            columns={dataTitle}
-            actions={dataActions}
+            columns={dataTitleExpedtition}
+            actions={dataActionsExpedtition}
           />
         </Tabs>
       )}
