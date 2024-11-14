@@ -11,7 +11,6 @@ import { DowloadLoad } from "../pages/admin/download-load";
 import { Expedition } from "../pages/admin/expedition";
 import { ManageClient } from "../pages/admin/manage-client";
 import { ManageCredits } from "../pages/admin/manage-credits";
-import { OrdersCompleted } from "../pages/admin/orders-completed";
 import { SearchShipment } from "../pages/admin/search-shipment";
 
 // components-main
@@ -55,10 +54,7 @@ const adminRouterAuth = createBrowserRouter([
         path: "/manage-client",
         element: <ManageClient />,
       },
-      {
-        path: "/orders-completed",
-        element: <OrdersCompleted />,
-      },
+
       {
         path: "/search-shipment",
         element: <SearchShipment />,

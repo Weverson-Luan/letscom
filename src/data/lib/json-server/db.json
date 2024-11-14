@@ -15,7 +15,6 @@
   ],
   "expedition": [
     {
-      "id": "1",
       "cliente": "OASIS CLUBE",
       "remessa": "31542",
       "status": "Pronto para imprimir",
@@ -23,7 +22,6 @@
       "dataFinalizacao": "01/10/2024 às 07:16:51"
     },
     {
-      "id": "2",
       "cliente": "REFUD",
       "remessa": "31543",
       "status": "Salvo",
@@ -31,7 +29,6 @@
       "dataFinalizacao": "01/10/2024 às 10:30:45"
     },
     {
-      "id": "3",
       "cliente": "TRANSPORTES URGENTES",
       "remessa": "31544",
       "status": "Impresso",
@@ -39,7 +36,6 @@
       "dataFinalizacao": "01/10/2024 às 09:10:45"
     },
     {
-      "id": "4",
       "cliente": "INCOPRE - MG",
       "remessa": "31545",
       "status": "Pronto",
@@ -47,7 +43,6 @@
       "dataFinalizacao": "01/10/2024 às 09:10:45"
     },
     {
-      "id": "5",
       "cliente": "PROTECAO VEICULAR",
       "remessa": "31545",
       "status": "Laminado",
@@ -55,7 +50,6 @@
       "dataFinalizacao": "01/10/2024 às 09:10:45"
     },
     {
-      "id": "6",
       "cliente": "SECURE LOGISTICS",
       "remessa": "31546",
       "status": "Aguardando revisão",
@@ -63,7 +57,6 @@
       "dataFinalizacao": "02/10/2024 às 08:45:00"
     },
     {
-      "id": "7",
       "cliente": "EXPRESSO RÁPIDO",
       "remessa": "31547",
       "status": "Processando",
@@ -71,7 +64,6 @@
       "dataFinalizacao": "02/10/2024 às 11:00:30"
     },
     {
-      "id": "8",
       "cliente": "TRANSPORTES LIMA",
       "remessa": "31548",
       "status": "Pronto para envio",
@@ -79,7 +71,6 @@
       "dataFinalizacao": "02/10/2024 às 13:25:15"
     },
     {
-      "id": "9",
       "cliente": "CARGAS BRASIL",
       "remessa": "31549",
       "status": "Salvo",
@@ -87,7 +78,6 @@
       "dataFinalizacao": "02/10/2024 às 14:50:45"
     },
     {
-      "id": "10",
       "cliente": "GLOBAL TRANSPORTES",
       "remessa": "31550",
       "status": "Impresso",
@@ -95,7 +85,6 @@
       "dataFinalizacao": "03/10/2024 às 09:35:20"
     },
     {
-      "id": "11",
       "cliente": "LOGÍSTICA SEGURA",
       "remessa": "31551",
       "status": "Pronto",
@@ -103,7 +92,6 @@
       "dataFinalizacao": "03/10/2024 às 10:45:30"
     },
     {
-      "id": "12",
       "cliente": "TRANSPORTES NORDESTE",
       "remessa": "31552",
       "status": "Aguardando conferência",
@@ -111,7 +99,6 @@
       "dataFinalizacao": "03/10/2024 às 11:10:05"
     },
     {
-      "id": "13",
       "cliente": "ENTREGA EXPRESSA",
       "remessa": "31553",
       "status": "Laminado",
@@ -119,7 +106,6 @@
       "dataFinalizacao": "03/10/2024 às 12:20:45"
     },
     {
-      "id": "14",
       "cliente": "FAST TRANSPORTE",
       "remessa": "31554",
       "status": "Processando",
@@ -127,7 +113,6 @@
       "dataFinalizacao": "04/10/2024 às 08:30:00"
     },
     {
-      "id": "15",
       "cliente": "REDE LOGÍSTICA",
       "remessa": "31555",
       "status": "Salvo",
@@ -327,7 +312,6 @@
   ],
   "customers": [
     {
-      "id": "1",
       "nome_identificacao": "TECHNOLOGIES S.A",
       "documento": "11.111.111/1111-11",
       "telefone_contato": "(31) 9 8213-2421",
@@ -337,7 +321,6 @@
       "data": "01/10/2024 às 09:10:45"
     },
     {
-      "id": "2",
       "nome_identificacao": "INNOVALLY FUN",
       "documento": "11.111.111/1111-11",
       "telefone_contato": "(31) 9 8213-2421",
@@ -347,7 +330,6 @@
       "data": "01/10/2024 às 12:16:45"
     },
     {
-      "id": "3",
       "nome_identificacao": "THINGABLE LTDA",
       "documento": "11.111.111/1111-11",
       "telefone_contato": "(31) 9 8213-2421",
@@ -357,7 +339,6 @@
       "data": "01/10/2024 às 16:50:01"
     },
     {
-      "id": "4",
       "nome_identificacao": "COSPESCLTS S.A",
       "documento": "11.111.111/1111-11",
       "telefone_contato": "(31) 9 8213-2421",
@@ -367,7 +348,6 @@
       "data": "01/10/2024 às 02:50:14"
     },
     {
-      "id": "5",
       "nome_identificacao": "TECHNOLOGIES S.A",
       "documento": "11.111.111/1111-11",
       "telefone_contato": "(31) 9 8213-2421",
@@ -377,7 +357,6 @@
       "data": "01/10/2024 às 13:41:11"
     },
     {
-      "id": "6",
       "nome_identificacao": "TECHNOLOGY INNOVATIONS INC.",
       "documento": "22.222.222/2222-22",
       "telefone_contato": "(31) 9 8324-1456",
@@ -387,7 +366,6 @@
       "data": "02/10/2024 às 10:30:20"
     },
     {
-      "id": "7",
       "nome_identificacao": "SMART SOLUTIONS LTD",
       "documento": "33.333.333/3333-33",
       "telefone_contato": "(31) 9 8435-2768",
@@ -397,7 +375,6 @@
       "data": "02/10/2024 às 14:22:58"
     },
     {
-      "id": "8",
       "nome_identificacao": "GLOBAL TECH CORP",
       "documento": "44.444.444/4444-44",
       "telefone_contato": "(31) 9 8546-3789",
@@ -407,7 +384,6 @@
       "data": "03/10/2024 às 08:15:30"
     },
     {
-      "id": "9",
       "nome_identificacao": "INOVAÇÃO BRASIL",
       "documento": "55.555.555/5555-55",
       "telefone_contato": "(31) 9 8657-4890",
@@ -417,7 +393,6 @@
       "data": "03/10/2024 às 11:45:00"
     },
     {
-      "id": "10",
       "nome_identificacao": "NEXT TECH LTD",
       "documento": "66.666.666/6666-66",
       "telefone_contato": "(31) 9 8768-5901",
@@ -427,7 +402,6 @@
       "data": "03/10/2024 às 13:50:20"
     },
     {
-      "id": "11",
       "nome_identificacao": "TECH SOLUTIONS INC",
       "documento": "77.777.777/7777-77",
       "telefone_contato": "(31) 9 8879-6012",
@@ -437,7 +411,6 @@
       "data": "04/10/2024 às 09:10:15"
     },
     {
-      "id": "12",
       "nome_identificacao": "ALPHA TECH CO",
       "documento": "88.888.888/8888-88",
       "telefone_contato": "(31) 9 8980-7123",
@@ -447,7 +420,6 @@
       "data": "04/10/2024 às 15:20:30"
     },
     {
-      "id": "13",
       "nome_identificacao": "INTEGRATED SYSTEMS",
       "documento": "99.999.999/9999-99",
       "telefone_contato": "(31) 9 8091-8234",
@@ -457,7 +429,6 @@
       "data": "05/10/2024 às 08:30:45"
     },
     {
-      "id": "14",
       "nome_identificacao": "DIGITAL INNOVATION HUB",
       "documento": "11.123.456/0001-00",
       "telefone_contato": "(31) 9 8123-4567",
@@ -467,7 +438,6 @@
       "data": "05/10/2024 às 10:45:15"
     },
     {
-      "id": "15",
       "nome_identificacao": "TECH WORLD SOLUTIONS",
       "documento": "12.123.456/0001-01",
       "telefone_contato": "(31) 9 8345-6789",
@@ -477,7 +447,6 @@
       "data": "06/10/2024 às 12:00:00"
     },
     {
-      "id": "16",
       "nome_identificacao": "FUTURE TECH INC",
       "documento": "13.123.456/0001-02",
       "telefone_contato": "(31) 9 8456-7890",
@@ -487,7 +456,6 @@
       "data": "06/10/2024 às 14:15:45"
     },
     {
-      "id": "17",
       "nome_identificacao": "SOLID TECHNOLOGIES",
       "documento": "14.123.456/0001-03",
       "telefone_contato": "(31) 9 8567-8901",
@@ -497,7 +465,6 @@
       "data": "07/10/2024 às 09:50:30"
     },
     {
-      "id": "18",
       "nome_identificacao": "BRIGHT TECH SOLUTIONS",
       "documento": "15.123.456/0001-04",
       "telefone_contato": "(31) 9 8678-9012",
@@ -507,7 +474,6 @@
       "data": "07/10/2024 às 13:00:00"
     },
     {
-      "id": "19",
       "nome_identificacao": "INNOVATECH CORP",
       "documento": "16.123.456/0001-05",
       "telefone_contato": "(31) 9 8789-0123",
@@ -517,7 +483,6 @@
       "data": "08/10/2024 às 15:10:45"
     },
     {
-      "id": "20",
       "nome_identificacao": "TECH CONNECTION LTD",
       "documento": "17.123.456/0001-06",
       "telefone_contato": "(31) 9 8890-1234",
@@ -527,7 +492,6 @@
       "data": "09/10/2024 às 09:30:20"
     },
     {
-      "id": "21",
       "nome_identificacao": "TECH VISION",
       "documento": "18.123.456/0001-07",
       "telefone_contato": "(31) 9 8901-2345",
@@ -537,7 +501,6 @@
       "data": "09/10/2024 às 13:45:30"
     },
     {
-      "id": "22",
       "nome_identificacao": "DIGITAL ERA SOLUTIONS",
       "documento": "19.123.456/0001-08",
       "telefone_contato": "(31) 9 8012-3456",
@@ -547,7 +510,6 @@
       "data": "10/10/2024 às 10:25:45"
     },
     {
-      "id": "23",
       "nome_identificacao": "TECHNOPARK GROUP",
       "documento": "20.123.456/0001-09",
       "telefone_contato": "(31) 9 8123-4567",
@@ -557,7 +519,6 @@
       "data": "10/10/2024 às 14:00:00"
     },
     {
-      "id": "24",
       "nome_identificacao": "TECHLAB INNOVATIONS",
       "documento": "21.123.456/0001-10",
       "telefone_contato": "(31) 9 8234-5678",
@@ -567,7 +528,6 @@
       "data": "11/10/2024 às 08:45:30"
     },
     {
-      "id": "25",
       "nome_identificacao": "GLOBAL TECH SOLUTIONS",
       "documento": "22.123.456/0001-11",
       "telefone_contato": "(31) 9 8345-6789",

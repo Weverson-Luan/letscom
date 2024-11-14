@@ -1,31 +1,27 @@
 /**
  * IMPORTS
  */
-import { z } from "zod";
+
 import { File, PlusCircle } from "lucide-react";
 import { Button } from "../../../../presentation/components/button/button";
 import {
   Tabs,
-  TabsContent,
   TabsList,
   TabsTrigger,
 } from "../../../../presentation/components/tabs";
 
-import { ManageClientTable } from "./components/manage-client-table/manage-client-table";
 import { useCallback } from "react";
 import { Spinner } from "../../../../presentation/components/spinner/spinner";
 
-import { SchemaManagerClient } from "./schema/manager-client-schema";
 import { CreateClientModal } from "./components/create-client-modal/create-cliente-modal";
 import { useStoreZustandManageClient } from "../../../../store-zustand/manage-client/manege-client";
-// import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
 import { SelectPagination } from "../../../../presentation/components/select-pagination/select-pagination";
-// import { supabase } from "../../../../data/lib/supa-base";
 import { useManageClient } from "../../../../hooks/manage-client/use-manage-client";
-
-export type SchemaManagerClientType = z.infer<typeof SchemaManagerClient>;
-
-export type Status = "error" | "success";
+import { DynamicTable } from "../../../../presentation/components/table-custom/table";
+import {
+  dataActionsTableCustomers,
+  dataTitleTableCustomers,
+} from "./helpers/data";
 
 const ManageClient = () => {
   const {
@@ -53,49 +49,6 @@ const ManageClient = () => {
     [itemsPerPage]
   );
 
-  // async function getRemessasComUsuario(userId: number) {
-  //   const { data: remessas, error } = await supabase
-  //     .from("Remessas")
-  //     .select(
-  //       `
-  //       *,
-  //       Usuarios (
-  //         id,
-  //         nome_identificacao,
-  //         email
-  //       )
-  //     `
-  //     )
-  //     .eq("user_id", userId)
-  //     .order("id", { ascending: true });
-
-  //   if (error) {
-  //     console.error(
-  //       "Erro ao buscar remessas com dados do usuário:",
-  //       error.message
-  //     );
-  //   } else {
-  //     setTeste(remessas);
-  //   }
-  // }
-
-  // async function getUsuarios() {
-  //   const { data: remessas, error } = await supabase
-  //     .from("Usuarios")
-  //     .select("*")
-  //     .order("id", { ascending: true });
-
-  //   if (error) {
-  //     console.error("Erro ao buscar  dados do usuário:", error.message);
-  //   } else {
-  //     setTeste(remessas);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getUsuarios();
-  // }, []);
-
   return (
     <>
       {isLoading ? (
@@ -103,7 +56,7 @@ const ManageClient = () => {
       ) : (
         <>
           <Tabs defaultValue="all">
-            <div className="flex items-center">
+            <div className="flex items-center mb-4">
               <TabsList className="">
                 <TabsTrigger value="all" className="">
                   Ativos
@@ -138,15 +91,19 @@ const ManageClient = () => {
                 </Button>
               </div>
             </div>
-            <TabsContent value="all">
-              <ManageClientTable
-                clients={clients}
-                totalClients={totalItemsPage}
-                offset={itemsPerPage}
-                nextPaginate={nextPaginate}
-                isLoadingPage={isLoadingPage}
-              />
-            </TabsContent>
+
+            <DynamicTable
+              title="Clientes"
+              description="Gerencie seus clientes e visualize quando quiser."
+              isLoadingPage={isLoadingPage}
+              data={clients}
+              offset={1}
+              totalItems={totalItemsPage}
+              itemsPerPage={itemsPerPage}
+              nextPaginate={nextPaginate}
+              columns={dataTitleTableCustomers}
+              actions={dataActionsTableCustomers}
+            />
           </Tabs>
 
           {isModalCreateClient && (
