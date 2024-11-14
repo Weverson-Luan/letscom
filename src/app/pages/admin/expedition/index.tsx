@@ -32,6 +32,29 @@ const Expedition = () => {
     isLoadingPage,
     setItemsPerPage,
   } = useStoreZustandExpedition();
+
+  const dataTitle = [
+    { label: "Remessa", accessor: "remessa" },
+    { label: "Cliente", accessor: "cliente" },
+    {
+      label: "Situação",
+      accessor: "status",
+      isBadge: true,
+      badgeClassName: "bg-green-500",
+    },
+    { label: "Solicitante", accessor: "solicitante" },
+    { label: "Data", accessor: "dataFinalizacao" },
+  ];
+
+  const dataActions = [
+    {
+      icon: Trash,
+      label: "Excluir",
+      textColor: "text-red-600",
+      onClick: (item: any) => console.log("Excluir", item),
+    },
+  ];
+
   const { expeditions } = useExpedition();
 
   const nextPaginate = useCallback(() => {
@@ -82,31 +105,12 @@ const Expedition = () => {
             description="Gerencie suas expedições e visualize quando quiser."
             isLoadingPage={isLoadingPage}
             data={expeditions}
-            offset={itemsPerPage}
+            offset={1}
             totalItems={totalItemsPage}
-            itemsPerPage={5}
+            itemsPerPage={itemsPerPage}
             nextPaginate={nextPaginate}
-            columns={[
-              { label: "Remessa", accessor: "remessa" },
-              { label: "Cliente", accessor: "cliente" },
-              {
-                label: "Situação",
-                accessor: "status",
-                isBadge: true,
-                badgeClassName: "bg-green-500",
-              },
-              { label: "Solicitante", accessor: "solicitante" },
-
-              { label: "Data", accessor: "dataFinalizacao" },
-            ]}
-            actions={[
-              {
-                icon: Trash,
-                label: "Excluir",
-                textColor: "text-red-600",
-                onClick: (item: any) => console.log("Excluir", item),
-              },
-            ]}
+            columns={dataTitle}
+            actions={dataActions}
           />
         </Tabs>
       )}

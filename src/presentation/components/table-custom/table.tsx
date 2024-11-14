@@ -118,12 +118,15 @@ export function DynamicTable({
                         <Badge
                           className={column.badgeClassName || "bg-green-500"}
                         >
-                          {item[column.accessor]}
+                          {handleLimitTextdisplayByAmount({
+                            text: item[column.accessor],
+                            limit: column.limit || 12,
+                          })}
                         </Badge>
                       ) : (
                         handleLimitTextdisplayByAmount({
                           text: item[column.accessor],
-                          limit: column.limit || 12,
+                          limit: column.limit || 22,
                         })
                       )}
                     </TableCell>
