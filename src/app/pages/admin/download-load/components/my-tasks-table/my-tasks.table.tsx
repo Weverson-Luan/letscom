@@ -1,13 +1,23 @@
-import { TasksTable } from "./components/table";
+import { DynamicTable } from "../../../../../../presentation/components/table-custom/table";
+
+import {
+  dataActionsTableMayTasks,
+  dataTitleTableMayTasks,
+} from "./helpers/data";
 
 export function MyTasksTable() {
   return (
-    <TasksTable
-      nextPaginate={() => {}}
-      downloadLoad={[]}
-      offset={1}
-      totalProducts={1}
+    <DynamicTable
+      title="Minhas Tarefas"
+      description="Gerencie suas tarefas e visualize quando quiser."
       isLoadingPage={false}
+      data={[]}
+      offset={1}
+      totalItems={1}
+      itemsPerPage={1}
+      nextPaginate={() => {}}
+      columns={dataTitleTableMayTasks}
+      actions={dataActionsTableMayTasks}
     />
   );
 }

@@ -124,11 +124,11 @@
     {
       "id": 1,
       "remessa": "32371",
-      "cliente": "OASIS CLUBE",
+      "nome_identificacao": "OASIS CLUBE",
       "situacao": "Solicitado",
       "status": "Em andamento",
       "quantidadeSolicitacao": 3,
-      "dataSolicitacao": "02/10/2024 às 18:21:17",
+      "data": "02/10/2024 às 18:21:17",
       "solicitante": "EDUARDO SUAREZ",
       "tecnologia": "STYW",
       "posicao": "V"
@@ -136,11 +136,11 @@
     {
       "id": 2,
       "remessa": "98762",
-      "cliente": "SHOPPING MALL",
+      "nome_identificacao": "SHOPPING MALL",
       "situacao": "Entregue",
       "status": "Concluido",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "CARLA SOUZA",
       "tecnologia": "MIFARE",
       "posicao": "H"
@@ -149,11 +149,11 @@
     {
       "id": 3,
       "remessa": "98763",
-      "cliente": "LOAST SIL",
+      "nome_identificacao": "LOAST SIL",
       "situacao": "Pendente",
       "status": "Em andamento",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "LUIZA SOUZA",
       "tecnologia": "KISICROFT",
       "posicao": "V"
@@ -161,11 +161,11 @@
     {
       "id": 4,
       "remessa": "98764",
-      "cliente": "DOAG LSUS",
+      "nome_identificacao": "DOAG LSUS",
       "situacao": "Pendente",
       "status": "Concluido",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "LUIZA SOUZA",
       "tecnologia": "LISPOST",
       "posicao": "H"
@@ -173,11 +173,11 @@
     {
       "id": 5,
       "remessa": "98765",
-      "cliente": "KOOP TSR",
+      "nome_identificacao": "KOOP TSR",
       "situacao": "Pendente",
       "status": "Cancelado",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "LUIZA SOUZA",
       "tecnologia": "STYW",
       "posicao": "V"
@@ -185,11 +185,11 @@
     {
       "id": 6,
       "remessa": "98766",
-      "cliente": "SHOPPING SHELL",
+      "nome_identificacao": "SHOPPING SHELL",
       "situacao": "Pendente",
       "status": "Realizado",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "LUIZA SOUZA",
       "tecnologia": "MIFARE",
       "posicao": "H"
@@ -197,11 +197,11 @@
     {
       "id": 7,
       "remessa": "98767",
-      "cliente": "SHOPPING SHELL",
+      "nome_identificacao": "SHOPPING SHELL",
       "situacao": "Pendente",
       "status": "Concluido",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "LUIZA SOUZA",
       "tecnologia": "LISPOST",
       "posicao": "V"
@@ -209,11 +209,11 @@
     {
       "id": 8,
       "remessa": "98768",
-      "cliente": "SHOPPING SHELL",
+      "nome_identificacao": "SHOPPING SHELL",
       "situacao": "Pendente",
       "status": "Cancelado",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "LUIZA SOUZA",
       "tecnologia": "KISICROFT",
       "posicao": "H"
@@ -221,11 +221,11 @@
     {
       "id": 9,
       "remessa": "98769",
-      "cliente": "SHOPPING SHELL",
+      "nome_identificacao": "SHOPPING SHELL",
       "situacao": "Pendente",
       "status": "Realizado",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "LUIZA SOUZA",
       "tecnologia": "STYW",
       "posicao": "H"
@@ -233,11 +233,11 @@
     {
       "id": 10,
       "remessa": "98770",
-      "cliente": "SHOPPING ESTAÇÃO",
+      "nome_identificacao": "SHOPPING ESTAÇÃO",
       "situacao": "Pendente",
       "status": "Concluido",
       "quantidadeSolicitacao": 5,
-      "dataSolicitacao": "01/10/2024 às 15:10:45",
+      "data": "01/10/2024 às 15:10:45",
       "solicitante": "LUIZA SOUZA",
       "tecnologia": "MIFARE",
       "posicao": "V"
