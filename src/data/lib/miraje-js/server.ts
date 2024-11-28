@@ -135,12 +135,18 @@ export function makeServer() {
       this.get("/customers", (_schema, request: any) => {
         const page = parseInt(request.queryParams._page, 10) || 1; // Página atual
         const limit = parseInt(request.queryParams._limit, 10) || 5; // Itens por página
+        const search = request.queryParams.search?.toLowerCase() || ""; // Parâmetro de busca
 
-        const total = customers.length; // Total de itens
+        // Filtrar clientes pelo nome (se `search` estiver presente)
+        const filteredCustomers = customers.filter((customer) =>
+          customer.nome_identificacao.toLowerCase().includes(search)
+        );
+
+        const total = filteredCustomers.length; // Total de itens
         const start = (page - 1) * limit;
         const end = start + limit;
 
-        const paginatedCustomers = customers.slice(start, end);
+        const paginatedCustomers = filteredCustomers.slice(start, end);
 
         return {
           customers: paginatedCustomers,

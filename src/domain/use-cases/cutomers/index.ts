@@ -10,13 +10,15 @@ import { customersRepository } from "../../../repositories/custumers";
 const handleGetCustomers = async (
   accessToken: string,
   currentPage: number,
-  itemsPerPage: number
+  itemsPerPage: number,
+  searchItem: string
 ) => {
   try {
     const data = await customersRepository.getAllCustomers(
       accessToken,
       currentPage,
-      itemsPerPage
+      itemsPerPage,
+      searchItem
     );
 
     return data;

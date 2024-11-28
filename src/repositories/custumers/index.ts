@@ -13,12 +13,14 @@ const customersRepository: ICustumersRepository = {
   async getAllCustomers<T>(
     accessToken: string,
     currentPage: number = 1,
-    itemsPerPage: number = 5
+    itemsPerPage: number = 5,
+    searchItem = ""
   ): Promise<T | null> {
+    console.log("8", searchItem);
     const Instance = await AxiosService.createAxiosInstance(accessToken);
 
     const customers = await Instance.get(
-      `customers?_page=${currentPage}&_limit=${itemsPerPage}`,
+      `customers?_page=${currentPage}&_limit=${itemsPerPage}&search=${searchItem}`,
       {
         headers: {
           "content-type": "application/json; charset=UTF-8",

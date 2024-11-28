@@ -34,6 +34,7 @@ function useManageClient() {
       const response = await handleGetAllClients({
         currentPage,
         itemsPerPage,
+        searchItem,
       });
 
       return response;

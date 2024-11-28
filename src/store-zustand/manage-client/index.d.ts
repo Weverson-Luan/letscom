@@ -33,6 +33,7 @@ type IManageClientState = {
   handleGetAllClients: ({
     currentPage: number,
     itemsPerPage: number,
+    searchItem: string,
   }) => Promise<any>;
 };
 

@@ -6,13 +6,12 @@ import { useCallback } from "react";
 import { Search } from "lucide-react";
 
 // components
-import { Input } from "../input/input";
 
 // store-zustand
-import { useStoreZustandManageClient } from "../../../store-zustand/manage-client/manege-client";
-
-import { Spinner } from "../../../common/icons/spinner";
-import { sleep } from "../../../utils/sleep/sleep";
+import { useStoreZustandManageClient } from "../../../../../../store-zustand/manage-client/manege-client";
+import { sleep } from "../../../../../../utils/sleep/sleep";
+import { Spinner } from "../../../../../../presentation/components/spinner/spinner";
+import { Input } from "../../../../../../presentation/components/input/input";
 
 export function SearchInput() {
   const { setSearchItem, searchItem } = useStoreZustandManageClient();

@@ -17,7 +17,7 @@ export const useStoreZustandManageClient = create<IManageClientState>(
     itemsPerPage: 5,
     currentPage: 1,
     totalItemsPage: 0,
-    searchItem: null,
+    searchItem: "",
 
     // ações
     setIsLoading: (isLoading) => set({ isLoading }),
@@ -30,7 +30,7 @@ export const useStoreZustandManageClient = create<IManageClientState>(
     setIsModalCreateClient: (isModalCreateClient) =>
       set({ isModalCreateClient }),
 
-    handleGetAllClients: async ({ currentPage, itemsPerPage }) => {
+    handleGetAllClients: async ({ currentPage, itemsPerPage, searchItem }) => {
       set({ isLoadingPage: true });
 
       await sleep(500);
@@ -38,7 +38,8 @@ export const useStoreZustandManageClient = create<IManageClientState>(
       const data = (await handleGetCustomers(
         "Token",
         currentPage,
-        itemsPerPage
+        itemsPerPage,
+        searchItem
       )) as IDownloadLoadResponse[];
 
       set({ clients: data! });
