@@ -5,14 +5,17 @@ import { useQuery } from "@tanstack/react-query";
 import { useStoreZustandManageClient } from "../../store-zustand/manage-client/manege-client";
 
 export interface IManageClientesponse {
-  id: string;
-  name: string;
-  cnpj: string;
-  telefone: string;
-  contato: string;
-  email: string;
-  creditos: number;
-  availableAt: Date;
+  customers: {
+    id: string;
+    name: string;
+    cnpj: string;
+    telefone: string;
+    contato: string;
+    email: string;
+    creditos: number;
+    data: any;
+  };
+  meta: {};
 }
 function useManageClient() {
   const { handleGetAllClients, currentPage, itemsPerPage, searchItem } =
@@ -37,10 +40,10 @@ function useManageClient() {
     },
   });
 
-  const clients = (customersResponse! as unknown as any[]) ?? [];
+  const clients = (customersResponse! as unknown as IManageClientesponse) ?? [];
 
   return {
-    clients,
+    clients: clients?.customers,
     isLoading,
     isError,
   };

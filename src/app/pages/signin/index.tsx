@@ -2,18 +2,18 @@
  * IMPORTS
  */
 
-import axios from "axios";
 import Logo from "../../../common/assets/png/logo-let-scom.png";
 import { useStoreZustandUserAuth } from "../../../store-zustand/user-auth";
 import { SchemaSignInOfUser } from "./schema/signin";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { handleAuthUser } from "../../../domain/use-cases/auth/auth";
 
 export type SchemaSigninType = z.infer<typeof SchemaSignInOfUser>;
 
 const SignIn = () => {
-  const { setIsAuthenticated, isLoading, setIsLoading, setUser, user } =
+  const { setIsAuthenticated, isLoading, setIsLoading, setUser } =
     useStoreZustandUserAuth();
 
   // Configuração do React Hook Form com Zod
@@ -30,23 +30,17 @@ const SignIn = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("https://fakestoreapi.com/auth/login", {
-        username: "mor_2314",
-        password: "83r5^_",
-      });
+      const { token, user } = (await handleAuthUser(email, password)) as any;
 
-      localStorage.setItem("@token", res.data.token);
+      localStorage.setItem("@token", token);
 
-      if (res.data?.token) {
-        const novo = {
-          ...user,
-          role: "admin",
-        };
-        setUser(novo as any);
+      if (!!token) {
+        setUser(user);
         setIsAuthenticated(true);
         setIsLoading(false);
         return;
       }
+      alert("E-mail ou senha inválidos!");
     } catch (error) {
       console.error("Erro ao fazer login", email, password, error);
     } finally {

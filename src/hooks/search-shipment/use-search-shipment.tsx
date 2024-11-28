@@ -5,14 +5,20 @@ import { useQuery } from "@tanstack/react-query";
 import { useStoreZustandSearchShipment } from "../../store-zustand/search-shipment/search-shipment";
 
 export interface ISearchShipmentResponse {
-  id: string;
-  name: string;
-  cnpj: string;
-  telefone: string;
-  contato: string;
-  email: string;
-  creditos: number;
-  availableAt: Date;
+  searchShipment: {
+    id: string;
+    remessa: string;
+    cliente: string;
+    quantidade: number;
+    criador: string;
+    status: string;
+    solicitante: string;
+    modelo: string;
+    dataSolicitacao: string;
+    dataFinalizacao: string;
+  }[];
+
+  meta: {};
 }
 function useManageSearchShipment() {
   const { handleGetAllSearchShipments, currentPage, itemsPerPage, searchItem } =
@@ -37,10 +43,11 @@ function useManageSearchShipment() {
     },
   });
 
-  const searchShipments = (searchShipmentsResponse! as unknown as any[]) ?? [];
+  const searchShipments =
+    (searchShipmentsResponse! as unknown as ISearchShipmentResponse) ?? [];
 
   return {
-    searchShipments,
+    searchShipments: searchShipments.searchShipment,
     isLoading,
     isError,
   };

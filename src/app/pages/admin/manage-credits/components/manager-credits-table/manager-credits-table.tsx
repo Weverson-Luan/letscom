@@ -61,8 +61,6 @@ export function ManagerCreditsTable({
 
                 <TableHead className="hidden md:table-cell">Produto</TableHead>
 
-                <TableHead className="hidden md:table-cell">Saldo</TableHead>
-
                 <TableHead className="hidden md:table-cell">Ações</TableHead>
                 <TableHead>
                   <span className="sr-only">Ações </span>

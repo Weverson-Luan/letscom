@@ -1,7 +1,6 @@
 import { Trash } from "lucide-react";
 
 import { Button } from "../../../../../../presentation/components/button/button";
-import { Badge } from "../../../../../../presentation/components/badge/badge";
 
 import {
   DropdownMenu,
@@ -28,10 +27,6 @@ export function ManagerCreditsMainTable({ credits }: { credits: any }) {
       </TableCell>
 
       <TableCell className="hidden md:table-cell">{credits.produto}</TableCell>
-
-      <TableCell>
-        <Badge className="bg-green-500">{credits.saldo}</Badge>
-      </TableCell>
 
       {/* Ações */}
       <TableCell>

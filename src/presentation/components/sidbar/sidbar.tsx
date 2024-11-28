@@ -134,7 +134,6 @@ function Sidbar() {
     window.location.reload();
   };
 
-  console.log("up", user?.role);
   return (
     <div
       className={`bg-gray-custom900 p-5 pt-8 ${

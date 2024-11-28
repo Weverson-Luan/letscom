@@ -83,7 +83,7 @@ const Expedition = () => {
             title="Expedições"
             description="Gerencie suas expedições e visualize quando quiser."
             isLoadingPage={isLoadingPage}
-            data={expeditions}
+            data={expeditions ?? []}
             offset={1}
             totalItems={totalItemsPage}
             itemsPerPage={itemsPerPage}

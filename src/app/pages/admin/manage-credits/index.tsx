@@ -140,7 +140,7 @@ const ManageCredits = () => {
               </div>
               <ManagerCreditsTable
                 isLoadingPage={isLoadingPage}
-                credits={credits}
+                credits={credits ?? []}
                 offset={itemsPerPage}
                 totalCredits={totalItemsPage}
                 nextPaginate={nextPaginate}
@@ -178,7 +178,6 @@ const ManageCredits = () => {
                   height="90%"
                   src="https://www.youtube.com/embed/dQw4w9WgXcQ"
                   title="YouTube video player"
-                  frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="rounded"

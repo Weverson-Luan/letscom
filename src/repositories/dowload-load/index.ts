@@ -17,7 +17,7 @@ const dowloadLoadRepository: any = {
     const Instance = await AxiosService.createAxiosInstance(accessToken);
 
     const dowloadLoad = await Instance.get(
-      `download-load?_page=${currentPage}&_limit=${itemsPerPage}`,
+      `pick-up-tasks?_page=${currentPage}&_limit=${itemsPerPage}`,
       {
         headers: {
           "content-type": "application/json; charset=UTF-8",

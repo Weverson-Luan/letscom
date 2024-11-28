@@ -80,12 +80,14 @@ const CreateClientModal = ({
   }, 500);
 
   // Atualiza o CEP e faz a busca quando o campo é preenchido
-  const handleCepChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCepChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const cepValue = event.target.value.replace(/\D/g, "");
     setCep(cepValue);
 
     if (cepValue.length === 8) {
-      fetchAddress(cepValue);
+      await fetchAddress(cepValue);
     }
   };
 
@@ -94,6 +96,7 @@ const CreateClientModal = ({
     console.log("Dados do Cliente:", data.cliente);
     console.log("Dados do Endereço:", data.endereco);
     console.log("Dados do Usuário do Cliente:", data.usuarioCliente);
+    handleToggleCreateActvityModal();
   };
 
   return (
@@ -338,6 +341,28 @@ const CreateClientModal = ({
               Usuário para cliente
             </h2>
           </div>
+
+          {/* CONTATOS PARA CLIENTE */}
+          {/* <div className="flex flex-wrap gap-2 mb-2">
+            {[].map((email, _index) => (
+              <div
+                key={String(email)}
+                className="py-1.5 px-2.5 bg-zinc-800 flex items-center rounded-md gap-2"
+              >
+                <span className="text-zinc-300">
+                  {"weversonluan@gmail.com"}
+                </span>
+
+                <button
+                  onClick={() => {
+                    console.log(email);
+                  }}
+                >
+                  <X className="size-4 text-zinc-400" />
+                </button>
+              </div>
+            ))}
+          </div> */}
 
           <div className="grid grid-cols-2 gap-4 ">
             {/* NOME DE IDENTIFICACAO */}

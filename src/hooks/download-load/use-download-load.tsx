@@ -5,15 +5,18 @@ import { useQuery } from "@tanstack/react-query";
 import { useStoreZustandDownloadLoad } from "../../store-zustand/download-load";
 
 export interface IDownloadLoadResponse {
-  id: string;
-  numero_remessa: string;
-  name: string;
-  situacao: string;
-  solicitante: string;
-  tecnologia: string;
-  status: string;
-  numberSolicitation: number;
-  availableAt: Date;
+  pickUpTask: {
+    id: string;
+    numero_remessa: string;
+    name: string;
+    situacao: string;
+    solicitante: string;
+    tecnologia: string;
+    status: string;
+    numberSolicitation: number;
+    availableAt: Date;
+  }[];
+  meta: {};
 }
 function useDownloadLoad() {
   const { handleGetAllDowloadLoad, currentPage, itemsPerPage, searchItem } =
@@ -39,10 +42,10 @@ function useDownloadLoad() {
   });
 
   const downloads =
-    (establishmentResponse! as unknown as IDownloadLoadResponse[]) ?? [];
+    (establishmentResponse! as unknown as IDownloadLoadResponse) ?? [];
 
   return {
-    downloads,
+    downloads: downloads?.pickUpTask,
     isLoading,
     isError,
   };

@@ -96,7 +96,7 @@ const ManageClient = () => {
               title="Clientes"
               description="Gerencie seus clientes e visualize quando quiser."
               isLoadingPage={isLoadingPage}
-              data={clients}
+              data={clients ?? []}
               offset={1}
               totalItems={totalItemsPage}
               itemsPerPage={itemsPerPage}

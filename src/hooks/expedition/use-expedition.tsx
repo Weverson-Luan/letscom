@@ -5,15 +5,18 @@ import { useQuery } from "@tanstack/react-query";
 import { useStoreZustandExpedition } from "../../store-zustand/expedition/expedition";
 
 export interface IExpeditionResponse {
-  id: string;
-  numero_remessa: string;
-  name: string;
-  situacao: string;
-  solicitante: string;
-  tecnologia: string;
-  status: string;
-  numberSolicitation: number;
-  availableAt: Date;
+  expedition: {
+    id: string;
+    numero_remessa: string;
+    name: string;
+    situacao: string;
+    solicitante: string;
+    tecnologia: string;
+    status: string;
+    numberSolicitation: number;
+    availableAt: Date;
+  };
+  meta: {};
 }
 function useExpedition() {
   const { handleGetAllExpedition, currentPage, itemsPerPage, searchItem } =
@@ -39,10 +42,10 @@ function useExpedition() {
   });
 
   const expeditions =
-    (expeditionResponse! as unknown as IExpeditionResponse[]) ?? [];
+    (expeditionResponse! as unknown as IExpeditionResponse) ?? [];
 
   return {
-    expeditions,
+    expeditions: expeditions.expedition,
     isLoading,
     isError,
   };

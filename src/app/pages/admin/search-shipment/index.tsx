@@ -96,7 +96,7 @@ const SearchShipment = () => {
             title="Pesquisar remessas"
             description="Gerencie suas remessas e visualize quando quiser."
             isLoadingPage={isLoadingPage}
-            data={searchShipments}
+            data={searchShipments ?? []}
             offset={itemsPerPage}
             totalItems={totalItemsPage}
             checkBox

@@ -31,7 +31,7 @@ PEDIDOS FINALIZADOS (Remover do sistema):
 
 - Este item não será mais utilizado.
 
-## PESQUISAR REMESSAS
+## PESQUISAR REMESSAS -pedente
 
 Adicionar os campos, com opção de editar:
 
@@ -94,3 +94,5 @@ item 5 - Tipo de entrega. (REMOVER)
 item 7 – Tem furo. Check Box opções:  Ovoide, Mosquete,
 Rabo de rato.
 Item 11 – Campo Chave. Ter espaço entre os nomes.
+
+nome, informações

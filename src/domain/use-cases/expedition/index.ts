@@ -21,8 +21,6 @@ const handleGetExpedition = async (
 
     return data;
   } catch (error: any) {
-    console.log("ERROR: ", error);
-
     return error;
   }
 };

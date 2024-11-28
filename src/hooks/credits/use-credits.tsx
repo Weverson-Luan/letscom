@@ -5,10 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useStoreZustandManagerCredits } from "../../store-zustand/credits/credits";
 
 export interface IManagerCreditsResponse {
-  id: string;
-  cliente: string;
-  produto: string;
-  saldo: number;
+  credits: {
+    id: string;
+    cliente: string;
+    produto: string;
+    saldo: number;
+  }[];
+  meta: {};
 }
 function useManagerCredits() {
   const { handleGetAllManagerCredits, currentPage, itemsPerPage, searchItem } =
@@ -33,10 +36,11 @@ function useManagerCredits() {
     },
   });
 
-  const credits = (managerCredits! as unknown as any[]) ?? [];
+  const creditsResponse =
+    (managerCredits! as unknown as IManagerCreditsResponse) ?? [];
 
   return {
-    credits,
+    credits: creditsResponse.credits,
     isLoading,
     isError,
   };

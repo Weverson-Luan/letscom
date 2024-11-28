@@ -4,7 +4,7 @@
 import { AxiosRequestConfig } from "axios";
 
 const configAxios: AxiosRequestConfig = {
-  baseURL: "http://localhost:5000/", // URL base da API
+  baseURL: "/api", // Ajuste para o namespace do MirageJS
   timeout: 10000, // Timeout de 10 segundos
 };
 
