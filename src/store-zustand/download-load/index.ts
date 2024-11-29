@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
+import { IDownloadLoadResponse } from "../../hooks/download-load/use-download-load";
+import { handleSigninWhithUserAndPassword } from "../../domain/use-cases/dowload-load";
+import { sleep } from "../../utils/sleep/sleep";
 // typings
 import { IDownloadLoadState } from "./index.d";
-import { IDownloadLoadResponse } from "../../hooks/download-load/use-download-load";
-import { sleep } from "../../utils/sleep/sleep";
-import { handleSigninWhithUserAndPassword } from "../../domain/use-cases/dowload-load";
 
 // criação da store com Zustand (baixar cargas)
 export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
@@ -13,6 +13,7 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
     isLoading: false,
     isLoadingPage: false,
     downloadLoad: [],
+    myTasks: [],
     itemsPerPage: 5,
     currentPage: 1,
     totalItemsPage: 0,
@@ -26,6 +27,7 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
     setDownloadLoad: (downloadLoad) => set({ downloadLoad }),
     setSearchItem: (searchItem) => set({ searchItem }),
     setIsLoadingPage: (isLoadingPage) => set({ isLoadingPage }),
+    setMyTasks: (myTasks) => set({ myTasks }),
 
     handleGetAllDowloadLoad: async ({ currentPage, itemsPerPage }) => {
       set({ isLoadingPage: true });
@@ -44,16 +46,6 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
       set({ isLoadingPage: false });
 
       return data;
-    },
-
-    handleGetAllDowloadLoadByPage: async ({
-      search,
-      currentPage,
-      itemsPerPage,
-    }) => {
-      console.log(search, currentPage, itemsPerPage);
-
-      return;
     },
   })
 );

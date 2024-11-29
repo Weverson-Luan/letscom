@@ -4,6 +4,7 @@ import { expedition } from "../mock-api/expedition";
 import { searchRequests } from "../mock-api/serach-spnment";
 import { credits } from "../mock-api/credits";
 import { pickUpTask } from "../mock-api/pick-up-task";
+import { myTasks } from "../mock-api/my-tasks";
 
 export function makeServer() {
   return createServer({
@@ -58,7 +59,7 @@ export function makeServer() {
       });
 
       /**
-       * Tarefas
+       * Pedidos (Remessas)
        */
 
       this.get("/pick-up-tasks", (_schema, request: any) => {
@@ -73,6 +74,31 @@ export function makeServer() {
 
         return {
           pickUpTask: paginatedPickUpTask,
+          meta: {
+            total, // Total de itens
+            page, // Página atual
+            perPage, // Itens por página
+            totalPages: Math.ceil(total / perPage), // Total de páginas
+          },
+        };
+      });
+
+      /**
+       * Minhas Tarefas
+       */
+      this.get("/my-tasks", (_schema, request: any) => {
+        const page = parseInt(request.queryParams._page, 10) || 1; // Página atual
+        const perPage = parseInt(request.queryParams._limit, 10) || 5; // Itens por página
+        const search = request.queryParams.search?.toLowerCase() || ""; // Parâmetro de busca
+
+        const total = myTasks.length; // Total de itens
+        const start = (page - 1) * perPage; // Índice inicial
+        const end = start + perPage; // Índice final
+
+        const paginateMyTask = myTasks.slice(start, end);
+
+        return {
+          myTasks: paginateMyTask,
           meta: {
             total, // Total de itens
             page, // Página atual

@@ -79,7 +79,6 @@ Dentro tópico Opções terão 06 itens, sendo
 Download
 Imagem
 Uploud Tarefa
-Iniciar Tarefa
 Finalizar Tarefa
 Observação (Exclamação)
 

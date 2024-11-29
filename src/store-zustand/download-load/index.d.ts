@@ -5,7 +5,7 @@ import { IDownloadLoadResponse } from "../../hooks/download-load/use-download-lo
  */
 
 export type IDownloadLoadPage = {
-  search: string;
+  searchItem: string;
   currentPage: number;
   itemsPerPage: number;
 };
@@ -18,6 +18,7 @@ type IDownloadLoadState = {
   currentPage: number;
   totalItemsPage: number;
   searchItem: string | null;
+  myTasks: any[];
 
   // ações
   setIsLoading: (isLoading: boolean) => void;
@@ -27,16 +28,13 @@ type IDownloadLoadState = {
   setCurrentPage: (currentPage: number) => void;
   setTotalItemsPage: (totalItemsPage: number) => void;
   setSearchItem: (searchItem: string) => void;
+  setMyTasks: (myTasks: any[]) => void;
 
   handleGetAllDowloadLoad: ({
     currentPage: number,
     itemsPerPage: number,
+    searchItem: string,
   }) => Promise<any>;
-  handleGetAllDowloadLoadByPage: ({
-    search,
-    currentPage,
-    itemsPerPage,
-  }: IDownloadLoadPage) => Promise<any>;
 };
 
 /**

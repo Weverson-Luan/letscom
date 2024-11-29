@@ -1,4 +1,7 @@
+import { useCallback } from "react";
+import { useMyTasks } from "../../../../../../hooks/download-load/use-my-tasks";
 import { DynamicTable } from "../../../../../../presentation/components/table-custom/table";
+import { useStoreZustandDownloadLoad } from "../../../../../../store-zustand/download-load";
 
 import {
   dataActionsTableMayTasks,
@@ -6,16 +9,24 @@ import {
 } from "./helpers/data";
 
 export function MyTasksTable() {
+  const { myTasks, isLoading } = useMyTasks();
+  const { currentPage, setCurrentPage, totalItemsPage, itemsPerPage } =
+    useStoreZustandDownloadLoad();
+
+  const nextPaginate = useCallback(() => {
+    setCurrentPage(currentPage + 1);
+  }, [currentPage]);
+
   return (
     <DynamicTable
       title="Minhas Tarefas"
       description="Gerencie suas tarefas e visualize quando quiser."
-      isLoadingPage={false}
-      data={[]}
+      isLoadingPage={isLoading}
+      data={myTasks ?? []}
       offset={1}
-      totalItems={1}
-      itemsPerPage={1}
-      nextPaginate={() => {}}
+      totalItems={totalItemsPage}
+      itemsPerPage={itemsPerPage}
+      nextPaginate={nextPaginate}
       columns={dataTitleTableMayTasks}
       actions={dataActionsTableMayTasks}
     />

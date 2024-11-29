@@ -1,4 +1,4 @@
-import { Trash } from "lucide-react";
+import { CircleAlert, Download, ImageDown, SquareCheck } from "lucide-react";
 
 export const dataTitleTableMayTasks = [
   { label: "Remessa", accessor: "remessa" },
@@ -21,9 +21,27 @@ export const dataTitleTableMayTasks = [
 
 export const dataActionsTableMayTasks = [
   {
-    icon: Trash,
-    label: "Excluir",
-    textColor: "text-red-600",
+    icon: Download,
+    label: "Baixar dados",
+    textColor: "text-blue-600",
+    onClick: (item: any) => console.log("Excluir", item),
+  },
+  {
+    icon: ImageDown,
+    label: "Baixar fotos",
+    textColor: "text-blue-600",
+    onClick: (item: any) => console.log("Excluir", item),
+  },
+  {
+    icon: CircleAlert,
+    label: "Observação",
+    textColor: "text-blue-600",
+    onClick: (item: any) => console.log("Excluir", item),
+  },
+  {
+    icon: SquareCheck,
+    label: "Finalizar tarefa",
+    textColor: "text-green-600",
     onClick: (item: any) => console.log("Excluir", item),
   },
 ];
