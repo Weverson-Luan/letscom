@@ -14,6 +14,7 @@ export const useStoreZustandManageClient = create<IManageClientState>(
     isModalCreateClient: false,
     isLoadingPage: false,
     clients: [],
+    contatos: [],
     itemsPerPage: 5,
     currentPage: 1,
     totalItemsPage: 0,
@@ -27,6 +28,9 @@ export const useStoreZustandManageClient = create<IManageClientState>(
     setClients: (clients) => set({ clients }),
     setSearchItem: (searchItem) => set({ searchItem }),
     setIsLoadingPage: (isLoadingPage) => set({ isLoadingPage }),
+    setContatos(contatos) {
+      set({ contatos });
+    },
     setIsModalCreateClient: (isModalCreateClient) =>
       set({ isModalCreateClient }),
 

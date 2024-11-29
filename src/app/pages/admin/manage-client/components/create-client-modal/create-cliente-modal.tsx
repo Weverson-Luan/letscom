@@ -2,7 +2,7 @@
  * IMPORTS
  */
 
-import { House, IdCard, Plus, User, X } from "lucide-react";
+import { House, IdCard, Plus, PlusCircle, User, X } from "lucide-react";
 import { Button } from "../../../../../../presentation/components/button/button";
 import {
   clienteSchema,
@@ -39,12 +39,40 @@ const CreateClientModal = ({
     handleSubmit,
     setValue,
     trigger,
+    watch,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
   const [cep, setCep] = useState("");
+  // const { contatos, setContatos } = useStoreZustandManageClient();
+  const [contatos, setContatos] = useState<
+    { nome: string; email: string; telefone: string }[]
+  >([]);
+
+  // Função para adicionar um novo contato ao array
+  const handleAddContato = () => {
+    const novoContato = {
+      nome: watch("usuarioCliente.nome_identificacao"),
+      email: watch("usuarioCliente.email"),
+      telefone: watch("usuarioCliente.telefone"),
+    };
+
+    // Valide os campos antes de adicionar
+    if (!novoContato.nome || !novoContato.email || !novoContato.telefone) {
+      alert("Por favor, preencha todos os campos de contato.");
+      return;
+    }
+
+    // Atualize o array de contatos
+    setContatos((prev) => [...prev, novoContato]);
+
+    // Limpe os campos após adicionar o contato
+    setValue("usuarioCliente.nome_identificacao", novoContato.email);
+    setValue("usuarioCliente.email", novoContato.email);
+    setValue("usuarioCliente.telefone", novoContato.telefone);
+  };
 
   function formatCep(cep: string) {
     // Remove todos os caracteres que não são números
@@ -335,34 +363,46 @@ const CreateClientModal = ({
           <div className="w-full h-4" />
 
           {/* Seção de usuário para cliente */}
-          <div className="flex items-center justify-center gap-2 w-[220px]">
-            <User className="text-zinc-800" size={24} />
-            <h2 className="text-xl font-semibold text-zinc-800">
-              Usuário para cliente
-            </h2>
+          <div className="w-full flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <User className="text-zinc-800" size={24} />
+              <h2 className="text-xl font-semibold text-zinc-800">
+                Usuário para cliente
+              </h2>
+            </div>
+
+            <Button
+              type="button"
+              size="sm"
+              className="h-8 gap-1"
+              onClick={handleAddContato}
+            >
+              <PlusCircle className="h-3.5 w-3.5" />
+              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                Adiconar contato
+              </span>
+            </Button>
           </div>
 
           {/* CONTATOS PARA CLIENTE */}
-          {/* <div className="flex flex-wrap gap-2 mb-2">
-            {[].map((email, _index) => (
+          <div className="flex flex-wrap gap-2 mb-2">
+            {contatos?.map((conctact, _index) => (
               <div
-                key={String(email)}
+                key={String(conctact.nome)}
                 className="py-1.5 px-2.5 bg-zinc-800 flex items-center rounded-md gap-2"
               >
-                <span className="text-zinc-300">
-                  {"weversonluan@gmail.com"}
-                </span>
+                <span className="text-zinc-300">{conctact.email}</span>
 
                 <button
                   onClick={() => {
-                    console.log(email);
+                    console.log(conctact);
                   }}
                 >
                   <X className="size-4 text-zinc-400" />
                 </button>
               </div>
             ))}
-          </div> */}
+          </div>
 
           <div className="grid grid-cols-2 gap-4 ">
             {/* NOME DE IDENTIFICACAO */}

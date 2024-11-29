@@ -9,6 +9,12 @@ export type IManageClientPage = {
   currentPage: number;
   itemsPerPage: number;
 };
+
+type IContact = {
+  nome_usuario: string;
+  email: string;
+  telefone: string;
+};
 type IManageClientState = {
   // estados
   isLoading: boolean;
@@ -19,6 +25,7 @@ type IManageClientState = {
   totalItemsPage: number;
   searchItem: string | null;
   isModalCreateClient: boolean;
+  contatos: IContact[] | null;
 
   // ações
   setIsLoading: (isLoading: boolean) => void;
@@ -29,6 +36,7 @@ type IManageClientState = {
   setCurrentPage: (currentPage: number) => void;
   setTotalItemsPage: (totalItemsPage: number) => void;
   setSearchItem: (searchItem: string) => void;
+  setContatos: (contatos: IContact[]) => void;
 
   handleGetAllClients: ({
     currentPage: number,
