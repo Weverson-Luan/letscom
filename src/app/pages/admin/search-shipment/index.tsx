@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { File, Trash } from "lucide-react";
+import { File, Trash, MessageCircle } from "lucide-react";
 
 // components
 import { Button } from "../../../../presentation/components/button/button";
@@ -121,10 +121,18 @@ const SearchShipment = () => {
                 className: "hidden md:table-cell",
               },
               { label: "Modelo", accessor: "modelo" },
+              { label: "Consultor", accessor: "consultor" },
+              { label: "Responsável", accessor: "responsavel" },
               { label: "Solicitado", accessor: "dataSolicitacao" },
               { label: "Finalizado", accessor: "dataFinalizacao" },
             ]}
             actions={[
+              {
+                icon: MessageCircle,
+                label: "Excluir",
+                textColor: "text-blue-600",
+                onClick: (item: any) => console.log("Excluir", item),
+              },
               {
                 icon: Trash,
                 label: "Excluir",
