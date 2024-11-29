@@ -56,8 +56,7 @@ const Expedition = () => {
         <Tabs defaultValue="all">
           <div className="flex items-center mb-4">
             <TabsList>
-              <TabsTrigger value="all">Remessas</TabsTrigger>
-              <TabsTrigger value="active">Minhas Tarefas</TabsTrigger>
+              <TabsTrigger value="all">Expedições</TabsTrigger>
             </TabsList>
             <div className="ml-auto flex items-center gap-2">
               {/* Adicionando o seletor de itens por página */}

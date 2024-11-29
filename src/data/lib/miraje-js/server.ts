@@ -112,11 +112,22 @@ export function makeServer() {
       this.get("/serach-spnment", (_schema, request: any) => {
         const page = parseInt(request.queryParams._page, 10) || 1; // Página atual
         const limit = parseInt(request.queryParams._limit, 10) || 5; // Itens por página
+        const search = request.queryParams.search?.toLowerCase() || ""; // Parâmetro de busca
+
+        // Filtrar clientes pelo nome (se `search` estiver presente)
+        const filteredSearchShipments = searchRequests.filter(
+          (searchShipment) =>
+            searchShipment.cliente.toLowerCase().includes(search) ||
+            searchShipment.remessa.toLowerCase().includes(search)
+        );
 
         const total = searchRequests.length; // Total de itens
         const start = (page - 1) * limit;
         const end = start + limit;
-        const paginateSearchShipment = searchRequests.slice(start, end);
+        const paginateSearchShipment = filteredSearchShipments.slice(
+          start,
+          end
+        );
 
         return {
           searchShipment: paginateSearchShipment,

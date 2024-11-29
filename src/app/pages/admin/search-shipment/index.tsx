@@ -17,6 +17,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "../../../../presentation/components/tabs";
+import { SearchInputShipment } from "./components/search-item";
 
 const SearchShipment = () => {
   const {
@@ -140,6 +141,7 @@ const SearchShipment = () => {
                 onClick: (item: any) => console.log("Excluir", item),
               },
             ]}
+            childerSearch={<SearchInputShipment />}
           />
         </Tabs>
       )}

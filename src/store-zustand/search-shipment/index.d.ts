@@ -33,6 +33,7 @@ type ISearchShipmentState = {
   handleGetAllSearchShipments: ({
     currentPage: number,
     itemsPerPage: number,
+    searchItem: string,
   }) => Promise<any>;
 };
 

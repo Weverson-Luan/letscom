@@ -3,7 +3,6 @@ import { create } from "zustand";
 // typings
 import { IManageClientState } from "./index";
 import { IDownloadLoadResponse } from "../../hooks/download-load/use-download-load";
-import { sleep } from "../../utils/sleep/sleep";
 import { handleGetCustomers } from "../../domain/use-cases/cutomers";
 
 // criação da store com Zustand (Clientes)
@@ -36,8 +35,6 @@ export const useStoreZustandManageClient = create<IManageClientState>(
 
     handleGetAllClients: async ({ currentPage, itemsPerPage, searchItem }) => {
       set({ isLoadingPage: true });
-
-      await sleep(500);
 
       const data = (await handleGetCustomers(
         "Token",

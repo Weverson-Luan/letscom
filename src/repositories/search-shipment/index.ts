@@ -13,12 +13,13 @@ const searchSpnmentRepository: ISearchShipmentRepository = {
   async getAllSearchShipment<T>(
     accessToken: string,
     currentPage: number = 1,
-    itemsPerPage: number = 5
+    itemsPerPage: number = 5,
+    searchItem = ""
   ): Promise<T | null> {
     const Instance = await AxiosService.createAxiosInstance(accessToken);
 
     const customers = await Instance.get(
-      `serach-spnment?_page=${currentPage}&_limit=${itemsPerPage}`,
+      `serach-spnment?_page=${currentPage}&_limit=${itemsPerPage}&search=${searchItem}`,
       {
         headers: {
           "content-type": "application/json; charset=UTF-8",

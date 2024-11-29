@@ -43,6 +43,7 @@ export function DynamicTable({
   selectedItems = [], // Recebe os itens selecionados
   onSelectAll, // Função para selecionar todos
   onSelectItem, // Função para selecionar um item individual
+  childerSearch, // componente para pesquisa item na tabela
 }: any) {
   // Verifica se todos os itens estão selecionados
   const isAllSelected = selectedItems.length === data.length;
@@ -55,9 +56,7 @@ export function DynamicTable({
           <CardDescription>{description}</CardDescription>
         </div>
 
-        <div>
-          <SearchInput />
-        </div>
+        <div>{childerSearch ? childerSearch : <SearchInput />}</div>
       </CardHeader>
 
       {isLoadingPage ? (

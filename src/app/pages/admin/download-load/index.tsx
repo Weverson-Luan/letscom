@@ -32,7 +32,6 @@ const DowloadLoad = () => {
     [itemsPerPage]
   );
 
-  // const { downloads } = useDownloadLoad();
   return (
     <>
       {isLoading ? (
@@ -41,7 +40,7 @@ const DowloadLoad = () => {
         <Tabs defaultValue="all">
           <div className="flex items-center">
             <TabsList>
-              <TabsTrigger value="all">Remessas</TabsTrigger>
+              <TabsTrigger value="all">Pedidos</TabsTrigger>
               <TabsTrigger value="my-tasks">Minhas Tarefas</TabsTrigger>
             </TabsList>
 

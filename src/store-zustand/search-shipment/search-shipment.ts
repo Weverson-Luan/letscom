@@ -3,7 +3,6 @@ import { create } from "zustand";
 // typings
 import { ISearchShipmentState } from "./index";
 import { IDownloadLoadResponse } from "../../hooks/download-load/use-download-load";
-import { sleep } from "../../utils/sleep/sleep";
 import { handleGetSearchSpnment } from "../../domain/use-cases/search-spnment";
 
 // criação da store com Zustand (Remessas)
@@ -17,7 +16,7 @@ export const useStoreZustandSearchShipment = create<ISearchShipmentState>(
     itemsPerPage: 5,
     currentPage: 1,
     totalItemsPage: 0,
-    searchItem: null,
+    searchItem: "",
 
     // ações
     setIsLoading: (isLoading) => set({ isLoading }),
@@ -29,15 +28,18 @@ export const useStoreZustandSearchShipment = create<ISearchShipmentState>(
     setIsLoadingPage: (isLoadingPage) => set({ isLoadingPage }),
     setIsModal: (isModal) => set({ isModal }),
 
-    handleGetAllSearchShipments: async ({ currentPage, itemsPerPage }) => {
+    handleGetAllSearchShipments: async ({
+      currentPage,
+      itemsPerPage,
+      searchItem,
+    }) => {
       set({ isLoadingPage: true });
-
-      await sleep(500);
 
       const data = (await handleGetSearchSpnment(
         "Token",
         currentPage,
-        itemsPerPage
+        itemsPerPage,
+        searchItem
       )) as IDownloadLoadResponse[];
 
       set({ searchShipment: data! });

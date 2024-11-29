@@ -37,6 +37,7 @@ function useManageSearchShipment() {
       const response = await handleGetAllSearchShipments({
         currentPage,
         itemsPerPage,
+        searchItem,
       });
 
       return response;

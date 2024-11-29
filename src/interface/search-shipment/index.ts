@@ -6,7 +6,8 @@ type ISearchShipmentRepository = {
   getAllSearchShipment<T>(
     accessToken: string,
     currentPage: number,
-    itemsPerPage: number
+    itemsPerPage: number,
+    searchItem: string
   ): Promise<T | null>;
 };
 

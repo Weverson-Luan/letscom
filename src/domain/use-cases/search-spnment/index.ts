@@ -10,13 +10,15 @@ import { searchSpnmentRepository } from "../../../repositories/search-shipment";
 const handleGetSearchSpnment = async (
   accessToken: string,
   currentPage: number,
-  itemsPerPage: number
+  itemsPerPage: number,
+  searchItem: string
 ) => {
   try {
     const data = await searchSpnmentRepository.getAllSearchShipment(
       accessToken,
       currentPage,
-      itemsPerPage
+      itemsPerPage,
+      searchItem
     );
 
     return data;
