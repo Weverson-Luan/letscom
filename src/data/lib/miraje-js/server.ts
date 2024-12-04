@@ -68,7 +68,7 @@ export function makeServer() {
         const search = request.queryParams.search?.toLowerCase() || ""; // Parâmetro de busca
 
         // Filtrar clientes pelo nome (se `search` estiver presente)
-        const filteredSearchPickTasks = myTasks.filter(
+        const filteredSearchPickTasks = pickUpTask.filter(
           (searchShipment) =>
             searchShipment.nome_identificacao.toLowerCase().includes(search) ||
             searchShipment.remessa.toLowerCase().includes(search) ||

@@ -20,7 +20,7 @@ export interface IMyTasksResponse {
   meta: {};
 }
 function useMyTasks() {
-  const { currentPage, itemsPerPage, searchItem, setIsLoadingPage } =
+  const { currentPage, itemsPerPage, searchItem } =
     useStoreZustandDownloadLoad();
 
   // Chave de cache única baseada na página atual e na quantidade de itens por página
