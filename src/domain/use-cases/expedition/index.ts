@@ -10,13 +10,15 @@ import { expeditionRepository } from "../../../repositories/expedition";
 const handleGetExpedition = async (
   accessToken: string,
   currentPage: number,
-  itemsPerPage: number
+  itemsPerPage: number,
+  searchItem: string
 ) => {
   try {
     const data = await expeditionRepository.getAllExpedition(
       accessToken,
       currentPage,
-      itemsPerPage
+      itemsPerPage,
+      searchItem
     );
 
     return data;

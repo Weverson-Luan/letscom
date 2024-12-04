@@ -6,7 +6,8 @@ type IExpeditionRepository = {
   getAllExpedition<T>(
     accessToken: string,
     currentPage: number,
-    itemsPerPage: number
+    itemsPerPage: number,
+    searchItem: string
   ): Promise<T | null>;
 };
 

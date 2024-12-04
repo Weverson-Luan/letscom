@@ -91,11 +91,19 @@ export function makeServer() {
         const perPage = parseInt(request.queryParams._limit, 10) || 5; // Itens por página
         const search = request.queryParams.search?.toLowerCase() || ""; // Parâmetro de busca
 
-        const total = myTasks.length; // Total de itens
+        // Filtrar clientes pelo nome (se `search` estiver presente)
+        const filteredSearchMyTasks = myTasks.filter(
+          (searchShipment) =>
+            searchShipment.nome_identificacao.toLowerCase().includes(search) ||
+            searchShipment.remessa.toLowerCase().includes(search) ||
+            searchShipment.solicitante.toLowerCase().includes(search)
+        );
+
+        const total = filteredSearchMyTasks.length; // Total de itens
         const start = (page - 1) * perPage; // Índice inicial
         const end = start + perPage; // Índice final
 
-        const paginateMyTask = myTasks.slice(start, end);
+        const paginateMyTask = filteredSearchMyTasks.slice(start, end);
 
         return {
           myTasks: paginateMyTask,
@@ -114,12 +122,21 @@ export function makeServer() {
       this.get("/expedition", (_schema, request: any) => {
         const page = parseInt(request.queryParams._page, 10) || 1; // Página atual
         const limit = parseInt(request.queryParams._limit, 10) || 5; // Itens por página
+        const search = request.queryParams.search?.toLowerCase() || ""; // Parâmetro de busca
 
-        const total = expedition.length;
+        // Filtrar clientes pelo nome (se `search` estiver presente)
+        const filteredSearchExpedition = expedition.filter(
+          (searchShipment) =>
+            searchShipment.cliente.toLowerCase().includes(search) ||
+            searchShipment.remessa.toLowerCase().includes(search) ||
+            searchShipment.solicitante.toLowerCase().includes(search)
+        );
+
+        const total = filteredSearchExpedition.length;
         const start = (page - 1) * limit;
         const end = start + limit;
 
-        const paginatedExpeditions = expedition.slice(start, end);
+        const paginatedExpeditions = filteredSearchExpedition.slice(start, end);
 
         return {
           expedition: paginatedExpeditions,

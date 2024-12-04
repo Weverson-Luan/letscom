@@ -22,6 +22,7 @@ import { useExpedition } from "../../../../hooks/expedition/use-expedition";
 // zustand
 import { useStoreZustandExpedition } from "../../../../store-zustand/expedition/expedition";
 import { dataActionsExpedtition, dataTitleExpedtition } from "./helpers/data";
+import { SearchInputExpedition } from "./components/search-expedition";
 
 const Expedition = () => {
   const {
@@ -89,6 +90,7 @@ const Expedition = () => {
             nextPaginate={nextPaginate}
             columns={dataTitleExpedtition}
             actions={dataActionsExpedtition}
+            childerSearch={<SearchInputExpedition />}
           />
         </Tabs>
       )}

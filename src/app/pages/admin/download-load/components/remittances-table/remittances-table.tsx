@@ -23,20 +23,18 @@ export function RemittancesTable() {
   }, [currentPage]);
   return (
     <>
-      {downloads?.length > 0 && (
-        <DynamicTable
-          title="Pegar Tarefas"
-          description="Gerencie suas remessas e visualize quando quiser."
-          isLoadingPage={isLoadingPage}
-          data={downloads ?? []}
-          offset={1}
-          totalItems={totalItemsPage}
-          itemsPerPage={itemsPerPage}
-          nextPaginate={nextPaginate}
-          columns={dataTitleTableRemittances}
-          actions={dataActionsTableRemittances}
-        />
-      )}
+      <DynamicTable
+        title="Pegar Tarefas"
+        description="Gerencie suas remessas e visualize quando quiser."
+        isLoadingPage={isLoadingPage}
+        data={downloads ?? []}
+        offset={1}
+        totalItems={totalItemsPage}
+        itemsPerPage={itemsPerPage}
+        nextPaginate={nextPaginate}
+        columns={dataTitleTableRemittances}
+        actions={dataActionsTableRemittances}
+      />
     </>
   );
 }

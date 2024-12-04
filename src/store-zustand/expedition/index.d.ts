@@ -31,6 +31,7 @@ type IExpeditionState = {
   handleGetAllExpedition: ({
     currentPage: number,
     itemsPerPage: number,
+    searchItem: string,
   }) => Promise<any>;
 };
 

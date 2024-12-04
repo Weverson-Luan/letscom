@@ -35,6 +35,7 @@ function useExpedition() {
       const response = await handleGetAllExpedition({
         currentPage,
         itemsPerPage,
+        searchItem,
       });
 
       return response;

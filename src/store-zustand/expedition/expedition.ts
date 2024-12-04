@@ -15,7 +15,7 @@ export const useStoreZustandExpedition = create<IExpeditionState>((set) => ({
   itemsPerPage: 5,
   currentPage: 1,
   totalItemsPage: 0,
-  searchItem: null,
+  searchItem: "",
 
   // ações
   setIsLoading: (isLoading) => set({ isLoading }),
@@ -26,7 +26,7 @@ export const useStoreZustandExpedition = create<IExpeditionState>((set) => ({
   setSearchItem: (searchItem) => set({ searchItem }),
   setIsLoadingPage: (isLoadingPage) => set({ isLoadingPage }),
 
-  handleGetAllExpedition: async ({ currentPage, itemsPerPage }) => {
+  handleGetAllExpedition: async ({ currentPage, itemsPerPage, searchItem }) => {
     set({ isLoadingPage: true });
 
     await sleep(500);
@@ -34,7 +34,8 @@ export const useStoreZustandExpedition = create<IExpeditionState>((set) => ({
     const data = (await handleGetExpedition(
       "Token",
       currentPage,
-      itemsPerPage
+      itemsPerPage,
+      searchItem
     )) as IDownloadLoadResponse[];
 
     set({ expedition: data! });
