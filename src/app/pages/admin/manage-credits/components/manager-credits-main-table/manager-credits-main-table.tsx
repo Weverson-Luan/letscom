@@ -1,4 +1,4 @@
-import { Trash } from "lucide-react";
+import { Eye } from "lucide-react";
 
 import { Button } from "../../../../../../presentation/components/button/button";
 
@@ -22,11 +22,9 @@ export function ManagerCreditsMainTable({ credits }: { credits: any }) {
       <TableCell className="font-medium">
         {handleLimitTextdisplayByAmount({
           text: credits.cliente,
-          limit: 12,
+          limit: 24,
         })}
       </TableCell>
-
-      <TableCell className="hidden md:table-cell">{credits.produto}</TableCell>
 
       {/* Ações */}
       <TableCell>
@@ -35,7 +33,7 @@ export function ManagerCreditsMainTable({ credits }: { credits: any }) {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button aria-haspopup="true" size="icon" variant="ghost">
-                <Trash className="h-4 w-4 text-red-600" />
+                <Eye className="h-4 w-4 text-blue-600" />
                 <span className="sr-only">Excluir</span>
               </Button>
             </DropdownMenuTrigger>

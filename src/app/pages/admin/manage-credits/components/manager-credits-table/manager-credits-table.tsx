@@ -57,11 +57,11 @@ export function ManagerCreditsTable({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Cliente</TableHead>
+                <TableHead>Nome</TableHead>
 
-                <TableHead className="hidden md:table-cell">Produto</TableHead>
-
-                <TableHead className="hidden md:table-cell">Ações</TableHead>
+                <TableHead className="hidden md:table-cell">
+                  Informações
+                </TableHead>
                 <TableHead>
                   <span className="sr-only">Ações </span>
                 </TableHead>
