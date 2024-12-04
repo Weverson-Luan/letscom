@@ -22,6 +22,7 @@ import {
   dataActionsTableCustomers,
   dataTitleTableCustomers,
 } from "./helpers/data";
+import { SearchInputClient } from "./components/search-client";
 
 const ManageClient = () => {
   const {
@@ -103,6 +104,7 @@ const ManageClient = () => {
               nextPaginate={nextPaginate}
               columns={dataTitleTableCustomers}
               actions={dataActionsTableCustomers}
+              childerSearch={<SearchInputClient />}
             />
           </Tabs>
 
