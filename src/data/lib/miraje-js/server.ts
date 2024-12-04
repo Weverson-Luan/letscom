@@ -30,9 +30,18 @@ export function makeServer() {
           },
           {
             id: 2,
-            email: "tiago@letscom.com",
+            email: "tiago2024@letscom.com",
             password: "123456789",
             name: "Tiago Gugel",
+            avatar:
+              "https://img.freepik.com/fotos-premium/ilustracao-3d-do-utilizador_541443-3647.jpg?w=740",
+            role: "admin",
+          },
+          {
+            id: 3,
+            email: "leandro2024@letscom.com",
+            password: "223456781",
+            name: "Leandro",
             avatar:
               "https://img.freepik.com/fotos-premium/ilustracao-3d-do-utilizador_541443-3647.jpg?w=740",
             role: "admin",
