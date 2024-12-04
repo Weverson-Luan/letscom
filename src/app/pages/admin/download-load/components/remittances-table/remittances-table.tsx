@@ -1,14 +1,15 @@
 import { useCallback } from "react";
 import { useStoreZustandDownloadLoad } from "../../../../../../store-zustand/download-load";
-import { useDownloadLoad } from "../../../../../../hooks/download-load/use-download-load";
+import { usePickUpTasks } from "../../../../../../hooks/download-load/use-download-load";
 import { DynamicTable } from "../../../../../../presentation/components/table-custom/table";
 import {
   dataActionsTableRemittances,
   dataTitleTableRemittances,
 } from "./helpers/data";
+import { SearchInputPickUpTasks } from "../pick-up-tasks";
 
 export function RemittancesTable() {
-  const { downloads } = useDownloadLoad();
+  const { downloads } = usePickUpTasks();
 
   const {
     currentPage,
@@ -34,6 +35,7 @@ export function RemittancesTable() {
         nextPaginate={nextPaginate}
         columns={dataTitleTableRemittances}
         actions={dataActionsTableRemittances}
+        childerSearch={<SearchInputPickUpTasks />}
       />
     </>
   );

@@ -9,36 +9,27 @@ export type IDownloadLoadPage = {
   currentPage: number;
   itemsPerPage: number;
 };
-type IDownloadLoadState = {
+type IPickUpTasksState = {
   // estados
   isLoading: boolean;
   isLoadingPage: boolean;
-  downloadLoad: IDownloadLoadResponse[];
   itemsPerPage: number;
   currentPage: number;
   totalItemsPage: number;
   searchItem: string | null;
-  myTasks: any[];
+  pickUpTasks: any[];
 
   // ações
   setIsLoading: (isLoading: boolean) => void;
   setIsLoadingPage: (isLoadingPage: boolean) => void;
-  setDownloadLoad: (downloadLoad: IDownloadLoadResponse[]) => void;
   setItemsPerPage: (itemsPerPage: number) => void;
   setCurrentPage: (currentPage: number) => void;
   setTotalItemsPage: (totalItemsPage: number) => void;
   setSearchItem: (searchItem: string) => void;
-  setMyTasks: (myTasks: any[]) => void;
-
-  handleGetAllDowloadLoad: ({
-    currentPage: number,
-    itemsPerPage: number,
-    searchItem: string,
-    searchItem: string,
-  }) => Promise<any>;
+  setPickUpTasks: (pickUpTasks: any[]) => void;
 };
 
 /**
  * EXPORTS
  */
-export { IDownloadLoadState };
+export { IPickUpTasksState };

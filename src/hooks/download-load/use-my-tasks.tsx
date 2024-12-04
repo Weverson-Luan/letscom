@@ -3,7 +3,7 @@
  */
 import { useQuery } from "@tanstack/react-query";
 import { useStoreZustandDownloadLoad } from "../../store-zustand/download-load";
-import { handleGetMyTasks } from "../../domain/use-cases/my-tasks";
+import { handleGetPickUpTasks } from "../../domain/use-cases/my-tasks";
 
 export interface IMyTasksResponse {
   myTasks: {
@@ -33,7 +33,7 @@ function useMyTasks() {
   } = useQuery<IMyTasksResponse>({
     queryKey,
     queryFn: async () => {
-      const response = await handleGetMyTasks(
+      const response = await handleGetPickUpTasks(
         "Token",
         currentPage,
         itemsPerPage,

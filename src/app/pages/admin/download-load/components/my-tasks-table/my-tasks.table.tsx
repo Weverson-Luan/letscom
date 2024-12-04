@@ -7,6 +7,7 @@ import {
   dataActionsTableMayTasks,
   dataTitleTableMayTasks,
 } from "./helpers/data";
+import { SearchInputMyTasks } from "../search-my-task";
 
 export function MyTasksTable() {
   const { myTasks, isLoading } = useMyTasks();
@@ -29,6 +30,7 @@ export function MyTasksTable() {
       nextPaginate={nextPaginate}
       columns={dataTitleTableMayTasks}
       actions={dataActionsTableMayTasks}
+      childerSearch={<SearchInputMyTasks />}
     />
   );
 }

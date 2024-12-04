@@ -65,12 +65,21 @@ export function makeServer() {
       this.get("/pick-up-tasks", (_schema, request: any) => {
         const page = parseInt(request.queryParams._page, 10) || 1; // Página atual
         const perPage = parseInt(request.queryParams._limit, 10) || 5; // Itens por página
+        const search = request.queryParams.search?.toLowerCase() || ""; // Parâmetro de busca
 
-        const total = pickUpTask.length; // Total de itens
+        // Filtrar clientes pelo nome (se `search` estiver presente)
+        const filteredSearchPickTasks = myTasks.filter(
+          (searchShipment) =>
+            searchShipment.nome_identificacao.toLowerCase().includes(search) ||
+            searchShipment.remessa.toLowerCase().includes(search) ||
+            searchShipment.solicitante.toLowerCase().includes(search)
+        );
+
+        const total = filteredSearchPickTasks.length; // Total de itens
         const start = (page - 1) * perPage; // Índice inicial
         const end = start + perPage; // Índice final
 
-        const paginatedPickUpTask = pickUpTask.slice(start, end);
+        const paginatedPickUpTask = filteredSearchPickTasks.slice(start, end);
 
         return {
           pickUpTask: paginatedPickUpTask,

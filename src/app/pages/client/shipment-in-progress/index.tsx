@@ -13,7 +13,7 @@ import {
 
 import { Spinner } from "../../../../presentation/components/spinner/spinner";
 import { useCallback, useEffect, useState } from "react";
-import { handleSigninWhithUserAndPassword } from "../../../../domain/use-cases/dowload-load";
+import { handleGetPickUpTasks } from "../../../../domain/use-cases/pick-up-task";
 import { sleep } from "../../../../utils/sleep/sleep";
 import { ShipmentInProgressTable } from "./components/shipment-in-progress-trable/shipment-in-progress-trable";
 
@@ -42,10 +42,11 @@ const ShippingInProgressPages = () => {
     console.log(currentPage);
 
     await sleep(500);
-    const data = await handleSigninWhithUserAndPassword(
+    const data = await handleGetPickUpTasks(
       "Token",
       currentPage,
-      itemsPerPage
+      itemsPerPage,
+      ""
     );
 
     setDowloadLoad(data);

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 import { IDownloadLoadResponse } from "../../hooks/download-load/use-download-load";
-import { handleSigninWhithUserAndPassword } from "../../domain/use-cases/dowload-load";
+import { handleGetPickUpTasks } from "../../domain/use-cases/pick-up-task";
 import { sleep } from "../../utils/sleep/sleep";
 // typings
 import { IDownloadLoadState } from "./index.d";
@@ -17,7 +17,7 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
     itemsPerPage: 5,
     currentPage: 1,
     totalItemsPage: 0,
-    searchItem: null,
+    searchItem: "",
 
     // ações
     setIsLoading: (isLoading) => set({ isLoading }),
@@ -29,15 +29,20 @@ export const useStoreZustandDownloadLoad = create<IDownloadLoadState>(
     setIsLoadingPage: (isLoadingPage) => set({ isLoadingPage }),
     setMyTasks: (myTasks) => set({ myTasks }),
 
-    handleGetAllDowloadLoad: async ({ currentPage, itemsPerPage }) => {
+    handleGetAllDowloadLoad: async ({
+      currentPage,
+      itemsPerPage,
+      searchItem,
+    }) => {
       set({ isLoadingPage: true });
 
       await sleep(500);
 
-      const data = (await handleSigninWhithUserAndPassword(
+      const data = (await handleGetPickUpTasks(
         "Token",
         currentPage,
-        itemsPerPage
+        itemsPerPage,
+        searchItem
       )) as IDownloadLoadResponse[];
 
       set({ downloadLoad: data });

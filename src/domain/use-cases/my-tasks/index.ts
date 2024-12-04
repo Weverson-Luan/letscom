@@ -7,7 +7,7 @@ import { myTasksRepository } from "../../../repositories/my-tasks";
 /**
  * Função que busca dados minhas tarefas 🛠️.
  */
-const handleGetMyTasks = async (
+const handleGetPickUpTasks = async (
   accessToken: string,
   currentPage: number,
   itemsPerPage: number,
@@ -32,4 +32,4 @@ const handleGetMyTasks = async (
 /**
  * EXPORTS
  */
-export { handleGetMyTasks };
+export { handleGetPickUpTasks };

@@ -2,7 +2,8 @@
  * IMPORTS
  */
 import { useQuery } from "@tanstack/react-query";
-import { useStoreZustandDownloadLoad } from "../../store-zustand/download-load";
+import { useStoreZustandPickUpTasks } from "../../store-zustand/pick-up-tasks/pick-up-tasks";
+import { handleGetPickUpTasks } from "../../domain/use-cases/pick-up-task";
 
 export interface IDownloadLoadResponse {
   pickUpTask: {
@@ -18,12 +19,12 @@ export interface IDownloadLoadResponse {
   }[];
   meta: {};
 }
-function useDownloadLoad() {
-  const { handleGetAllDowloadLoad, currentPage, itemsPerPage, searchItem } =
-    useStoreZustandDownloadLoad();
+function usePickUpTasks() {
+  const { currentPage, itemsPerPage, searchItem } =
+    useStoreZustandPickUpTasks();
 
   // Chave de cache única baseada na página atual e na quantidade de itens por página
-  const queryKey = ["download-load", currentPage, itemsPerPage, searchItem];
+  const queryKey = ["pick-up-tasks", currentPage, itemsPerPage, searchItem];
 
   const {
     isLoading,
@@ -32,10 +33,12 @@ function useDownloadLoad() {
   } = useQuery<IDownloadLoadResponse>({
     queryKey,
     queryFn: async () => {
-      const response = await handleGetAllDowloadLoad({
+      const response = await handleGetPickUpTasks(
+        "Token",
         currentPage,
         itemsPerPage,
-      });
+        searchItem!
+      );
 
       return response;
     },
@@ -54,4 +57,4 @@ function useDownloadLoad() {
 /**
  * EXPORTS
  */
-export { useDownloadLoad };
+export { usePickUpTasks };

@@ -7,16 +7,18 @@ import { dowloadLoadRepository } from "../../../repositories/dowload-load";
 /**
  * Função que realizará a bsuca de baixar cargas 🛠️.
  */
-const handleSigninWhithUserAndPassword = async (
+const handleGetPickUpTasks = async (
   accessToken: string,
   currentPage: number,
-  itemsPerPage: number
+  itemsPerPage: number,
+  searchItem: string
 ) => {
   try {
     const data = await dowloadLoadRepository.getDowloadLoad(
       accessToken,
       currentPage,
-      itemsPerPage
+      itemsPerPage,
+      searchItem
     );
 
     return data;
@@ -34,4 +36,4 @@ const handleSigninWhithUserAndPassword = async (
 /**
  * EXPORTS
  */
-export { handleSigninWhithUserAndPassword };
+export { handleGetPickUpTasks };
