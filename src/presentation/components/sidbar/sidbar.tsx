@@ -17,7 +17,7 @@ import Image from "../../../common/assets/png/logo-let-scom.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useStoreZustandUserAuth } from "../../../store-zustand/user-auth";
 
-function Sidbar() {
+function Sidebar() {
   const { user, setUser, setIsAuthenticated } = useStoreZustandUserAuth();
   const router = useNavigate();
   const location = useLocation();
@@ -292,4 +292,4 @@ function Sidbar() {
   );
 }
 
-export { Sidbar };
+export { Sidebar };

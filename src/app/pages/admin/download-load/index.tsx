@@ -45,10 +45,12 @@ const DowloadLoad = () => {
             </TabsList>
 
             <div className="ml-auto flex items-center gap-2">
-              <SelectPagination
-                itemsPerPage={itemsPerPage}
-                handleItemsPerPageChange={handleItemsPerPageChange}
-              />
+              <div className="hidden md:block">
+                <SelectPagination
+                  itemsPerPage={itemsPerPage}
+                  handleItemsPerPageChange={handleItemsPerPageChange}
+                />
+              </div>
 
               <Button
                 size="sm"

@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { cn } from "../../../data/lib/tailwind-merge";
 
 const Card = React.forwardRef<
@@ -9,7 +8,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "rounded-lg border bg-card text-card-foreground shadow-sm md:p-4 lg:p-6", // Ajuste de padding em telas maiores
       className
     )}
     {...props}
@@ -21,7 +20,14 @@ const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex space-y-1.5 p-6", className)} {...props} />
+  <div
+    ref={ref}
+    className={cn(
+      "flex flex-col space-y-2 p-4 md:flex-row md:justify-between md:items-center md:p-6", // Adaptação flexível do layout
+      className
+    )}
+    {...props}
+  />
 ));
 CardHeader.displayName = "CardHeader";
 
@@ -32,7 +38,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
+      "text-lg font-semibold leading-tight md:text-xl lg:text-2xl", // Fontes maiores em telas maiores
       className
     )}
     {...props}
@@ -46,7 +52,10 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn(
+      "text-xs text-muted-foreground md:text-sm lg:text-base", // Adaptação do tamanho do texto
+      className
+    )}
     {...props}
   />
 ));
@@ -56,7 +65,14 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  <div
+    ref={ref}
+    className={cn(
+      "p-4 pt-0 md:p-6 md:pt-0 lg:px-8", // Ajustes de padding para telas maiores
+      className
+    )}
+    {...props}
+  />
 ));
 CardContent.displayName = "CardContent";
 
@@ -66,7 +82,10 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
+    className={cn(
+      "flex flex-col items-center space-y-4 p-4 pt-0 md:flex-row md:justify-between md:items-center md:p-6", // Flexível em diferentes tamanhos de tela
+      className
+    )}
     {...props}
   />
 ));

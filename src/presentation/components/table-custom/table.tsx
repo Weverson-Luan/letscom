@@ -49,21 +49,20 @@ export function DynamicTable({
   const isAllSelected = selectedItems.length === data.length;
 
   return (
-    <Card>
+    <Card className="">
       <CardHeader className="items-center justify-between">
         <div>
           <CardTitle>{title}</CardTitle>
           <CardDescription>{description}</CardDescription>
         </div>
-
         <div>{childerSearch ? childerSearch : <SearchInput />}</div>
       </CardHeader>
 
       {isLoadingPage ? (
         <SpinnerTable />
       ) : (
-        <CardContent>
-          <Table>
+        <CardContent className="overflow-auto">
+          <Table className="min-w-full">
             <TableHeader>
               <TableRow>
                 {/* Checkbox de Seleção Todos */}
@@ -80,15 +79,21 @@ export function DynamicTable({
 
                 {/* Dynamic column headers */}
                 {columns.map((column: any, index: number) => (
-                  <TableHead key={index} className={column.className || ""}>
+                  <TableHead
+                    key={index}
+                    className={`${
+                      index < 2
+                        ? "text-left" // Primeiras 2 colunas sempre visíveis
+                        : "hidden md:table-cell" // Outras colunas visíveis apenas em dispositivos maiores
+                    }`}
+                  >
                     {column.label}
                   </TableHead>
                 ))}
 
+                {/* Actions */}
                 {actions.length > 0 && (
-                  <TableHead className="w-16 text-center text-zinc-600">
-                    Ações
-                  </TableHead>
+                  <TableHead className="w-16 text-center">Ações</TableHead>
                 )}
               </TableRow>
             </TableHeader>
@@ -97,7 +102,7 @@ export function DynamicTable({
                 <TableRow key={index} className="cursor-pointer">
                   {/* Checkbox de Seleção Individual */}
                   {checkBox && (
-                    <TableCell className="md:table-cell">
+                    <TableCell>
                       <input
                         type="checkbox"
                         checked={selectedItems.includes(item.id)}
@@ -111,7 +116,11 @@ export function DynamicTable({
                   {columns.map((column: any, colIndex: number) => (
                     <TableCell
                       key={colIndex}
-                      className={column.className || ""}
+                      className={`${
+                        colIndex < 2
+                          ? "text-left" // Primeiras 2 colunas sempre visíveis
+                          : "hidden md:table-cell" // Outras colunas visíveis apenas em dispositivos maiores
+                      }`}
                     >
                       {column.isBadge ? (
                         <Badge
@@ -134,7 +143,7 @@ export function DynamicTable({
                   {/* Actions */}
                   {actions.length > 0 && (
                     <TableCell>
-                      <div className="w-full flex justify-center space-x-2">
+                      <div className="flex justify-center space-x-2">
                         {actions.map((action: any, actionIndex: number) => (
                           <DropdownMenu key={actionIndex}>
                             <DropdownMenuTrigger asChild>
@@ -144,9 +153,7 @@ export function DynamicTable({
                                 variant="ghost"
                                 onClick={() => action.onClick(item)}
                               >
-                                <action.icon
-                                  className={`h-4 w-4 ${action.textColor}`}
-                                />
+                                <action.icon className="h-4 w-4" />
                                 <span className="sr-only">{action.label}</span>
                               </Button>
                             </DropdownMenuTrigger>
@@ -173,7 +180,7 @@ export function DynamicTable({
       )}
 
       <CardFooter>
-        <div className="flex items-center w-full justify-between">
+        <div className="flex flex-col md:flex-row items-center w-full justify-between space-y-2 md:space-y-0">
           <div className="text-xs text-muted-foreground">
             Mostrando{" "}
             <strong>
@@ -181,11 +188,10 @@ export function DynamicTable({
             </strong>{" "}
             de <strong>{totalItems}</strong> registros
           </div>
-          <div className="flex">
+          <div className="flex space-x-2">
             <Button
               variant="ghost"
               size="sm"
-              type="button"
               disabled={offset === 0}
               onClick={() => nextPaginate(-1)}
             >
@@ -195,7 +201,6 @@ export function DynamicTable({
             <Button
               variant="ghost"
               size="sm"
-              type="button"
               disabled={offset + itemsPerPage >= totalItems}
               onClick={() => nextPaginate(1)}
             >

@@ -1,7 +1,7 @@
 /**
  * IMPORTS
  */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 // pages
@@ -14,7 +14,7 @@ import { ManageCredits } from "../pages/admin/manage-credits";
 import { SearchShipment } from "../pages/admin/search-shipment";
 
 // components-main
-import { Sidbar } from "../../presentation/components/sidbar/sidbar";
+import { Sidebar } from "../../presentation/components/sidbar/sidbar";
 
 // clients
 import { ListPvcCardPage } from "../pages/client/list-pvc-card";
@@ -23,13 +23,39 @@ import { ShippingHistoryPages } from "../pages/client/shipping-history";
 import { useStoreZustandUserAuth } from "../../store-zustand/user-auth";
 import { ShippingInProgressPages } from "../pages/client/shipment-in-progress";
 import { ShippingSearchRequestPages } from "../pages/client/search-requests";
+import { Menu } from "lucide-react";
+import MobileMenu from "../../presentation/components/sidebar-mobile/sidebar-mobile";
 
 // Layout para as rotas autenticadas
 function AuthenticatedLayout() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
-    <div className="flex min-h-screen">
-      <Sidbar />
-      <div className="flex-1 bg-background p-10">
+    <div className="flex min-h-screen bg-gray-custom900">
+      {/* Sidebar para telas maiores */}
+      <div className="hidden md:block min-h-screen">
+        <Sidebar />
+      </div>
+
+      {/* Menu Mobile */}
+      <div className=" block md:hidden fixed top-0 left-0 w-full bg-gray-custom900 p-4 flex items-center justify-between">
+        {/* Botão de abrir o menu */}
+        <Menu
+          className="text-white text-2xl cursor-pointer"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        />
+      </div>
+
+      {/* Drawer do menu mobile */}
+      {isMobileMenuOpen && (
+        <div className="fixed top-0 left-0 w-64 h-full z-50">
+          <MobileMenu
+            closeMenu={() => setIsMobileMenuOpen(false)}
+            isOpen={isMobileMenuOpen}
+          />
+        </div>
+      )}
+
+      <div className="flex-1 bg-background p-4 mt-12 md:mt-0">
         <Outlet />
       </div>
     </div>
@@ -114,13 +140,13 @@ function AppRoutes() {
   }, []);
 
   return (
-    <>
+    <div>
       {isAuthenticated ? (
         <RouterProvider router={isAuthenticated ? appRoutes : routerOpen} />
       ) : (
         <SignIn />
       )}
-    </>
+    </div>
   );
 }
 

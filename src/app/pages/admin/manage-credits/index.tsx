@@ -120,11 +120,13 @@ const ManageCredits = () => {
             <div className="flex-1 bg-neutral-custom500 rounded h-full">
               <div className="flex items-center">
                 <div className="ml-auto flex items-center gap-2 mb-2">
-                  {/* Adicionando o seletor de itens por página */}
-                  <SelectPagination
-                    itemsPerPage={itemsPerPage}
-                    handleItemsPerPageChange={handleItemsPerPageChange}
-                  />
+                  <div className="hidden md:block">
+                    {/* Adicionando o seletor de itens por página */}
+                    <SelectPagination
+                      itemsPerPage={itemsPerPage}
+                      handleItemsPerPageChange={handleItemsPerPageChange}
+                    />
+                  </div>
                   {/* Adicionando o botão de exportar */}
                   <Button
                     size="sm"

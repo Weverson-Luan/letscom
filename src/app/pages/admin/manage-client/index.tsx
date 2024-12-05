@@ -67,11 +67,13 @@ const ManageClient = () => {
                 <TabsTrigger value="false-2">Inadimplentes</TabsTrigger>
               </TabsList>
               <div className="ml-auto flex items-center gap-2">
-                {/* Adicionando o seletor de itens por página */}
-                <SelectPagination
-                  itemsPerPage={itemsPerPage}
-                  handleItemsPerPageChange={handleItemsPerPageChange}
-                />
+                <div className="hidden md:block">
+                  {/* Adicionando o seletor de itens por página */}
+                  <SelectPagination
+                    itemsPerPage={itemsPerPage}
+                    handleItemsPerPageChange={handleItemsPerPageChange}
+                  />
+                </div>
 
                 <Button size="sm" variant="outline" className="h-8 gap-1">
                   <File className="h-3.5 w-3.5 text-zinc-800" />
