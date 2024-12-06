@@ -66,16 +66,18 @@ export function DynamicTable({
             <TableHeader>
               <TableRow>
                 {/* Checkbox de Seleção Todos */}
-                {checkBox && (
-                  <TableHead>
-                    <input
-                      type="checkbox"
-                      checked={isAllSelected}
-                      onChange={onSelectAll} // Usa a função passada via props
-                      className="form-checkbox h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
-                    />
-                  </TableHead>
-                )}
+                <div className="hidden md:block">
+                  {checkBox && (
+                    <TableHead>
+                      <input
+                        type="checkbox"
+                        checked={isAllSelected}
+                        onChange={onSelectAll} // Usa a função passada via props
+                        className="form-checkbox h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                      />
+                    </TableHead>
+                  )}
+                </div>
 
                 {/* Dynamic column headers */}
                 {columns.map((column: any, index: number) => (
@@ -101,16 +103,18 @@ export function DynamicTable({
               {data.map((item: any, index: number) => (
                 <TableRow key={index} className="cursor-pointer">
                   {/* Checkbox de Seleção Individual */}
-                  {checkBox && (
-                    <TableCell>
-                      <input
-                        type="checkbox"
-                        checked={selectedItems.includes(item.id)}
-                        onChange={() => onSelectItem(item.id)} // Usa a função passada via props
-                        className="form-checkbox h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
-                      />
-                    </TableCell>
-                  )}
+                  <div className="hidden md:block">
+                    {checkBox && (
+                      <TableCell>
+                        <input
+                          type="checkbox"
+                          checked={selectedItems.includes(item.id)}
+                          onChange={() => onSelectItem(item.id)} // Usa a função passada via props
+                          className="form-checkbox h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                        />
+                      </TableCell>
+                    )}
+                  </div>
 
                   {/* Dynamic data cells */}
                   {columns.map((column: any, colIndex: number) => (

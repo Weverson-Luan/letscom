@@ -2,7 +2,7 @@
  * IMPORTS
  */
 
-import { File, PlusCircle } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import { Button } from "../../../../presentation/components/button/button";
 import {
   Tabs,
@@ -58,7 +58,7 @@ const ManageClient = () => {
         <>
           <Tabs defaultValue="all">
             <div className="flex items-center mb-4">
-              <TabsList className="">
+              <TabsList className="flex">
                 <TabsTrigger value="all" className="">
                   Ativos
                 </TabsTrigger>
@@ -74,13 +74,6 @@ const ManageClient = () => {
                     handleItemsPerPageChange={handleItemsPerPageChange}
                   />
                 </div>
-
-                <Button size="sm" variant="outline" className="h-8 gap-1">
-                  <File className="h-3.5 w-3.5 text-zinc-800" />
-                  <span className="sr-only sm:not-sr-only sm:whitespace-nowra text-zinc-800">
-                    Exportar
-                  </span>
-                </Button>
 
                 <Button
                   size="sm"
